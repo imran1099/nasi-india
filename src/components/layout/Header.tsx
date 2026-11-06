@@ -9,7 +9,11 @@ import { MobileNav } from "./MobileNav";
 import { MenuIcon } from "../icons";
 import { Button } from "../ui/Button";
 
-export function Header() {
+export interface HeaderProps {
+  logoUrl?: string;
+}
+
+export function Header({ logoUrl }: HeaderProps) {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -33,24 +37,24 @@ export function Header() {
       </a>
 
       {/* Top Banner / Organization Banner */}
-      <div className="bg-forest-950 text-sand-100 text-xs py-2 px-4 border-b border-forest-900/90 shadow-2xs">
+      <div className="bg-[#002D54] text-white text-xs py-2 px-4 border-b border-[#001E38] shadow-2xs">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 text-center sm:text-left">
           <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-gold-500 animate-pulse" />
-            <p className="text-sand-200 font-medium tracking-wide">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D4A737] animate-pulse" />
+            <p className="text-[#F4FAFF] font-medium tracking-wide">
               Soroptimist International of India • National Association
             </p>
           </div>
-          <div className="hidden md:flex items-center gap-4 text-forest-200">
-            <span className="text-[11px] uppercase tracking-wider text-teal-300 font-medium">
+          <div className="hidden md:flex items-center gap-4 text-[#D7E8F5]">
+            <span className="text-[11px] uppercase tracking-wider text-[#E8F3FC] font-medium">
               A Global Voice for Women
             </span>
-            <span aria-hidden="true" className="text-forest-700">•</span>
+            <span aria-hidden="true" className="text-[#004780]">•</span>
             <a
               href={siteConfig.internationalAffiliation.globalUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sand-200 hover:text-gold-400 transition-colors inline-flex items-center gap-1 font-medium"
+              className="text-[#F4FAFF] hover:text-[#D4A737] transition-colors inline-flex items-center gap-1 font-medium"
             >
               Soroptimist International Global &rarr;
             </a>
@@ -59,12 +63,12 @@ export function Header() {
       </div>
 
       {/* Main Header */}
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-sand-200/90 shadow-2xs">
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#D7E8F5] shadow-2xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-20 sm:h-24 py-1.5 sm:py-2">
             {/* Logo Area (Configurable) */}
             <div className="shrink-0">
-              <Logo />
+              <Logo imageUrl={logoUrl} />
             </div>
 
             {/* Desktop Navigation */}
@@ -84,15 +88,15 @@ export function Header() {
                     href={item.href}
                     className={`relative px-3.5 py-2 text-sm rounded-lg transition-all duration-150 ${
                       isActive
-                        ? "text-forest-950 font-semibold bg-sand-100 border border-sand-300/80 shadow-2xs"
-                        : "text-forest-800 font-medium hover:text-forest-950 hover:bg-sand-50"
+                        ? "text-[#005596] font-semibold bg-[#E8F3FC] border border-[#D7E8F5] shadow-2xs"
+                        : "text-[#17324D] font-medium hover:text-[#005596] hover:bg-[#F4FAFF]"
                     }`}
                     aria-current={isActive ? "page" : undefined}
                   >
                     {item.label}
                     {isActive && (
                       <span
-                        className="absolute bottom-1 left-3.5 right-3.5 h-0.5 bg-forest-800 rounded-full"
+                        className="absolute bottom-1 left-3.5 right-3.5 h-0.5 bg-[#005596] rounded-full"
                         aria-hidden="true"
                       />
                     )}
@@ -108,7 +112,7 @@ export function Header() {
                   href="/clubs"
                   variant="ghost"
                   size="sm"
-                  className="hidden xl:inline-flex text-forest-800 hover:text-forest-950"
+                  className="hidden xl:inline-flex text-[#17324D] hover:text-[#005596] hover:bg-[#E8F3FC]"
                 >
                   Find a Club
                 </Button>
@@ -116,7 +120,7 @@ export function Header() {
                   href="/join"
                   variant="primary"
                   size="sm"
-                  className="hidden md:inline-flex bg-forest-900 hover:bg-forest-950 text-white shadow-xs"
+                  className="hidden md:inline-flex bg-[#005596] hover:bg-[#004780] text-white shadow-xs"
                 >
                   Join SI Today
                 </Button>
@@ -130,7 +134,7 @@ export function Header() {
                 aria-label="Open navigation menu"
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-navigation"
-                className="lg:hidden p-2.5 rounded-lg text-forest-900 hover:bg-sand-100 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-forest-700 transition-colors cursor-pointer border border-transparent hover:border-sand-300"
+                className="lg:hidden p-2.5 rounded-lg text-[#005596] hover:bg-[#E8F3FC] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[#005596] transition-colors cursor-pointer border border-transparent hover:border-[#D7E8F5]"
               >
                 <MenuIcon size={24} />
               </button>

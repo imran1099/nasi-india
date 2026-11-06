@@ -20,14 +20,14 @@ async function getCommitteeAdminList() {
     const members = await prisma.committeeMember.findMany({
       orderBy: { displayOrder: "asc" },
     });
-    if (members.length > 0) {
+    if (members.length > 0 && !members[0].name.startsWith("[Sample]")) {
       return members.map((m) => ({
         role: m.title,
         roleShort: m.title,
         name: m.name,
         designation: m.title,
-        department: m.organization ?? "National Committee",
-        tenure: "Biennium 2024–2026",
+        department: m.organization ?? "National Board",
+        tenure: "Biennium 2026–2028",
         clubAffiliation: m.city ? `${m.city}${m.state ? `, ${m.state}` : ""}` : "NASI India",
         emailPlaceholder: m.email ?? "secretariat@nasi-india.org",
         initials: m.name.split(" ").map((n) => n[0]).filter(Boolean).slice(0, 2).join("").toUpperCase() || "SI",
@@ -48,13 +48,13 @@ export default async function AdminCommitteePage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-sand-300">
         <div>
           <span className="text-xs uppercase tracking-wider font-semibold text-teal-800">
-            Governance & Executive Roster
+            National Association Soroptimist India (NASI-India)
           </span>
           <h1 className="text-2xl font-serif font-bold text-forest-950">
-            National Committee Management
+            NASI India Board: 2026–2028 Management
           </h1>
           <p className="text-xs sm:text-sm text-forest-700 mt-0.5">
-            Executive board portfolios and designated leaders for Biennium 2024–2026.
+            Executive board portfolios and designated leaders for Biennium 2026–2028.
           </p>
         </div>
 
@@ -73,7 +73,7 @@ export default async function AdminCommitteePage() {
             </CardTitle>
             <p className="text-xs text-forest-600">Showing {members.length} executive positions</p>
           </div>
-          <Badge variant="forest" size="sm">Biennium 2024–2026</Badge>
+          <Badge variant="forest" size="sm">Biennium 2026–2028</Badge>
         </CardHeader>
 
         <CardContent className="p-0">

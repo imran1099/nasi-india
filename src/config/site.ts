@@ -9,6 +9,7 @@ export interface LogoConfig {
   text: string;
   subtext?: string;
   imageUrl?: string;
+  footerImageUrl?: string;
   altText: string;
 }
 
@@ -43,29 +44,39 @@ export interface SiteConfig {
   copyrightYear: number;
 }
 
+// Read any administrator-saved settings from persistent local store
+let savedLogoUrl: string | undefined;
+try {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const saved = require("@/data/site-settings.json");
+  if (saved && typeof saved["site.logoUrl"] === "string" && saved["site.logoUrl"]) {
+    savedLogoUrl = saved["site.logoUrl"];
+  }
+} catch {
+  // Fall back to default branding
+}
+
 export const siteConfig: SiteConfig = {
   name: "NASI India",
   tagline: "Inspiring action, transforming lives for women and girls across India.",
   description:
     "National Association of Soroptimist International of India (NASI India) is a voluntary service organization committed to educating, empowering, and enabling women and girls through grassroots community action.",
   logo: {
-    type: "text",
+    type: "image",
     text: "NASI India",
     subtext: "Soroptimist International",
-    // When an official logo is uploaded via admin panel in future phases,
-    // imageUrl can be populated (e.g., '/images/nasi-india-logo.png') and type set to 'image'.
-    imageUrl: "",
+    imageUrl: savedLogoUrl || "/images/soroptimist-india-logo.svg",
+    footerImageUrl: savedLogoUrl || "/images/soroptimist-india-logo-white.svg",
     altText: "NASI India - National Association of Soroptimist International of India",
   },
   navItems: [
     { label: "Home", href: "/" },
-    { label: "About NASI India", href: "/about", description: "Our heritage, mission, and structure" },
-    { label: "Committee", href: "/committee", description: "National leadership and executive team" },
-    { label: "NASI India Clubs", href: "/clubs", description: "Directory of chartered clubs nationwide" },
-    { label: "News", href: "/news", description: "National initiatives and club updates" },
-    { label: "Events", href: "/events", description: "Conferences, webinars, and action days" },
-    { label: "Soroptimist Resources", href: "/resources", description: "Charter guides, governance, and SI materials" },
-    { label: "Join SI", href: "/join", description: "Membership information and application" },
+    { label: "About NASI India", href: "/about", description: "Who We Are, What Soroptimist Means, Mission & History" },
+    { label: "Our Clubs", href: "/clubs", description: "All Clubs, Club Profiles & Find a Club" },
+    { label: "Our Team", href: "/committee", description: "NASI National Board & Committee Members" },
+    { label: "News & Events", href: "/news", description: "National reports, club updates and gatherings" },
+    { label: "Resources", href: "/resources", description: "Charter guides, governance and federation links" },
+    { label: "Join Us", href: "/join", description: "Membership pathways and enquiry" },
     { label: "Contact Us", href: "/contact", description: "Get in touch with the National Secretariat" },
   ],
   contact: {

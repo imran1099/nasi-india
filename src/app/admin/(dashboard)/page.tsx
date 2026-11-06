@@ -228,7 +228,7 @@ export default async function AdminDashboardPage() {
               <div className="w-10 h-10 rounded-xl bg-forest-900 text-teal-300 flex items-center justify-center mb-3">
                 <UsersIcon size={20} />
               </div>
-              <Badge variant="forest" size="sm">Biennium 2024–2026</Badge>
+              <Badge variant="forest" size="sm">Biennium 2026–2028</Badge>
             </div>
             <CardTitle as="h3" className="text-base text-forest-950">
               National Committee Roster

@@ -5,50 +5,85 @@
   --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  --color-forest-50: #f2f7f4;
-  --color-forest-100: #e2ede7;
-  --color-forest-200: #c4dbd0;
-  --color-forest-300: #98c1b1;
-  --color-forest-400: #6ca48f;
-  --color-forest-500: #448670;
-  --color-forest-600: #2d6b57;
-  --color-forest-700: #225343;
-  --color-forest-800: #1b4336;
-  --color-forest-900: #13382c;
-  --color-forest-950: #0a231c;
+  /* NASI India Official Brand Color System */
+  /* Primary Blue (#005596) and tonal hierarchy */
+  --color-primary-50: #f4faff;
+  --color-primary-100: #e8f3fc;
+  --color-primary-200: #d7e8f5;
+  --color-primary-300: #aed1ef;
+  --color-primary-400: #5ea4df;
+  --color-primary-500: #1a7bcc;
+  --color-primary-600: #005596; /* Brand Primary Blue */
+  --color-primary-700: #004780; /* Hover state */
+  --color-primary-800: #003a6b;
+  --color-primary-900: #002d54;
+  --color-primary-950: #001e38;
 
-  --color-teal-50: #f0f8f7;
-  --color-teal-100: #dbeefc;
-  --color-teal-200: #bce1db;
-  --color-teal-300: #8ecac0;
-  --color-teal-400: #5cb0a2;
-  --color-teal-500: #3a9789;
-  --color-teal-600: #2b796e;
-  --color-teal-700: #236058;
-  --color-teal-800: #1e4d47;
-  --color-teal-900: #1a413c;
-  --color-teal-950: #0b2421;
+  /* Explicit Brand Design Tokens */
+  --color-brand-blue: #005596;
+  --color-brand-blue-hover: #004780;
+  --color-brand-blue-dark: #003a6b;
+  --color-brand-bg: #f4faff;
+  --color-brand-surface: #ffffff;
+  --color-brand-section: #e8f3fc;
+  --color-brand-border: #d7e8f5;
+  --color-brand-text: #17324d;
+  --color-brand-muted: #61758a;
 
-  --color-sand-50: #faf8f5;
-  --color-sand-100: #f4eee5;
-  --color-sand-200: #e8decc;
-  --color-sand-300: #ded0b7;
-  --color-sand-400: #cdba9a;
-  --color-sand-500: #baa47f;
-  --color-sand-600: #a28d69;
-  --color-sand-700: #837152;
-  --color-sand-800: #6b5c43;
-  --color-sand-900: #574a36;
+  /* Theme mappings aligned strictly to the NASI Blue palette */
+  --color-forest-50: #f4faff;
+  --color-forest-100: #e8f3fc;
+  --color-forest-200: #d7e8f5;
+  --color-forest-300: #aed1ef;
+  --color-forest-400: #5ea4df;
+  --color-forest-500: #1a7bcc;
+  --color-forest-600: #005596;
+  --color-forest-700: #004780;
+  --color-forest-800: #003a6b;
+  --color-forest-900: #002d54;
+  --color-forest-950: #001e38;
 
-  --color-gold-400: #d9b158;
-  --color-gold-500: #c59b3f;
-  --color-gold-600: #b08530;
-  --color-gold-700: #8f6720;
+  --color-teal-50: #f4faff;
+  --color-teal-100: #e8f3fc;
+  --color-teal-200: #d7e8f5;
+  --color-teal-300: #aed1ef;
+  --color-teal-400: #5ea4df;
+  --color-teal-500: #1a7bcc;
+  --color-teal-600: #005596;
+  --color-teal-700: #004780;
+  --color-teal-800: #003a6b;
+  --color-teal-900: #002d54;
+  --color-teal-950: #001e38;
+
+  --color-sand-50: #f4faff;
+  --color-sand-100: #e8f3fc;
+  --color-sand-200: #d7e8f5;
+  --color-sand-300: #c4dcf2;
+  --color-sand-400: #9ec5e8;
+  --color-sand-500: #61758a;
+  --color-sand-600: #4d6379;
+  --color-sand-700: #394f65;
+  --color-sand-800: #253c51;
+  --color-sand-900: #17324d;
+
+  --color-gold-400: #d4a737;
+  --color-gold-500: #b88d22;
+  --color-gold-600: #9c7314;
+  --color-gold-700: #7b580b;
 }
 
 :root {
-  --background: #faf8f5;
-  --foreground: #14221c;
+  --background: #f4faff;
+  --foreground: #17324d;
+  --primary-blue: #005596;
+  --primary-blue-hover: #004780;
+  --primary-blue-dark: #003a6b;
+  --very-light-blue: #f4faff;
+  --light-blue: #e8f3fc;
+  --border-blue: #d7e8f5;
+  --dark-text: #17324d;
+  --muted-text: #61758a;
+  --card-white: #ffffff;
 }
 
 body {
@@ -59,9 +94,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Accessible focus ring styling */
+/* Accessible focus ring styling using Primary Blue */
 :focus-visible {
-  outline: 2px solid #236058;
+  outline: 2px solid #005596;
   outline-offset: 2px;
 }
 
@@ -70,7 +105,7 @@ body {
   position: absolute;
   top: -40px;
   left: 1rem;
-  background: #13382c;
+  background: #005596;
   color: #ffffff;
   padding: 0.5rem 1rem;
   z-index: 100;
@@ -83,17 +118,17 @@ body {
   top: 0;
 }
 
-/* Editorial design utility classes */
+/* Editorial design utility classes adhering strictly to the brand blue scheme */
 .editorial-card {
   background-color: #ffffff;
-  border: 1px solid #e8decc;
-  box-shadow: 0 1px 3px rgba(10, 35, 28, 0.04), 0 4px 12px rgba(10, 35, 28, 0.02);
+  border: 1px solid #d7e8f5;
+  box-shadow: 0 1px 3px rgba(0, 85, 150, 0.04), 0 4px 12px rgba(0, 85, 150, 0.02);
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .editorial-card:hover {
-  border-color: #98c1b1;
-  box-shadow: 0 4px 12px rgba(10, 35, 28, 0.06), 0 8px 24px rgba(10, 35, 28, 0.04);
+  border-color: #aed1ef;
+  box-shadow: 0 4px 12px rgba(0, 85, 150, 0.08), 0 8px 24px rgba(0, 85, 150, 0.04);
 }
 
 .editorial-pill {

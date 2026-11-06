@@ -3,7 +3,37 @@
  * Manages configuration for branding, contact info, social links, homepage, and footer.
  */
 
+import fs from "fs";
+import path from "path";
 import { siteConfig } from "@/config/site";
+
+const SETTINGS_FILE = path.join(process.cwd(), "src", "data", "site-settings.json");
+
+function readLocalSettings(): Record<string, string> {
+  try {
+    if (fs.existsSync(SETTINGS_FILE)) {
+      const raw = fs.readFileSync(SETTINGS_FILE, "utf-8");
+      return JSON.parse(raw);
+    }
+  } catch (e) {
+    console.warn("[settings] Failed to read local settings file:", e);
+  }
+  return {};
+}
+
+function writeLocalSettings(settings: Record<string, string>): void {
+  try {
+    const existing = readLocalSettings();
+    const updated = { ...existing, ...settings };
+    const dir = path.dirname(SETTINGS_FILE);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(SETTINGS_FILE, JSON.stringify(updated, null, 2), "utf-8");
+  } catch (e) {
+    console.warn("[settings] Failed to write local settings file:", e);
+  }
+}
 
 export interface SiteSettingsMap {
   // Branding
@@ -24,10 +54,17 @@ export interface SiteSettingsMap {
   "social.linkedin": string;
   "social.youtube": string;
 
-  // Homepage
+  // Homepage & Banner
   "home.heroTitle": string;
   "home.heroSubtitle": string;
   "home.announcement": string;
+  "home.heroCtaText": string;
+  "home.heroCtaUrl": string;
+  "home.heroSecondaryCtaText": string;
+  "home.heroSecondaryCtaUrl": string;
+  "home.heroImageLeft": string;
+  "home.heroImageRight": string;
+  "home.bannerDisplayMode": string;
 
   // Footer
   "footer.copyright": string;
@@ -40,7 +77,7 @@ export function getDefaultSiteSettings(): SiteSettingsMap {
   return {
     "site.name": siteConfig.contact.organizationName,
     "site.shortName": siteConfig.name,
-    "site.logoUrl": "/images/logo.png",
+    "site.logoUrl": "/images/soroptimist-india-logo.svg",
     "site.tagline": "Educating, Empowering & Enabling Women and Girls",
 
     "contact.email": "secretariat@nasi-india.org",
@@ -53,13 +90,20 @@ export function getDefaultSiteSettings(): SiteSettingsMap {
     "social.linkedin": "https://linkedin.com/company/nasiindia",
     "social.youtube": "https://youtube.com/@nasiindia",
 
-    "home.heroTitle": "Empowering Women & Girls Across India",
+    "home.heroTitle": "Standing up for women and girls",
     "home.heroSubtitle":
-      "A nationwide movement of women leaders, educators, and community changemakers across 19 chartered clubs in India.",
+      "Women Supporting Women, Creating Change Together. Purposeful, compassionate, and unshakeably committed to change.",
     "home.announcement":
       "Official digital portal of the National Association of Soroptimist International of India.",
+    "home.heroCtaText": "Our Impact",
+    "home.heroCtaUrl": "/about",
+    "home.heroSecondaryCtaText": "Become a member",
+    "home.heroSecondaryCtaUrl": "/join",
+    "home.heroImageLeft": "/images/banner/hero-woman-facing-left.jpg",
+    "home.heroImageRight": "/images/banner/hero-woman-facing-right.jpg",
+    "home.bannerDisplayMode": "slideshow",
 
-    "footer.copyright": `© ${new Date().getFullYear()} National Association of Soroptimist International of India. All rights reserved.`,
+    "footer.copyright": `© ${siteConfig.copyrightYear} National Association of Soroptimist International of India. All rights reserved.`,
     "footer.registration": "Chartered National Association of Soroptimist International.",
   };
 }
@@ -69,49 +113,49 @@ export function getDefaultSiteSettings(): SiteSettingsMap {
  */
 export async function getSiteSettings(): Promise<SiteSettingsMap> {
   const defaults = getDefaultSiteSettings();
+  const local = readLocalSettings();
+  const merged: SiteSettingsMap = { ...defaults, ...local };
 
-  if (!process.env.DATABASE_URL) {
-    return defaults;
-  }
-
-  try {
-    const { prisma } = await import("@/lib/db");
-    const dbSettings = await prisma.siteSetting.findMany();
-
-    const merged = { ...defaults };
-    for (const item of dbSettings) {
-      merged[item.key] = item.value;
+  if (process.env.DATABASE_URL) {
+    try {
+      const { prisma } = await import("@/lib/db");
+      const dbSettings = await prisma.siteSetting.findMany();
+      for (const item of dbSettings) {
+        merged[item.key] = item.value;
+      }
+    } catch (err) {
+      console.warn("[getSiteSettings] DB query failed, using local settings:", err);
     }
-
-    return merged;
-  } catch (err) {
-    console.warn("[getSiteSettings] DB query failed, falling back to defaults:", err);
-    return defaults;
   }
+
+  return merged;
 }
 
 /**
- * Updates multiple site settings in the database.
+ * Updates multiple site settings in the database and local persistent storage.
  */
 export async function updateSiteSettings(
   settings: Record<string, string>,
   groupMap?: Record<string, string>
 ): Promise<void> {
-  if (!process.env.DATABASE_URL) {
-    console.info("[updateSiteSettings] Simulated settings update (no DB connection):", settings);
-    return;
+  // 1. Always persist to local file store so updates reflect immediately
+  writeLocalSettings(settings);
+
+  // 2. Also sync to PostgreSQL if database connection is available
+  if (process.env.DATABASE_URL) {
+    try {
+      const { prisma } = await import("@/lib/db");
+      const operations = Object.entries(settings).map(([key, value]) => {
+        const group = groupMap?.[key] || key.split(".")[0] || "general";
+        return prisma.siteSetting.upsert({
+          where: { key },
+          update: { value, group },
+          create: { key, value, group, label: key },
+        });
+      });
+      await prisma.$transaction(operations);
+    } catch (err) {
+      console.warn("[updateSiteSettings] DB write skipped (persisted locally):", err);
+    }
   }
-
-  const { prisma } = await import("@/lib/db");
-
-  const operations = Object.entries(settings).map(([key, value]) => {
-    const group = groupMap?.[key] || key.split(".")[0] || "general";
-    return prisma.siteSetting.upsert({
-      where: { key },
-      update: { value, group },
-      create: { key, value, group, label: key },
-    });
-  });
-
-  await prisma.$transaction(operations);
 }

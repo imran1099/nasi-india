@@ -11,11 +11,11 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 }
 
 const variantStyles: Record<BadgeVariant, string> = {
-  forest: "bg-forest-50 text-forest-900 border border-forest-200/90 shadow-2xs",
-  teal: "bg-teal-50 text-teal-900 border border-teal-200/90 shadow-2xs",
-  neutral: "bg-sand-100 text-forest-800 border border-sand-300/80 shadow-2xs",
-  gold: "bg-amber-50 text-amber-950 border border-amber-300/80 shadow-2xs",
-  outline: "bg-white/80 text-forest-800 border border-sand-300 shadow-2xs",
+  forest: "bg-[#E8F3FC] text-[#005596] border border-[#D7E8F5] shadow-2xs font-semibold",
+  teal: "bg-[#F4FAFF] text-[#005596] border border-[#D7E8F5] shadow-2xs font-medium",
+  neutral: "bg-white text-[#17324D] border border-[#D7E8F5] shadow-2xs",
+  gold: "bg-[#FFF9EB] text-[#7B580B] border border-[#F2D79A] shadow-2xs",
+  outline: "bg-white text-[#005596] border border-[#D7E8F5] shadow-2xs",
 };
 
 const sizeStyles: Record<BadgeSize, string> = {

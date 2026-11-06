@@ -56,38 +56,38 @@ export default function JoinPage() {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card variant="muted" className="p-6">
-              <div className="w-12 h-12 rounded-lg bg-forest-100 text-forest-800 flex items-center justify-center mb-4">
+            <Card variant="muted" className="p-6 bg-[#F4FAFF] border border-[#D7E8F5]">
+              <div className="w-12 h-12 rounded-xl bg-[#E8F3FC] text-[#005596] flex items-center justify-center mb-4">
                 <HeartHandshakeIcon size={24} />
               </div>
-              <CardTitle as="h3" className="text-lg">
+              <CardTitle as="h3" className="text-lg text-[#17324D]">
                 Tangible Community Impact
               </CardTitle>
-              <p className="text-sm text-forest-700 mt-2 leading-relaxed">
+              <p className="text-sm text-[#61758A] mt-2 leading-relaxed">
                 Take direct action on local issues: girl-child education, women&apos;s healthcare, vocational independence, and emergency relief drives.
               </p>
             </Card>
 
-            <Card variant="muted" className="p-6">
-              <div className="w-12 h-12 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center mb-4">
+            <Card variant="muted" className="p-6 bg-[#F4FAFF] border border-[#D7E8F5]">
+              <div className="w-12 h-12 rounded-xl bg-[#E8F3FC] text-[#005596] flex items-center justify-center mb-4">
                 <UsersIcon size={24} />
               </div>
-              <CardTitle as="h3" className="text-lg">
+              <CardTitle as="h3" className="text-lg text-[#17324D]">
                 Professional Sisterhood
               </CardTitle>
-              <p className="text-sm text-forest-700 mt-2 leading-relaxed">
+              <p className="text-sm text-[#61758A] mt-2 leading-relaxed">
                 Collaborate with accomplished women across medicine, law, engineering, education, and civil administration in your city and nationwide.
               </p>
             </Card>
 
-            <Card variant="muted" className="p-6">
-              <div className="w-12 h-12 rounded-lg bg-amber-50 text-amber-800 flex items-center justify-center mb-4">
+            <Card variant="muted" className="p-6 bg-[#F4FAFF] border border-[#D7E8F5]">
+              <div className="w-12 h-12 rounded-xl bg-[#E8F3FC] text-[#005596] flex items-center justify-center mb-4">
                 <BookOpenIcon size={24} />
               </div>
-              <CardTitle as="h3" className="text-lg">
+              <CardTitle as="h3" className="text-lg text-[#17324D]">
                 UN Advocacy & Global Links
               </CardTitle>
-              <p className="text-sm text-forest-700 mt-2 leading-relaxed">
+              <p className="text-sm text-[#61758A] mt-2 leading-relaxed">
                 Participate in global campaigns with Soroptimist International delegations at the UN Commission on the Status of Women and international twin-club links.
               </p>
             </Card>
@@ -96,7 +96,7 @@ export default function JoinPage() {
       </section>
 
       {/* 4 Steps to Membership */}
-      <section className="py-12 md:py-16 bg-sand-100/60 border-y border-sand-200">
+      <section className="py-12 md:py-16 bg-[#F4FAFF] border-y border-[#D7E8F5]">
         <Container>
           <SectionHeading
             kicker="The Membership Journey"
@@ -130,19 +130,19 @@ export default function JoinPage() {
             ].map((st, i) => (
               <div
                 key={i}
-                className="bg-white p-6 rounded-xl border border-sand-200 shadow-2xs flex flex-col justify-between"
+                className="bg-white p-6 rounded-xl border border-[#D7E8F5] shadow-2xs flex flex-col justify-between hover:border-[#005596] transition-colors"
               >
                 <div>
-                  <span className="font-serif font-bold text-3xl text-teal-700 block mb-3">
+                  <span className="font-serif font-bold text-3xl text-[#005596] block mb-3">
                     {st.step}
                   </span>
-                  <h3 className="font-serif font-bold text-forest-950 text-lg mb-2">
+                  <h3 className="font-serif font-bold text-[#17324D] text-lg mb-2">
                     {st.title}
                   </h3>
-                  <p className="text-sm text-forest-700 leading-relaxed">{st.desc}</p>
+                  <p className="text-sm text-[#61758A] leading-relaxed">{st.desc}</p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-sand-100 flex items-center gap-1.5 text-xs text-forest-600">
-                  <CheckCircleIcon size={14} className="text-teal-600" />
+                <div className="mt-4 pt-3 border-t border-[#D7E8F5] flex items-center gap-1.5 text-xs text-[#61758A]">
+                  <CheckCircleIcon size={14} className="text-[#005596]" />
                   <span>Step {i + 1} of 4</span>
                 </div>
               </div>
@@ -154,12 +154,12 @@ export default function JoinPage() {
       {/* Membership Application Form */}
       <section className="py-12 md:py-16 bg-white">
         <Container size="lg">
-          <div className="bg-white rounded-2xl border border-sand-200 shadow-sm overflow-hidden">
-            <div className="border-b border-sand-200 px-6 py-5">
-              <h2 className="text-2xl font-serif font-bold text-forest-950">
+          <div className="bg-white rounded-2xl border border-[#D7E8F5] shadow-sm overflow-hidden">
+            <div className="border-b border-[#D7E8F5] px-6 py-5 bg-[#F4FAFF]">
+              <h2 className="text-2xl font-serif font-bold text-[#17324D]">
                 Membership Inquiry Application
               </h2>
-              <p className="text-sm text-forest-700 mt-1">
+              <p className="text-sm text-[#61758A] mt-1">
                 Please complete the form below. A member of the National Membership Committee or
                 your local club convenor will reach out with meeting details.
               </p>

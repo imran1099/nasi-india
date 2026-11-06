@@ -60,7 +60,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
     >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-forest-950/60 backdrop-blur-xs transition-opacity duration-200"
+        className="fixed inset-0 bg-[#001E38]/60 backdrop-blur-xs transition-opacity duration-200"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -68,15 +68,15 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
       {/* Drawer */}
       <div
         ref={drawerRef}
-        className="fixed inset-y-0 right-0 w-full max-w-sm bg-sand-50 border-l border-sand-300 shadow-2xl flex flex-col justify-between overflow-y-auto animate-in slide-in-from-right duration-200"
+        className="fixed inset-y-0 right-0 w-full max-w-sm bg-[#F4FAFF] border-l border-[#D7E8F5] shadow-2xl flex flex-col justify-between overflow-y-auto animate-in slide-in-from-right duration-200"
       >
         {/* Drawer Header */}
-        <div className="p-5 border-b border-sand-200 flex items-center justify-between bg-white">
+        <div className="p-5 border-b border-[#D7E8F5] flex items-center justify-between bg-white">
           <div className="flex flex-col">
-            <span className="font-serif font-bold text-lg text-forest-950">
+            <span className="font-serif font-bold text-lg text-[#17324D]">
               {siteConfig.name}
             </span>
-            <span className="text-xs text-forest-700">Navigation Menu</span>
+            <span className="text-xs text-[#61758A]">Navigation Menu</span>
           </div>
 
           <button
@@ -84,7 +84,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
             type="button"
             onClick={onClose}
             aria-label="Close navigation menu"
-            className="p-2 rounded-lg text-forest-800 hover:text-forest-950 hover:bg-sand-100 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-forest-700"
+            className="p-2 rounded-lg text-[#17324D] hover:text-[#005596] hover:bg-[#E8F3FC] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[#005596]"
           >
             <XIcon size={22} />
           </button>
@@ -105,15 +105,15 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
                     href={item.href}
                     className={`flex items-center justify-between px-3.5 py-3 rounded-lg text-sm font-medium transition-colors ${
                       isActive
-                        ? "bg-forest-800 text-white shadow-xs"
-                        : "text-forest-900 hover:bg-sand-200/70"
+                        ? "bg-[#005596] text-white shadow-xs font-semibold"
+                        : "text-[#17324D] hover:bg-[#E8F3FC]"
                     }`}
                     aria-current={isActive ? "page" : undefined}
                   >
                     <span>{item.label}</span>
                     <ChevronRightIcon
                       size={16}
-                      className={isActive ? "text-teal-200" : "text-forest-400"}
+                      className={isActive ? "text-[#E8F3FC]" : "text-[#61758A]"}
                     />
                   </Link>
                 </li>
@@ -121,7 +121,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
             })}
           </ul>
 
-          <div className="mt-6 pt-6 border-t border-sand-200 flex flex-col gap-2.5">
+          <div className="mt-6 pt-6 border-t border-[#D7E8F5] flex flex-col gap-2.5">
             <Button
               href="/clubs"
               variant="outline"
@@ -134,7 +134,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
               href="/join"
               variant="primary"
               size="md"
-              className="w-full justify-center"
+              className="w-full justify-center bg-[#005596] text-white hover:bg-[#004780]"
             >
               Join SI Today
             </Button>
@@ -142,23 +142,23 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
         </nav>
 
         {/* Drawer Footer with Quick Contact */}
-        <div className="p-5 border-t border-sand-200 bg-white/70 text-xs text-forest-800 space-y-2">
-          <p className="font-semibold text-forest-950">NASI India Secretariat</p>
-          <div className="flex items-center gap-2 text-forest-700">
+        <div className="p-5 border-t border-[#D7E8F5] bg-white text-xs text-[#17324D] space-y-2">
+          <p className="font-semibold text-[#17324D]">NASI India Secretariat</p>
+          <div className="flex items-center gap-2 text-[#61758A]">
             <MailIcon size={14} />
             <a
               href={`mailto:${siteConfig.contact.email}`}
-              className="hover:text-forest-950 underline"
+              className="hover:text-[#005596] underline"
             >
               {siteConfig.contact.email}
             </a>
           </div>
-          <div className="flex items-center gap-2 text-forest-700">
+          <div className="flex items-center gap-2 text-[#61758A]">
             <PhoneIcon size={14} />
             <span>{siteConfig.contact.phone}</span>
           </div>
-          <p className="text-[11px] text-forest-600 pt-2 border-t border-sand-200">
-            Phase 1 Foundation • Soroptimist International of India
+          <p className="text-[11px] text-[#61758A] pt-2 border-t border-[#D7E8F5]">
+            Soroptimist International of India • National Association
           </p>
         </div>
       </div>

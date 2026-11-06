@@ -16,13 +16,13 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-forest-800 text-white hover:bg-forest-900 focus-visible:ring-forest-800 border border-transparent shadow-xs active:bg-forest-950",
+    "bg-[#005596] text-white hover:bg-[#004780] focus-visible:ring-[#005596] border border-transparent shadow-xs active:bg-[#003a6b] font-medium transition-all duration-150",
   secondary:
-    "bg-teal-700 text-white hover:bg-teal-800 focus-visible:ring-teal-700 border border-transparent shadow-xs active:bg-teal-900",
+    "bg-[#E8F3FC] text-[#005596] hover:bg-[#d7e8f5] focus-visible:ring-[#005596] border border-[#d7e8f5] shadow-xs active:bg-[#c4dcf2] font-semibold transition-all duration-150",
   outline:
-    "bg-transparent text-forest-800 border border-forest-700 hover:bg-forest-50 focus-visible:ring-forest-700 active:bg-forest-100",
+    "bg-transparent text-[#005596] border border-[#005596] hover:bg-[#E8F3FC] focus-visible:ring-[#005596] active:bg-[#d7e8f5] font-medium transition-all duration-150",
   ghost:
-    "bg-transparent text-forest-800 hover:bg-forest-50 hover:text-forest-900 focus-visible:ring-forest-700 border border-transparent",
+    "bg-transparent text-[#17324D] hover:bg-[#E8F3FC] hover:text-[#005596] focus-visible:ring-[#005596] border border-transparent font-medium transition-all duration-150",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {

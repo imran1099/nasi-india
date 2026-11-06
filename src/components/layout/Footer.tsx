@@ -7,7 +7,11 @@ import { siteConfig } from "@/config/site";
 import { Logo } from "./Logo";
 import { MailIcon, PhoneIcon, MapPinIcon, ExternalLinkIcon } from "../icons";
 
-export function Footer() {
+export interface FooterProps {
+  logoUrl?: string;
+}
+
+export function Footer({ logoUrl }: FooterProps) {
   const pathname = usePathname();
   const currentYear = siteConfig.copyrightYear;
 
@@ -16,29 +20,29 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-forest-950 text-sand-100 border-t border-forest-900 mt-auto">
+    <footer className="bg-[#001E38] text-white border-t border-[#002D54] mt-auto">
       {/* Upper Footer: Branding, Navigation Columns, Contact Info */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
           {/* Column 1: Organization Branding (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
-            <Logo isFooter />
-            <p className="text-sm text-sand-300 leading-relaxed max-w-sm pt-2">
+            <Logo isFooter imageUrl={logoUrl} />
+            <p className="text-sm text-[#D7E8F5] leading-relaxed max-w-sm pt-2">
               {siteConfig.description}
             </p>
 
             <div className="pt-2">
-              <span className="text-xs uppercase tracking-wider font-semibold text-teal-300 block mb-2">
+              <span className="text-xs uppercase tracking-wider font-semibold text-[#E8F3FC] block mb-2">
                 Affiliation
               </span>
-              <p className="text-xs text-sand-300/80 leading-relaxed">
+              <p className="text-xs text-[#D7E8F5]/90 leading-relaxed">
                 National Association of Soroptimist International of India.
                 Chartered under{" "}
                 <a
                   href={siteConfig.internationalAffiliation.globalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-teal-200 hover:text-white underline inline-flex items-center gap-1"
+                  className="text-white hover:underline inline-flex items-center gap-1 font-medium"
                 >
                   Soroptimist International
                   <ExternalLinkIcon size={12} />
@@ -50,14 +54,14 @@ export function Footer() {
 
           {/* Column 2: Navigation Links (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-teal-300 font-sans">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#E8F3FC] font-sans">
               Organization
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   href="/"
-                  className="text-sand-300 hover:text-white transition-colors"
+                  className="text-[#D7E8F5] hover:text-white transition-colors"
                 >
                   Home
                 </Link>
@@ -65,7 +69,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/about"
-                  className="text-sand-300 hover:text-white transition-colors"
+                  className="text-[#D7E8F5] hover:text-white transition-colors"
                 >
                   About NASI India
                 </Link>
@@ -73,7 +77,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/committee"
-                  className="text-sand-300 hover:text-white transition-colors"
+                  className="text-[#D7E8F5] hover:text-white transition-colors"
                 >
                   National Committee
                 </Link>
@@ -81,7 +85,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/clubs"
-                  className="text-sand-300 hover:text-white transition-colors"
+                  className="text-[#D7E8F5] hover:text-white transition-colors"
                 >
                   NASI India Clubs
                 </Link>
@@ -91,14 +95,14 @@ export function Footer() {
 
           {/* Column 3: Community & Resources (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-teal-300 font-sans">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#E8F3FC] font-sans">
               Engage & Resources
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   href="/news"
-                  className="text-sand-300 hover:text-white transition-colors"
+                  className="text-[#D7E8F5] hover:text-white transition-colors"
                 >
                   News & Updates
                 </Link>
@@ -106,7 +110,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/events"
-                  className="text-sand-300 hover:text-white transition-colors"
+                  className="text-[#D7E8F5] hover:text-white transition-colors"
                 >
                   National Events
                 </Link>
@@ -114,7 +118,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/resources"
-                  className="text-sand-300 hover:text-white transition-colors"
+                  className="text-[#D7E8F5] hover:text-white transition-colors"
                 >
                   Soroptimist Resources
                 </Link>
@@ -122,7 +126,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/join"
-                  className="text-sand-300 hover:text-white transition-colors font-medium text-teal-300"
+                  className="text-[#E8F3FC] hover:text-white transition-colors font-medium"
                 >
                   Join SI Today
                 </Link>
@@ -130,7 +134,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-sand-300 hover:text-white transition-colors"
+                  className="text-[#D7E8F5] hover:text-white transition-colors"
                 >
                   Contact Secretariat
                 </Link>
@@ -140,16 +144,16 @@ export function Footer() {
 
           {/* Column 4: Contact Placeholder & Social (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-teal-300 font-sans">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#E8F3FC] font-sans">
               Secretariat Contact
             </h3>
-            <p className="text-xs text-sand-400">
-              Configurable placeholder contact info:
+            <p className="text-xs text-[#aed1ef]">
+              Soroptimist International of India
             </p>
 
-            <div className="space-y-2.5 text-xs text-sand-300">
+            <div className="space-y-2.5 text-xs text-[#D7E8F5]">
               <div className="flex items-start gap-2.5">
-                <MapPinIcon size={16} className="text-teal-400 shrink-0 mt-0.5" />
+                <MapPinIcon size={16} className="text-[#aed1ef] shrink-0 mt-0.5" />
                 <span>
                   {siteConfig.contact.addressLines.map((line, idx) => (
                     <span key={idx} className="block">
@@ -160,24 +164,24 @@ export function Footer() {
               </div>
 
               <div className="flex items-center gap-2.5">
-                <MailIcon size={16} className="text-teal-400 shrink-0" />
+                <MailIcon size={16} className="text-[#aed1ef] shrink-0" />
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
-                  className="text-sand-200 hover:text-white underline"
+                  className="text-[#E8F3FC] hover:text-white underline"
                 >
                   {siteConfig.contact.email}
                 </a>
               </div>
 
               <div className="flex items-center gap-2.5">
-                <PhoneIcon size={16} className="text-teal-400 shrink-0" />
+                <PhoneIcon size={16} className="text-[#aed1ef] shrink-0" />
                 <span>{siteConfig.contact.phone}</span>
               </div>
             </div>
 
             {/* Social link placeholders */}
             <div className="pt-3">
-              <span className="text-xs uppercase tracking-wider text-teal-300 block mb-2">
+              <span className="text-xs uppercase tracking-wider text-[#E8F3FC] block mb-2">
                 Connect With Us
               </span>
               <div className="flex flex-wrap gap-2">
@@ -188,7 +192,7 @@ export function Footer() {
                     aria-label={social.ariaLabel}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-2.5 py-1 text-xs rounded-md bg-forest-900 border border-forest-800 text-sand-200 hover:text-white hover:bg-forest-800 transition-colors"
+                    className="px-2.5 py-1 text-xs rounded-md bg-[#002D54] border border-[#003A6B] text-[#D7E8F5] hover:text-white hover:bg-[#003A6B] transition-colors"
                   >
                     {social.platform}
                   </a>
@@ -199,21 +203,21 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Lower Footer: Legal & Phase 2 Info */}
-      <div className="border-t border-forest-900/80 bg-forest-950/90 py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-sand-400 text-center sm:text-left">
+      {/* Lower Footer: Legal & Copyright */}
+      <div className="border-t border-[#002D54] bg-[#00172B] py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#D7E8F5]/80 text-center sm:text-left">
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4">
             <p>
               &copy; {currentYear} {siteConfig.name} ({siteConfig.contact.organizationName}). All rights reserved.
             </p>
-            <span aria-hidden="true" className="hidden sm:inline text-forest-700">•</span>
-            <Link href="/privacy" className="text-sand-300 hover:text-white underline">
+            <span aria-hidden="true" className="hidden sm:inline text-[#003A6B]">•</span>
+            <Link href="/privacy" className="text-[#D7E8F5] hover:text-white underline">
               Privacy Policy
             </Link>
           </div>
 
-          <p className="text-[11px] text-sand-500">
-            Phase 2: Complete Public Website UI • Sample Content & Functional Layouts
+          <p className="text-[11px] text-[#aed1ef]">
+            National Association of Soroptimist International of India
           </p>
         </div>
       </div>

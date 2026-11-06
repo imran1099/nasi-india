@@ -39,26 +39,26 @@ export default function ContactPage() {
             {/* Left Column: Configurable Contact Information (5 cols) */}
             <div className="lg:col-span-5 space-y-6">
               <div>
-                <span className="text-xs uppercase font-semibold tracking-wider text-teal-700 bg-teal-50 px-2.5 py-1 rounded-md border border-teal-200">
+                <span className="text-xs uppercase font-semibold tracking-wider text-[#005596] bg-[#E8F3FC] px-2.5 py-1 rounded-md border border-[#D7E8F5]">
                   National Office
                 </span>
-                <h2 className="text-2xl font-serif font-bold text-forest-950 mt-3">
+                <h2 className="text-2xl font-serif font-bold text-[#17324D] mt-3">
                   National Secretariat
                 </h2>
-                <p className="text-sm text-forest-800/80 mt-2 leading-relaxed">
+                <p className="text-sm text-[#61758A] mt-2 leading-relaxed">
                   The National Association of Soroptimist International of India coordinates all regional clubs, national initiatives, and international correspondence.
                 </p>
               </div>
 
               {/* Contact Details Card */}
-              <Card variant="muted" className="space-y-4 p-6">
+              <Card variant="muted" className="space-y-4 p-6 bg-[#F4FAFF] border border-[#D7E8F5]">
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-lg bg-forest-100 text-forest-800 flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-9 h-9 rounded-lg bg-[#E8F3FC] text-[#005596] flex items-center justify-center shrink-0 mt-0.5">
                     <MapPinIcon size={18} />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-forest-950">Official Address</h3>
-                    <div className="text-xs text-forest-700 mt-0.5 leading-relaxed">
+                    <h3 className="text-sm font-semibold text-[#17324D]">Official Address</h3>
+                    <div className="text-xs text-[#61758A] mt-0.5 leading-relaxed">
                       {siteConfig.contact.addressLines.map((line, idx) => (
                         <p key={idx}>{line}</p>
                       ))}
@@ -66,31 +66,31 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5 pt-3 border-t border-sand-200">
-                  <div className="w-9 h-9 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="flex items-start gap-3.5 pt-3 border-t border-[#D7E8F5]">
+                  <div className="w-9 h-9 rounded-lg bg-[#E8F3FC] text-[#005596] flex items-center justify-center shrink-0 mt-0.5">
                     <MailIcon size={18} />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-forest-950">Email Inquiry</h3>
+                    <h3 className="text-sm font-semibold text-[#17324D]">Email Inquiry</h3>
                     <a
                       href={`mailto:${siteConfig.contact.email}`}
-                      className="text-xs text-teal-800 hover:text-forest-950 underline mt-0.5 block"
+                      className="text-xs text-[#005596] hover:text-[#004780] underline mt-0.5 block font-medium"
                     >
                       {siteConfig.contact.email}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5 pt-3 border-t border-sand-200">
-                  <div className="w-9 h-9 rounded-lg bg-amber-50 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="flex items-start gap-3.5 pt-3 border-t border-[#D7E8F5]">
+                  <div className="w-9 h-9 rounded-lg bg-[#E8F3FC] text-[#005596] flex items-center justify-center shrink-0 mt-0.5">
                     <PhoneIcon size={18} />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-forest-950">Telephone</h3>
-                    <p className="text-xs text-forest-700 mt-0.5">
+                    <h3 className="text-sm font-semibold text-[#17324D]">Telephone</h3>
+                    <p className="text-xs text-[#61758A] mt-0.5">
                       {siteConfig.contact.phone}
                     </p>
-                    <p className="text-[11px] text-forest-500 mt-0.5">
+                    <p className="text-[11px] text-[#61758A] mt-0.5">
                       {siteConfig.contact.officeHours}
                     </p>
                   </div>
@@ -98,24 +98,24 @@ export default function ContactPage() {
               </Card>
 
               {/* Official Secretariat Notice */}
-              <div className="p-4 rounded-xl bg-sand-100/80 border border-sand-200 text-xs text-forest-800 space-y-1.5 shadow-2xs">
-                <p className="font-semibold text-forest-950">
+              <div className="p-4 rounded-xl bg-[#E8F3FC]/50 border border-[#D7E8F5] text-xs text-[#17324D] space-y-1.5 shadow-2xs">
+                <p className="font-semibold text-[#17324D]">
                   National Secretariat Liaison
                 </p>
-                <p className="text-forest-700 leading-relaxed">
+                <p className="text-[#61758A] leading-relaxed">
                   Official inquiries are routed directly to the National Secretariat office. For urgent communication regarding upcoming national conferences or club chartering, please contact us by telephone during office hours.
                 </p>
               </div>
             </div>
 
-              {/* Right Column: Live Contact Form (7 cols) */}
+            {/* Right Column: Live Contact Form (7 cols) */}
             <div className="lg:col-span-7">
-              <Card variant="default">
-                <CardHeader>
-                  <CardTitle as="h2" className="text-xl">
+              <Card variant="default" className="bg-white border border-[#D7E8F5]">
+                <CardHeader className="bg-[#F4FAFF] border-b border-[#D7E8F5]">
+                  <CardTitle as="h2" className="text-xl text-[#17324D]">
                     Send a Message to the Secretariat
                   </CardTitle>
-                  <p className="text-xs text-forest-600 mt-1">
+                  <p className="text-xs text-[#61758A] mt-1">
                     Fill out the fields below. A designated officer from the National Secretariat
                     or the relevant regional committee will respond.
                   </p>

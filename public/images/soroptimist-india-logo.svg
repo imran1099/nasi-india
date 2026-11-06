@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" width="320" height="64" fill="none">
+  <!-- Soroptimist Symbolic Silhouette Figure -->
+  <g transform="translate(4, 4)">
+    <!-- Head -->
+    <circle cx="28" cy="11" r="5.5" fill="#005596" />
+    
+    <!-- Left Fluid Ribbon Body (Primary Blue) -->
+    <path
+      d="M26 18 C23 23 18 31 18 39 C18 48 24 53 29 53 C25 51 22 46 22 40 C22 33 26 26 28 20 Z"
+      fill="#005596"
+    />
+    
+    <!-- Right Fluid Uplifted Arm & Ribbon (Cyan Blue) -->
+    <path
+      d="M29 19 C33 25 41 33 41 41 C41 47 37 51 32 52 C37 50 38 45 38 40 C38 34 32 26 29 19 Z"
+      fill="#24A0D8"
+    />
+    
+    <!-- Gold Empowerment Accent Star/Dot -->
+    <circle cx="41" cy="20" r="2.2" fill="#D4A737" />
+  </g>
+
+  <!-- Brand Typography -->
+  <!-- Line 1: Soroptimist -->
+  <text
+    x="62"
+    y="24"
+    fill="#005596"
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif"
+    font-size="20"
+    font-weight="700"
+    letter-spacing="-0.3"
+  >
+    Soroptimist
+  </text>
+
+  <!-- Line 2: International -->
+  <text
+    x="62"
+    y="40"
+    fill="#005596"
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif"
+    font-size="14.5"
+    font-weight="400"
+    letter-spacing="0.2"
+  >
+    International
+  </text>
+
+  <!-- Line 3: India & National Association -->
+  <text
+    x="62"
+    y="55"
+    fill="#24A0D8"
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif"
+    font-size="12"
+    font-weight="700"
+    letter-spacing="1.2"
+  >
+    INDIA
+  </text>
+  <text
+    x="110"
+    y="55"
+    fill="#61758A"
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif"
+    font-size="10.5"
+    font-weight="500"
+    letter-spacing="0.4"
+  >
+    • National Association
+  </text>
+</svg>
+

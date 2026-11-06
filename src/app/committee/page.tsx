@@ -31,7 +31,7 @@ function dbMemberToStatic(m: any): CommitteeMember {
     name: m.name,
     designation: m.title,
     department: m.organization ?? "National Committee",
-    tenure: "Biennium 2024–2026",
+    tenure: "Biennium 2026–2028",
     clubAffiliation: m.city ? `${m.city}${m.state ? `, ${m.state}` : ""}` : "NASI India",
     emailPlaceholder: "secretariat@nasi-india.org",
     initials,
@@ -51,7 +51,7 @@ async function getCommitteeData(): Promise<CommitteeMember[]> {
   try {
     const { getCommitteeMembers } = await import("@/lib/dal/committee");
     const members = await getCommitteeMembers();
-    if (members.length > 0) {
+    if (members.length > 0 && !members[0].name.startsWith("[Sample]")) {
       return members.map(dbMemberToStatic);
     }
   } catch (err) {
@@ -61,16 +61,16 @@ async function getCommitteeData(): Promise<CommitteeMember[]> {
 }
 
 export const metadata: Metadata = {
-  title: "National Committee",
+  title: "NASI India Board: 2026-2028 | National Association Soroptimist India",
   description:
-    "National executive board and leadership committee of the National Association of Soroptimist International of India.",
+    "National Executive Board of the National Association Soroptimist India (NASI-India) for Biennium 2026–2028.",
   alternates: {
     canonical: "/committee",
   },
   openGraph: {
-    title: "National Committee | NASI India",
+    title: "NASI India Board: 2026-2028 | NASI India",
     description:
-      "National executive board and leadership committee of the National Association of Soroptimist International of India.",
+      "National Executive Board of the National Association Soroptimist India (NASI-India) for Biennium 2026–2028.",
     url: "/committee",
   },
 };
@@ -81,11 +81,11 @@ export default async function CommitteePage() {
   return (
     <>
       <PageHeading
-        title="National Committee"
-        kicker="Governance & Executive Leadership"
-        description="The National Committee coordinates NASI India's countrywide programmes, oversees constitutional governance, supports regional club chapters, and maintains international federation ties."
-        breadcrumbs={[{ label: "Committee" }]}
-        badge={<Badge variant="forest">Biennium 2024–2026</Badge>}
+        title="NASI India Board: 2026–2028"
+        kicker="National Association Soroptimist India (NASI-India)"
+        description="The National Executive Board coordinates NASI India's countrywide programmes, oversees constitutional governance, supports regional club chapters, and maintains international federation ties with SIGBI."
+        breadcrumbs={[{ label: "Board 2026–2028" }]}
+        badge={<Badge variant="forest">Biennium 2026–2028</Badge>}
       />
 
       <section className="py-12 md:py-16 bg-white">
@@ -93,20 +93,20 @@ export default async function CommitteePage() {
           <div className="mb-10 p-5 rounded-xl bg-sand-50 border border-sand-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
               <span className="text-xs font-semibold uppercase tracking-wider text-teal-800">
-                Governance Notice
+                Executive Governance
               </span>
               <p className="text-sm text-forest-800 mt-0.5">
-                Displaying executive leadership roles across our national coordination team and regional club representations.
+                Official leadership roster of the National Association Soroptimist India Board for the 2026–2028 Biennium.
               </p>
             </div>
             <span className="shrink-0 text-xs font-mono text-forest-600 bg-sand-200/80 px-2.5 py-1 rounded-md">
-              {members.length} Roles Displayed
+              {members.length} Board Members
             </span>
           </div>
 
           <SectionHeading
-            kicker="Executive Board"
-            title="Office Bearers & Coordinators"
+            kicker="National Leadership"
+            title="Office Bearers & Officers"
             description="Volunteer leaders representing diverse professions across chartered Soroptimist clubs nationwide."
           />
 

@@ -13,13 +13,13 @@ export function ClubCard({ club }: ClubCardProps) {
   return (
     <Card
       variant="elevated"
-      className="flex flex-col justify-between h-full bg-white group hover:border-forest-400 hover:shadow-md transition-all duration-200 rounded-2xl overflow-hidden border border-sand-200/90"
+      className="flex flex-col justify-between h-full bg-white group hover:border-[#005596] hover:shadow-md transition-all duration-200 rounded-2xl overflow-hidden border border-[#D7E8F5]"
     >
       <div>
-        {/* Card Header with Forest-Teal Regional Palette */}
-        <div className="relative h-44 w-full bg-gradient-to-br from-forest-900 via-forest-950 to-teal-950 overflow-hidden flex flex-col justify-between p-5 text-white">
+        {/* Card Header with Brand Primary Blue Palette */}
+        <div className="relative h-44 w-full bg-[#005596] overflow-hidden flex flex-col justify-between p-5 text-white">
           <div
-            className="absolute inset-0 opacity-15 pointer-events-none"
+            className="absolute inset-0 opacity-10 pointer-events-none"
             style={{
               backgroundImage:
                 "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
@@ -29,19 +29,19 @@ export function ClubCard({ club }: ClubCardProps) {
           />
 
           <div className="relative z-10 flex items-center justify-between gap-2">
-            <Badge variant="teal" size="sm" className="bg-teal-950/80 text-teal-200 border-teal-600/60 shadow-xs">
+            <Badge variant="teal" size="sm" className="bg-[#002D54]/90 text-white border-white/20 shadow-xs">
               {club.region}
             </Badge>
-            <span className="text-[10.5px] font-mono text-sand-200 bg-forest-900/80 px-2.5 py-0.5 rounded-full border border-forest-700">
+            <span className="text-[10.5px] font-mono text-[#D7E8F5] bg-[#003A6B]/80 px-2.5 py-0.5 rounded-full border border-white/20">
               Chartered
             </span>
           </div>
 
           <div className="relative z-10">
-            <span className="text-[11px] uppercase tracking-widest text-gold-400 font-semibold block">
+            <span className="text-[11px] uppercase tracking-widest text-[#D4A737] font-semibold block">
               Soroptimist International
             </span>
-            <span className="font-serif font-bold text-xl text-white block mt-0.5 group-hover:text-teal-200 transition-colors leading-tight">
+            <span className="font-serif font-bold text-xl text-white block mt-0.5 group-hover:text-[#E8F3FC] transition-colors leading-tight">
               {club.name}
             </span>
           </div>
@@ -49,26 +49,26 @@ export function ClubCard({ club }: ClubCardProps) {
 
         {/* Content */}
         <CardContent className="p-5 space-y-3.5">
-          <div className="flex items-center gap-1.5 text-xs text-forest-700 font-medium">
-            <MapPinIcon size={14} className="text-teal-600 shrink-0" />
+          <div className="flex items-center gap-1.5 text-xs text-[#005596] font-medium">
+            <MapPinIcon size={14} className="text-[#005596] shrink-0" />
             <span>
               {club.city}, {club.state}
             </span>
           </div>
 
-          <p className="text-xs sm:text-sm text-forest-800/80 leading-relaxed line-clamp-2">
+          <p className="text-xs sm:text-sm text-[#61758A] leading-relaxed line-clamp-2">
             {club.description}
           </p>
 
           <div className="pt-1">
-            <span className="text-[10.5px] uppercase tracking-wider font-semibold text-forest-600 block mb-1.5">
+            <span className="text-[10.5px] uppercase tracking-wider font-semibold text-[#17324D] block mb-1.5">
               Focus Pillars:
             </span>
             <div className="flex flex-wrap gap-1.5">
               {club.focusAreas.map((f, i) => (
                 <span
                   key={i}
-                  className="text-[11px] px-2.5 py-0.5 rounded-md bg-sand-100 text-forest-800 border border-sand-200 font-medium"
+                  className="text-[11px] px-2.5 py-0.5 rounded-md bg-[#E8F3FC] text-[#005596] border border-[#D7E8F5] font-medium"
                 >
                   {f}
                 </span>
@@ -79,15 +79,15 @@ export function ClubCard({ club }: ClubCardProps) {
       </div>
 
       {/* Footer */}
-      <CardFooter className="px-5 py-3.5 border-t border-sand-100 bg-sand-50/60 flex items-center justify-between">
-        <span className="text-xs text-forest-600 flex items-center gap-1.5 font-medium">
-          <UsersIcon size={14} className="text-teal-700" />
+      <CardFooter className="px-5 py-3.5 border-t border-[#D7E8F5] bg-[#F4FAFF] flex items-center justify-between">
+        <span className="text-xs text-[#61758A] flex items-center gap-1.5 font-medium">
+          <UsersIcon size={14} className="text-[#005596]" />
           <span>Active Chapter</span>
         </span>
 
         <Link
           href={`/clubs/${club.slug}`}
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-forest-950 group-hover:text-teal-800 transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#005596] group-hover:text-[#003A6B] transition-colors"
         >
           <span>View Club Profile</span>
           <ArrowRightIcon size={14} className="group-hover:translate-x-0.5 transition-transform" />

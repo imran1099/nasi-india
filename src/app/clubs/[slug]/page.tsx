@@ -17,6 +17,7 @@ import {
   UsersIcon,
   CheckCircleIcon,
   ArrowRightIcon,
+  SparklesIcon,
 } from "@/components/icons";
 import {
   getAllClubs as getStaticClubs,
@@ -43,31 +44,45 @@ function normalizeRegion(region: string): string {
 }
 
 // ---------------------------------------------------------------------------
-// Normalize DB club record to static Club shape
+// Normalize DB club record to static Club shape with historical archival data
 // ---------------------------------------------------------------------------
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function dbClubToStatic(c: any): Club {
+  const staticClub = getStaticClubBySlug(c.slug);
+
   return {
     slug: c.slug,
     name: c.name,
     city: c.city,
     state: c.state,
     region: normalizeRegion(String(c.region)) as Club["region"],
-    charterYear: c.charterYear ?? "Chartered Club",
-    focusAreas: c.focusAreas ?? [],
-    description: c.description ?? "",
-    meetingSchedule: c.meetingSchedule ?? "",
+    charterYear: c.charterYear ?? staticClub?.charterYear ?? "Chartered Club",
+    charterDate: staticClub?.charterDate,
+    charterStatusNote: staticClub?.charterStatusNote,
+    foundingPresident: staticClub?.foundingPresident,
+    nasiPresidentAtCharter: staticClub?.nasiPresidentAtCharter,
+    nasiMembershipOfficer: staticClub?.nasiMembershipOfficer,
+    sigbiOfficer: staticClub?.sigbiOfficer,
+    motherClub: staticClub?.motherClub,
+    founderMembersCount: staticClub?.founderMembersCount,
+    historicalNotes: staticClub?.historicalNotes,
+    focusAreas: c.focusAreas && c.focusAreas.length > 0 ? c.focusAreas : (staticClub?.focusAreas ?? []),
+    description: c.description ?? staticClub?.description ?? "",
+    meetingSchedule: c.meetingSchedule ?? staticClub?.meetingSchedule ?? "",
     coordinatorPlaceholder:
       c.officers && c.officers.length > 0
         ? `${c.officers[0].title}: ${c.officers[0].name}`
-        : "Club Coordinator (Contact via Secretariat)",
-    emailPlaceholder: c.email ?? `si.${c.slug.replace("si-", "")}@nasi-india.org`,
-    sampleProjects: (c.projects ?? []).map((p: { title: string; description?: string | null; status: string }) => ({
-      title: p.title,
-      description: p.description ?? "",
-      status: (p.status as "Ongoing" | "Completed" | "Annual") ?? "Ongoing",
-    })),
+        : (staticClub?.coordinatorPlaceholder ?? "Club Coordinator (Contact via Secretariat)"),
+    emailPlaceholder: c.email ?? staticClub?.emailPlaceholder ?? `si.${c.slug.replace("si-", "")}@nasi-india.org`,
+    sampleProjects: (c.projects && c.projects.length > 0)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ? c.projects.map((p: any) => ({
+        title: p.title,
+        description: p.description ?? "",
+        status: p.status ?? "Ongoing",
+      }))
+      : (staticClub?.sampleProjects ?? []),
   };
 }
 
@@ -149,6 +164,16 @@ export default async function ClubDetailPage({ params }: ClubPageProps) {
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nasiindia.org";
 
+  const hasHistoricalData =
+    club.charterDate ||
+    club.foundingPresident ||
+    club.nasiPresidentAtCharter ||
+    club.nasiMembershipOfficer ||
+    club.sigbiOfficer ||
+    club.motherClub ||
+    club.founderMembersCount ||
+    club.historicalNotes;
+
   return (
     <>
       <BreadcrumbJsonLd
@@ -163,7 +188,7 @@ export default async function ClubDetailPage({ params }: ClubPageProps) {
         kicker={`${club.region} • Chartered Chapter`}
         description={club.description}
         breadcrumbs={[
-          { label: "Clubs Directory", href: "/clubs" },
+          { label: "Our Clubs", href: "/clubs" },
           { label: club.name },
         ]}
         badge={
@@ -188,7 +213,118 @@ export default async function ClubDetailPage({ params }: ClubPageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             {/* Main Content Area (8 cols) */}
             <div className="lg:col-span-8 space-y-10">
-              {/* Focus Pillars */}
+              {/* 1. Charter & Historical Profile Section */}
+              {hasHistoricalData && (
+                <div className="p-6 sm:p-7 rounded-2xl bg-sand-50/70 border border-sand-200/90 shadow-2xs space-y-5">
+                  <div className="flex items-center justify-between pb-3 border-b border-sand-200">
+                    <div className="flex items-center gap-2">
+                      <SparklesIcon size={18} className="text-teal-800" />
+                      <h2 className="text-sm font-semibold uppercase tracking-wider text-forest-950 font-sans">
+                        Charter & Historical Profile
+                      </h2>
+                    </div>
+                    {club.charterDate && (
+                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-900 bg-teal-50 px-2.5 py-1 rounded-full border border-teal-200">
+                        <CalendarIcon size={13} className="text-teal-700" />
+                        {club.charterDate}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+                    {club.charterDate && (
+                      <div className="bg-white p-3 rounded-xl border border-sand-200">
+                        <span className="text-[10.5px] uppercase font-semibold text-forest-600 block">
+                          Charter Date
+                        </span>
+                        <p className="font-semibold text-forest-950 mt-0.5 text-sm">
+                          {club.charterDate}
+                        </p>
+                      </div>
+                    )}
+
+                    {club.foundingPresident && (
+                      <div className="bg-white p-3 rounded-xl border border-sand-200">
+                        <span className="text-[10.5px] uppercase font-semibold text-forest-600 block">
+                          Founding President
+                        </span>
+                        <p className="font-semibold text-forest-950 mt-0.5 text-sm">
+                          {club.foundingPresident}
+                        </p>
+                      </div>
+                    )}
+
+                    {club.motherClub && (
+                      <div className="bg-white p-3 rounded-xl border border-sand-200">
+                        <span className="text-[10.5px] uppercase font-semibold text-forest-600 block">
+                          Mother Club
+                        </span>
+                        <p className="font-semibold text-teal-900 mt-0.5 text-sm">
+                          {club.motherClub}
+                        </p>
+                      </div>
+                    )}
+
+                    {club.nasiPresidentAtCharter && (
+                      <div className="bg-white p-3 rounded-xl border border-sand-200">
+                        <span className="text-[10.5px] uppercase font-semibold text-forest-600 block">
+                          NASI India President
+                        </span>
+                        <p className="font-semibold text-forest-950 mt-0.5 text-sm">
+                          {club.nasiPresidentAtCharter}
+                        </p>
+                      </div>
+                    )}
+
+                    {club.nasiMembershipOfficer && (
+                      <div className="bg-white p-3 rounded-xl border border-sand-200">
+                        <span className="text-[10.5px] uppercase font-semibold text-forest-600 block">
+                          NASI Membership Officer
+                        </span>
+                        <p className="font-semibold text-forest-950 mt-0.5 text-sm">
+                          {club.nasiMembershipOfficer}
+                        </p>
+                      </div>
+                    )}
+
+                    {club.sigbiOfficer && (
+                      <div className="bg-white p-3 rounded-xl border border-sand-200">
+                        <span className="text-[10.5px] uppercase font-semibold text-forest-600 block">
+                          SIGBI Chartering Officer
+                        </span>
+                        <p className="font-semibold text-forest-950 mt-0.5 text-sm">
+                          {club.sigbiOfficer}
+                        </p>
+                      </div>
+                    )}
+
+                    {club.founderMembersCount && (
+                      <div className="bg-white p-3 rounded-xl border border-sand-200">
+                        <span className="text-[10.5px] uppercase font-semibold text-forest-600 block">
+                          Charter Members
+                        </span>
+                        <p className="font-semibold text-forest-950 mt-0.5 text-sm">
+                          {club.founderMembersCount} members
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {club.historicalNotes && (
+                    <p className="text-xs text-forest-800 leading-relaxed italic bg-amber-50/80 border-l-2 border-amber-600 pl-3 py-1.5 rounded-r">
+                      {club.historicalNotes}
+                    </p>
+                  )}
+
+                  {club.charterStatusNote && (
+                    <p className="text-[11px] text-forest-600 font-mono bg-sand-100/60 p-2 rounded-lg">
+                      Archival Record: {club.charterStatusNote}
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {/* 2. Focus Pillars */}
               {club.focusAreas.length > 0 && (
                 <div>
                   <h2 className="text-sm font-semibold uppercase tracking-wider text-teal-800 mb-3 font-sans">
@@ -209,7 +345,7 @@ export default async function ClubDetailPage({ params }: ClubPageProps) {
                 </div>
               )}
 
-              {/* Projects Section */}
+              {/* 3. Projects Section */}
               {club.sampleProjects.length > 0 && (
                 <div className="space-y-6">
                   <SectionHeading
@@ -227,15 +363,15 @@ export default async function ClubDetailPage({ params }: ClubPageProps) {
                               project.status === "Ongoing"
                                 ? "forest"
                                 : project.status === "Annual"
-                                ? "gold"
-                                : "neutral"
+                                  ? "gold"
+                                  : "neutral"
                             }
                             size="sm"
                           >
                             {project.status} Initiative
                           </Badge>
                           <span className="text-[11px] font-mono text-forest-500">
-                            Sample Project Profile
+                            Community Project Profile
                           </span>
                         </div>
 
