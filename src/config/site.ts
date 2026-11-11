@@ -17,6 +17,7 @@ export interface ContactInfo {
   organizationName: string;
   parentBody: string;
   email: string;
+  secretaryEmail?: string;
   phone: string;
   addressLines: string[];
   officeHours: string;
@@ -46,11 +47,15 @@ export interface SiteConfig {
 
 // Read any administrator-saved settings from persistent local store
 let savedLogoUrl: string | undefined;
+let savedSecretaryEmail: string | undefined;
 try {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const saved = require("@/data/site-settings.json");
   if (saved && typeof saved["site.logoUrl"] === "string" && saved["site.logoUrl"]) {
     savedLogoUrl = saved["site.logoUrl"];
+  }
+  if (saved && typeof saved["contact.secretaryEmail"] === "string" && saved["contact.secretaryEmail"]) {
+    savedSecretaryEmail = saved["contact.secretaryEmail"];
   }
 } catch {
   // Fall back to default branding
@@ -82,6 +87,7 @@ export const siteConfig: SiteConfig = {
     organizationName: "National Association of Soroptimist International of India",
     parentBody: "Chartered under Soroptimist International",
     email: "contact@nasi-india.org",
+    secretaryEmail: savedSecretaryEmail || "secretary@nasi-india.org",
     phone: "+91 (0) 11 0000 0000",
     addressLines: [
       "NASI India National Secretariat",

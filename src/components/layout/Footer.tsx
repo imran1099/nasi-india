@@ -9,9 +9,13 @@ import { MailIcon, MapPinIcon } from "../icons";
 
 export interface FooterProps {
   logoUrl?: string;
+  secretaryEmail?: string;
 }
 
-export function Footer({ logoUrl }: FooterProps) {
+export function Footer({
+  logoUrl,
+  secretaryEmail = siteConfig.contact.secretaryEmail || "secretary@nasi-india.org",
+}: FooterProps) {
   const pathname = usePathname();
   const currentYear = siteConfig.copyrightYear;
 
@@ -136,10 +140,10 @@ export function Footer({ logoUrl }: FooterProps) {
               <div className="flex items-center gap-2.5">
                 <MailIcon size={16} className="text-[#aed1ef] shrink-0" />
                 <a
-                  href="mailto:secretary@nasi-india.org"
+                  href={`mailto:${secretaryEmail}`}
                   className="text-[#E8F3FC] hover:text-white underline font-medium"
                 >
-                  secretary@nasi-india.org
+                  {secretaryEmail}
                 </a>
               </div>
 

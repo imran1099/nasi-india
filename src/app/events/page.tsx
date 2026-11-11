@@ -8,6 +8,7 @@ import { EventsDirectory } from "@/components/events/EventsDirectory";
 import { MaduraiMeetingInvitation } from "@/components/events/MaduraiMeetingInvitation";
 import { LandingPageStrapline } from "@/components/home/LandingPageStrapline";
 import { getAllEvents as getStaticEvents, type EventItem } from "@/data/events";
+import { getSiteSettings } from "@/lib/dal/settings";
 
 // Allow this route to block at prerender when dynamic DB data is fetched
 export const instant = false;
@@ -90,7 +91,23 @@ export const metadata: Metadata = {
 // ---------------------------------------------------------------------------
 
 export default async function EventsPage() {
-  const events = await getEventsData();
+  const [events, settings] = await Promise.all([
+    getEventsData(),
+    getSiteSettings().catch(() => null),
+  ]);
+
+  const invitationUrl = settings?.["event.maduraiInvitationUrl"];
+  const highlights = [
+    settings?.["event.maduraiHighlight1"],
+    settings?.["event.maduraiHighlight2"],
+    settings?.["event.maduraiHighlight3"],
+    settings?.["event.maduraiHighlight4"],
+  ].filter(Boolean) as string[];
+
+  const councilTitle = settings?.["council.title"] || "Annual National Council Assembly";
+  const councilDescription =
+    settings?.["council.description"] ||
+    "The Annual National Council brings together accredited voting delegates, club presidents, secretaries, and National Board officers from all 19 chartered clubs across India. It serves as the supreme governance forum for constitutional amendments, audited financial reporting, and strategic programme ratification.";
 
   return (
     <>
@@ -103,7 +120,7 @@ export default async function EventsPage() {
       />
 
       {/* Task 3: Madurai Meeting Invitation (Two-Column Layout) */}
-      <MaduraiMeetingInvitation />
+      <MaduraiMeetingInvitation invitationUrl={invitationUrl} highlights={highlights} />
 
       {/* Task 4: Annual National Council Section */}
       <section className="py-12 md:py-16 bg-white border-b border-[#D7E8F5]">
@@ -111,16 +128,13 @@ export default async function EventsPage() {
           <div className="max-w-4xl mx-auto space-y-6">
             <SectionHeading
               kicker="National Governance Forum"
-              title="Annual National Council Assembly"
+              title={councilTitle}
               description="The supreme decision-making and constitutional body of the National Association of Soroptimist International of India."
             />
 
             <div className="p-6 sm:p-8 rounded-3xl bg-[#F4FAFF] border border-[#D7E8F5] space-y-4 text-[#17324D] leading-relaxed text-sm sm:text-base">
               <p>
-                The Annual National Council brings together accredited voting delegates, club presidents,
-                secretaries, and National Board officers from all 19 chartered clubs across India. It serves as
-                the supreme governance forum for constitutional amendments, audited financial reporting, and
-                strategic programme ratification.
+                {councilDescription}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
                 <div className="p-4 rounded-2xl bg-white border border-[#D7E8F5]">

@@ -128,6 +128,41 @@ export default async function HomePage() {
   ]);
   const { latestNews, upcomingEvents } = homeData;
 
+  // Dynamic Content from Admin Settings
+  const visionText =
+    settings?.["vision.text"] ||
+    "Women and girls will achieve their individual and collective potential, realize aspirations, and have an equal voice in creating strong, peaceful communities.";
+  const missionText =
+    settings?.["mission.text"] ||
+    "To improve the lives and opportunities of women and girls through education, empowerment, advocacy and community service.";
+  const triadGraphicUrl = settings?.["media.triadGraphicUrl"];
+  const sdgGraphicUrl = settings?.["media.sdgGraphicUrl"];
+
+  const presidentName = settings?.["president.name"] || "Anitha Rajarajan";
+  const presidentDesignation = settings?.["president.designation"] || "President, NASI-India";
+  const presidentTenure = settings?.["president.tenure"] || "Biennium 2026–2028";
+  const presidentPhotoUrl = settings?.["president.photoUrl"];
+  const presidentMessage =
+    settings?.["president.message"] ||
+    "Welcome to the National Association of Soroptimist International of India. As President for the 2026–2028 biennium, I am privileged to lead an extraordinary network of women professionals and grassroots leaders across 19 chartered clubs nationwide.\n\nSince 1974, our movement in India has stood up for women and girls through practical, life-changing action. By aligning our initiatives with the United Nations Sustainable Development Goals and drawing strength from our global Soroptimist sisterhood, we strive to build a future where every girl is educated, empowered, and enabled to reach her fullest potential.\n\nTogether, with passion and commitment, we continue to create lasting change in our communities.";
+
+  const presidentParagraphs = presidentMessage.split("\n\n").filter(Boolean);
+
+  const federationList = (settings?.["federation.itemsText"] || "")
+    .split("\n")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const activeFederations =
+    federationList.length > 0
+      ? federationList
+      : [
+          "Soroptimist International Great Britain & Ireland (SIGBI)",
+          "Soroptimist International of the Americas (SIA)",
+          "Soroptimist International of Europe (SIE)",
+          "Soroptimist International of South East Asia Pacific (SISEAP)",
+          "Soroptimist International African Federation (SIAF)",
+        ];
+
   return (
     <>
       {/* 1. Main Hero Banner - Reference Layout with Dynamic Admin Settings */}
@@ -255,7 +290,7 @@ export default async function HomePage() {
                   </h3>
                 </div>
                 <p className="text-sm sm:text-base text-[#17324D] leading-relaxed font-serif italic pl-4 border-l-2 border-[#D4A737]">
-                  &ldquo;Women and girls will achieve their individual and collective potential, realize aspirations, and have an equal voice in creating strong, peaceful communities.&rdquo;
+                  &ldquo;{visionText}&rdquo;
                 </p>
               </div>
 
@@ -268,62 +303,90 @@ export default async function HomePage() {
                   </h3>
                 </div>
                 <p className="text-sm sm:text-base text-[#17324D] leading-relaxed font-serif italic pl-4 border-l-2 border-[#005596]">
-                  &ldquo;To improve the lives and opportunities of women and girls through education, empowerment, advocacy and community service.&rdquo;
+                  &ldquo;{missionText}&rdquo;
                 </p>
               </div>
             </div>
 
             {/* RIGHT COLUMN: Graphic Placeholders (Educate, Empower, Enable + UN SDGs) */}
             <div className="lg:col-span-6 space-y-6">
-              {/* Placeholder 1: Educate, Empower, Enable */}
-              <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#005596] to-[#003A6B] text-white shadow-md border border-[#004780] relative overflow-hidden text-center sm:text-left">
-                <div className="flex flex-col sm:flex-row items-center gap-5">
-                  <div className="w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex flex-col items-center justify-center shrink-0">
-                    <span className="text-2xl font-serif font-bold text-[#D4A737]">3E</span>
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-white">Triad</span>
-                  </div>
-                  <div className="space-y-1.5">
-                    <span className="text-[11px] uppercase tracking-wider font-semibold text-[#D4A737] bg-white/10 px-2.5 py-0.5 rounded-full inline-block">
-                      Official Graphic Placeholder
-                    </span>
-                    <h4 className="font-serif font-bold text-xl sm:text-2xl text-white">
-                      Educate • Empower • Enable
-                    </h4>
-                    <p className="text-xs text-[#E8F3FC] leading-relaxed">
-                      Core pillar graphic representing the tripartite foundation of Soroptimist action across India.
-                    </p>
-                  </div>
+              {/* Graphic 1: Educate, Empower, Enable */}
+              {triadGraphicUrl ? (
+                <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#D7E8F5] shadow-md relative overflow-hidden flex flex-col items-center text-center">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={triadGraphicUrl}
+                    alt="Educate • Empower • Enable Graphic"
+                    className="max-h-48 w-auto object-contain"
+                  />
+                  <span className="text-xs uppercase tracking-wider font-semibold text-[#005596] mt-3">
+                    Educate • Empower • Enable
+                  </span>
                 </div>
-                <p className="mt-4 pt-3 border-t border-white/15 text-[11px] text-[#D7E8F5] italic text-center">
-                  [Educate, Empower, Enable graphic will be supplied by the NASI team]
-                </p>
-              </div>
-
-              {/* Placeholder 2: Circular UN Sustainable Development Goals */}
-              <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#D7E8F5] shadow-xs text-center sm:text-left">
-                <div className="flex flex-col sm:flex-row items-center gap-5">
-                  {/* Stylized Circular 17 SDG Ring */}
-                  <div className="relative w-20 h-20 rounded-full border-4 border-dashed border-[#005596]/40 flex items-center justify-center shrink-0 bg-[#F4FAFF]">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#005596] via-[#D4A737] to-[#10B981] flex items-center justify-center text-white text-[10px] font-bold shadow-xs">
-                      17 SDGs
+              ) : (
+                <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#005596] to-[#003A6B] text-white shadow-md border border-[#004780] relative overflow-hidden text-center sm:text-left">
+                  <div className="flex flex-col sm:flex-row items-center gap-5">
+                    <div className="w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex flex-col items-center justify-center shrink-0">
+                      <span className="text-2xl font-serif font-bold text-[#D4A737]">3E</span>
+                      <span className="text-[10px] uppercase font-bold tracking-wider text-white">Triad</span>
+                    </div>
+                    <div className="space-y-1.5">
+                      <span className="text-[11px] uppercase tracking-wider font-semibold text-[#D4A737] bg-white/10 px-2.5 py-0.5 rounded-full inline-block">
+                        Official Graphic Placeholder
+                      </span>
+                      <h4 className="font-serif font-bold text-xl sm:text-2xl text-white">
+                        Educate • Empower • Enable
+                      </h4>
+                      <p className="text-xs text-[#E8F3FC] leading-relaxed">
+                        Core pillar graphic representing the tripartite foundation of Soroptimist action across India.
+                      </p>
                     </div>
                   </div>
-                  <div className="space-y-1.5">
-                    <span className="text-[11px] uppercase tracking-wider font-semibold text-[#005596] bg-[#E8F3FC] px-2.5 py-0.5 rounded-full inline-block">
-                      UN Graphic Placeholder
-                    </span>
-                    <h4 className="font-serif font-bold text-lg sm:text-xl text-[#17324D]">
-                      Circular UN Sustainable Development Goals
-                    </h4>
-                    <p className="text-xs text-[#61758A] leading-relaxed">
-                      Official 17 UN SDGs circular color wheel illustrating comprehensive program action alignment.
-                    </p>
-                  </div>
+                  <p className="mt-4 pt-3 border-t border-white/15 text-[11px] text-[#D7E8F5] italic text-center">
+                    [Educate, Empower, Enable graphic will be supplied by the NASI team]
+                  </p>
                 </div>
-                <p className="mt-4 pt-3 border-t border-[#D7E8F5] text-[11px] text-[#61758A] italic text-center">
-                  [Circular UN Sustainable Development Goals graphic will be supplied by the NASI team]
-                </p>
-              </div>
+              )}
+
+              {/* Graphic 2: Circular UN Sustainable Development Goals */}
+              {sdgGraphicUrl ? (
+                <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#D7E8F5] shadow-md relative overflow-hidden flex flex-col items-center text-center">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={sdgGraphicUrl}
+                    alt="Circular UN Sustainable Development Goals"
+                    className="max-h-48 w-auto object-contain"
+                  />
+                  <span className="text-xs uppercase tracking-wider font-semibold text-[#005596] mt-3">
+                    Circular UN Sustainable Development Goals (SDGs)
+                  </span>
+                </div>
+              ) : (
+                <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#D7E8F5] shadow-xs text-center sm:text-left">
+                  <div className="flex flex-col sm:flex-row items-center gap-5">
+                    {/* Stylized Circular 17 SDG Ring */}
+                    <div className="relative w-20 h-20 rounded-full border-4 border-dashed border-[#005596]/40 flex items-center justify-center shrink-0 bg-[#F4FAFF]">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#005596] via-[#D4A737] to-[#10B981] flex items-center justify-center text-white text-[10px] font-bold shadow-xs">
+                        17 SDGs
+                      </div>
+                    </div>
+                    <div className="space-y-1.5">
+                      <span className="text-[11px] uppercase tracking-wider font-semibold text-[#005596] bg-[#E8F3FC] px-2.5 py-0.5 rounded-full inline-block">
+                        UN Graphic Placeholder
+                      </span>
+                      <h4 className="font-serif font-bold text-lg sm:text-xl text-[#17324D]">
+                        Circular UN Sustainable Development Goals
+                      </h4>
+                      <p className="text-xs text-[#61758A] leading-relaxed">
+                        Official 17 UN SDGs circular color wheel illustrating comprehensive program action alignment.
+                      </p>
+                    </div>
+                  </div>
+                  <p className="mt-4 pt-3 border-t border-[#D7E8F5] text-[11px] text-[#61758A] italic text-center">
+                    [Circular UN Sustainable Development Goals graphic will be supplied by the NASI team]
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </Container>
@@ -345,27 +408,36 @@ export default async function HomePage() {
                 {/* President Photograph Frame */}
                 <div className="lg:col-span-4 flex flex-col items-center text-center">
                   <div className="relative w-48 h-56 sm:w-56 sm:h-64 rounded-3xl bg-[#005596] p-2 shadow-md border-2 border-[#D4A737] overflow-hidden flex flex-col items-center justify-center text-white">
-                    <div className="w-full h-full rounded-2xl bg-[#003A6B] flex flex-col items-center justify-center p-4 border border-white/20">
-                      <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center font-serif text-2xl font-bold text-[#D4A737] mb-3 border border-white/20">
-                        AR
+                    {presidentPhotoUrl ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={presidentPhotoUrl}
+                        alt={`${presidentName} - ${presidentDesignation}`}
+                        className="w-full h-full object-cover rounded-2xl"
+                      />
+                    ) : (
+                      <div className="w-full h-full rounded-2xl bg-[#003A6B] flex flex-col items-center justify-center p-4 border border-white/20">
+                        <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center font-serif text-2xl font-bold text-[#D4A737] mb-3 border border-white/20">
+                          {presidentName.split(" ").map((n) => n[0]).filter(Boolean).slice(0, 2).join("") || "AR"}
+                        </div>
+                        <span className="text-xs uppercase font-bold tracking-wider text-white">
+                          Official Portrait
+                        </span>
+                        <span className="text-[11px] text-[#D7E8F5] mt-1">
+                          Photograph Awaited
+                        </span>
                       </div>
-                      <span className="text-xs uppercase font-bold tracking-wider text-white">
-                        Official Portrait
-                      </span>
-                      <span className="text-[11px] text-[#D7E8F5] mt-1">
-                        Photograph Awaited
-                      </span>
-                    </div>
+                    )}
                   </div>
 
                   <h3 className="font-serif font-bold text-xl text-[#17324D] mt-4">
-                    Anitha Rajarajan
+                    {presidentName}
                   </h3>
                   <p className="text-xs font-semibold uppercase tracking-wider text-[#005596] mt-0.5">
-                    President, NASI-India
+                    {presidentDesignation}
                   </p>
                   <span className="text-[11px] font-mono text-[#61758A] mt-1 bg-white px-2.5 py-0.5 rounded-full border border-[#D7E8F5]">
-                    Biennium 2026–2028
+                    {presidentTenure}
                   </span>
                 </div>
 
@@ -373,7 +445,7 @@ export default async function HomePage() {
                 <div className="lg:col-span-8 space-y-4 text-[#17324D] leading-relaxed">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#D7E8F5] text-xs font-medium text-[#005596]">
                     <span className="w-2 h-2 rounded-full bg-[#005596]" />
-                    <span>Biennium 2026–2028 Message</span>
+                    <span>{presidentTenure} Message</span>
                   </div>
 
                   <h4 className="text-xl sm:text-2xl font-serif font-bold text-[#17324D]">
@@ -381,32 +453,18 @@ export default async function HomePage() {
                   </h4>
 
                   <div className="space-y-3.5 text-sm sm:text-base text-[#17324D]/90">
-                    <p>
-                      Welcome to the National Association of Soroptimist International of India.
-                      As President for the 2026–2028 biennium, I am privileged to lead an extraordinary
-                      network of women professionals and grassroots leaders across 19 chartered clubs
-                      nationwide.
-                    </p>
-                    <p>
-                      Since 1974, our movement in India has stood up for women and girls through
-                      practical, life-changing action. By aligning our initiatives with the United Nations
-                      Sustainable Development Goals and drawing strength from our global Soroptimist
-                      sisterhood, we strive to build a future where every girl is educated, empowered,
-                      and enabled to reach her fullest potential.
-                    </p>
-                    <p>
-                      Together, with passion and commitment, we continue to create lasting change in
-                      our communities.
-                    </p>
+                    {presidentParagraphs.map((paragraph, idx) => (
+                      <p key={idx}>{paragraph}</p>
+                    ))}
                   </div>
 
                   <div className="pt-3 border-t border-[#D7E8F5] flex items-center justify-between">
                     <div>
                       <p className="font-serif font-bold text-[#17324D]">
-                        Anitha Rajarajan
+                        {presidentName}
                       </p>
                       <p className="text-xs text-[#005596] font-medium">
-                        President, NASI-India (2026–2028)
+                        {presidentDesignation} ({presidentTenure})
                       </p>
                     </div>
                     <Button
@@ -657,26 +715,12 @@ export default async function HomePage() {
                 Soroptimist International is composed of five worldwide federations:
               </p>
               <ul className="space-y-2.5 text-[#D7E8F5]">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#aed1ef] shrink-0" />
-                  <span>Soroptimist International Great Britain & Ireland (SIGBI)</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#aed1ef] shrink-0" />
-                  <span>Soroptimist International of the Americas (SIA)</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#aed1ef] shrink-0" />
-                  <span>Soroptimist International of Europe (SIE)</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#aed1ef] shrink-0" />
-                  <span>Soroptimist International of South East Asia Pacific (SISEAP)</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#aed1ef] shrink-0" />
-                  <span>Soroptimist International African Federation (SIAF)</span>
-                </li>
+                {activeFederations.map((federation, idx) => (
+                  <li key={idx} className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#aed1ef] shrink-0" />
+                    <span>{federation}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

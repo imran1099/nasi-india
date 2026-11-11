@@ -44,6 +44,7 @@ export interface SiteSettingsMap {
 
   // Contact
   "contact.email": string;
+  "contact.secretaryEmail": string;
   "contact.phone": string;
   "contact.address": string;
 
@@ -66,6 +67,31 @@ export interface SiteSettingsMap {
   "home.heroImageRight": string;
   "home.bannerDisplayMode": string;
 
+  // Meet the President
+  "president.name": string;
+  "president.designation": string;
+  "president.tenure": string;
+  "president.photoUrl": string;
+  "president.message": string;
+
+  // Vision, Mission & Graphics
+  "vision.text": string;
+  "mission.text": string;
+  "media.triadGraphicUrl": string;
+  "media.sdgGraphicUrl": string;
+
+  // Events & Gatherings
+  "event.maduraiInvitationUrl": string;
+  "event.maduraiHighlight1": string;
+  "event.maduraiHighlight2": string;
+  "event.maduraiHighlight3": string;
+  "event.maduraiHighlight4": string;
+  "council.title": string;
+  "council.description": string;
+
+  // Federation & Affiliation
+  "federation.itemsText": string;
+
   // Footer
   "footer.copyright": string;
   "footer.registration": string;
@@ -81,6 +107,7 @@ export function getDefaultSiteSettings(): SiteSettingsMap {
     "site.tagline": "Educating, Empowering & Enabling Women and Girls",
 
     "contact.email": "secretariat@nasi-india.org",
+    "contact.secretaryEmail": "secretary@nasi-india.org",
     "contact.phone": "+91 (0) 22 2400 0000",
     "contact.address": "National Secretariat, NASI India",
 
@@ -102,6 +129,36 @@ export function getDefaultSiteSettings(): SiteSettingsMap {
     "home.heroImageLeft": "/images/banner/hero-woman-facing-left.jpg",
     "home.heroImageRight": "/images/banner/hero-woman-facing-right.jpg",
     "home.bannerDisplayMode": "slideshow",
+
+    "president.name": "Anitha Rajarajan",
+    "president.designation": "President, NASI-India",
+    "president.tenure": "Biennium 2026–2028",
+    "president.photoUrl": "",
+    "president.message":
+      "Welcome to the National Association of Soroptimist International of India. As President for the 2026–2028 biennium, I am privileged to lead an extraordinary network of women professionals and grassroots leaders across 19 chartered clubs nationwide.\n\nSince 1974, our movement in India has stood up for women and girls through practical, life-changing action. By aligning our initiatives with the United Nations Sustainable Development Goals and drawing strength from our global Soroptimist sisterhood, we strive to build a future where every girl is educated, empowered, and enabled to reach her fullest potential.\n\nTogether, with passion and commitment, we continue to create lasting change in our communities.",
+
+    "vision.text":
+      "Women and girls will achieve their individual and collective potential, realize aspirations, and have an equal voice in creating strong, peaceful communities.",
+    "mission.text":
+      "To improve the lives and opportunities of women and girls through education, empowerment, advocacy and community service.",
+    "media.triadGraphicUrl": "",
+    "media.sdgGraphicUrl": "",
+
+    "event.maduraiInvitationUrl": "",
+    "event.maduraiHighlight1":
+      "Formal Installation Ceremony of National President Anitha Rajarajan and the newly elected 2026–2028 NASI India Board officers.",
+    "event.maduraiHighlight2":
+      "National Executive Committee (EC) strategic deliberations establishing the biennial roadmap, governance charters, and national club expansion.",
+    "event.maduraiHighlight3":
+      "Grassroots Programme Action review showcasing milestone projects in girl education, women's healthcare, and alignment with the United Nations 17 SDGs.",
+    "event.maduraiHighlight4":
+      "Delegation fellowship banquet, cultural heritage reception, and photographic documentation celebrating 19 chartered clubs nationwide.",
+    "council.title": "Annual National Council Assembly",
+    "council.description":
+      "The Annual National Council brings together accredited voting delegates, club presidents, secretaries, and National Board officers from all 19 chartered clubs across India. It serves as the supreme governance forum for constitutional amendments, audited financial reporting, and strategic programme ratification.",
+
+    "federation.itemsText":
+      "Soroptimist International Great Britain & Ireland (SIGBI)\nSoroptimist International of the Americas (SIA)\nSoroptimist International of Europe (SIE)\nSoroptimist International of South East Asia Pacific (SISEAP)\nSoroptimist International African Federation (SIAF)",
 
     "footer.copyright": `© ${siteConfig.copyrightYear} National Association of Soroptimist International of India. All rights reserved.`,
     "footer.registration": "Chartered National Association of Soroptimist International.",
