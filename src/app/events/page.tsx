@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { connection } from "next/server";
 import { Container } from "@/components/ui/Container";
 import { PageHeading } from "@/components/ui/PageHeading";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { EventsDirectory } from "@/components/events/EventsDirectory";
+import { MaduraiMeetingInvitation } from "@/components/events/MaduraiMeetingInvitation";
+import { LandingPageStrapline } from "@/components/home/LandingPageStrapline";
 import { getAllEvents as getStaticEvents, type EventItem } from "@/data/events";
 
 // Allow this route to block at prerender when dynamic DB data is fetched
@@ -99,11 +102,62 @@ export default async function EventsPage() {
         badge={<Badge variant="forest">Action Calendar</Badge>}
       />
 
-      <section className="py-12 md:py-16 bg-white">
+      {/* Task 3: Madurai Meeting Invitation (Two-Column Layout) */}
+      <MaduraiMeetingInvitation />
+
+      {/* Task 4: Annual National Council Section */}
+      <section className="py-12 md:py-16 bg-white border-b border-[#D7E8F5]">
         <Container>
+          <div className="max-w-4xl mx-auto space-y-6">
+            <SectionHeading
+              kicker="National Governance Forum"
+              title="Annual National Council Assembly"
+              description="The supreme decision-making and constitutional body of the National Association of Soroptimist International of India."
+            />
+
+            <div className="p-6 sm:p-8 rounded-3xl bg-[#F4FAFF] border border-[#D7E8F5] space-y-4 text-[#17324D] leading-relaxed text-sm sm:text-base">
+              <p>
+                The Annual National Council brings together accredited voting delegates, club presidents,
+                secretaries, and National Board officers from all 19 chartered clubs across India. It serves as
+                the supreme governance forum for constitutional amendments, audited financial reporting, and
+                strategic programme ratification.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
+                <div className="p-4 rounded-2xl bg-white border border-[#D7E8F5]">
+                  <h4 className="font-serif font-bold text-sm text-[#17324D]">Accredited Representation</h4>
+                  <p className="text-xs text-[#61758A] mt-1">Voting delegates appointed by chartered clubs in good standing.</p>
+                </div>
+                <div className="p-4 rounded-2xl bg-white border border-[#D7E8F5]">
+                  <h4 className="font-serif font-bold text-sm text-[#17324D]">Statutory Audits</h4>
+                  <p className="text-xs text-[#61758A] mt-1">Presentation and approval of transparent national financial audits.</p>
+                </div>
+                <div className="p-4 rounded-2xl bg-white border border-[#D7E8F5]">
+                  <h4 className="font-serif font-bold text-sm text-[#17324D]">Federation Reporting</h4>
+                  <p className="text-xs text-[#61758A] mt-1">Direct coordination with SIGBI and international council delegates.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Full Events Directory & Calendar List */}
+      <section className="py-12 md:py-16 bg-[#F4FAFF]">
+        <Container>
+          <div className="mb-8">
+            <SectionHeading
+              kicker="Full Schedule"
+              title="All National & Regional Gatherings"
+              description="Browse hybrid conferences, webinars, and regional project reviews across India."
+              className="mb-0"
+            />
+          </div>
           <EventsDirectory events={events} />
         </Container>
       </section>
+
+      {/* Task 8: Page-wide Strapline */}
+      <LandingPageStrapline />
     </>
   );
 }

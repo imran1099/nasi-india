@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/config/site";
 import { Logo } from "./Logo";
-import { MailIcon, PhoneIcon, MapPinIcon, ExternalLinkIcon } from "../icons";
+import { MailIcon, MapPinIcon } from "../icons";
 
 export interface FooterProps {
   logoUrl?: string;
@@ -30,26 +30,6 @@ export function Footer({ logoUrl }: FooterProps) {
             <p className="text-sm text-[#D7E8F5] leading-relaxed max-w-sm pt-2">
               {siteConfig.description}
             </p>
-
-            <div className="pt-2">
-              <span className="text-xs uppercase tracking-wider font-semibold text-[#E8F3FC] block mb-2">
-                Affiliation
-              </span>
-              <p className="text-xs text-[#D7E8F5]/90 leading-relaxed">
-                National Association of Soroptimist International of India.
-                Chartered under{" "}
-                <a
-                  href={siteConfig.internationalAffiliation.globalUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:underline inline-flex items-center gap-1 font-medium"
-                >
-                  Soroptimist International
-                  <ExternalLinkIcon size={12} />
-                </a>
-                .
-              </p>
-            </div>
           </div>
 
           {/* Column 2: Navigation Links (2 cols) */}
@@ -142,7 +122,7 @@ export function Footer({ logoUrl }: FooterProps) {
             </ul>
           </div>
 
-          {/* Column 4: Contact Placeholder & Social (3 cols) */}
+          {/* Column 4: Secretariat Contact & Social (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
             <h3 className="text-sm font-semibold uppercase tracking-wider text-[#E8F3FC] font-sans">
               Secretariat Contact
@@ -151,31 +131,24 @@ export function Footer({ logoUrl }: FooterProps) {
               Soroptimist International of India
             </p>
 
-            <div className="space-y-2.5 text-xs text-[#D7E8F5]">
-              <div className="flex items-start gap-2.5">
-                <MapPinIcon size={16} className="text-[#aed1ef] shrink-0 mt-0.5" />
-                <span>
-                  {siteConfig.contact.addressLines.map((line, idx) => (
-                    <span key={idx} className="block">
-                      {line}
-                    </span>
-                  ))}
-                </span>
-              </div>
-
+            <div className="space-y-3 text-xs text-[#D7E8F5]">
+              {/* Official Secretary Email */}
               <div className="flex items-center gap-2.5">
                 <MailIcon size={16} className="text-[#aed1ef] shrink-0" />
                 <a
-                  href={`mailto:${siteConfig.contact.email}`}
-                  className="text-[#E8F3FC] hover:text-white underline"
+                  href="mailto:secretary@nasi-india.org"
+                  className="text-[#E8F3FC] hover:text-white underline font-medium"
                 >
-                  {siteConfig.contact.email}
+                  secretary@nasi-india.org
                 </a>
               </div>
 
-              <div className="flex items-center gap-2.5">
-                <PhoneIcon size={16} className="text-[#aed1ef] shrink-0" />
-                <span>{siteConfig.contact.phone}</span>
+              {/* Official Address Placeholder until NASI supplies the address */}
+              <div className="flex items-start gap-2.5 pt-1">
+                <MapPinIcon size={16} className="text-[#aed1ef] shrink-0 mt-0.5" />
+                <span className="text-[#D7E8F5]/80 italic">
+                  [Official Secretariat postal address will be updated once supplied by NASI India]
+                </span>
               </div>
             </div>
 

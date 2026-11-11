@@ -628,46 +628,54 @@ export default async function HomePage() {
               </p>
               <div className="pt-2 flex flex-wrap gap-4">
                 <Button
-                  href="/resources"
-                  size="md"
-                  className="bg-[#E8F3FC] hover:bg-white text-[#005596] font-semibold"
-                  rightIcon={<ArrowRightIcon size={16} />}
-                >
-                  Explore 7 Global Resources
-                </Button>
-                <Button
                   href={siteConfig.internationalAffiliation.globalUrl}
                   isExternal
-                  variant="outline"
                   size="md"
-                  className="text-white border-white/80 hover:bg-white/10"
+                  className="bg-[#E8F3FC] hover:bg-white text-[#005596] font-semibold"
                   rightIcon={<ExternalLinkIcon size={14} />}
                 >
                   Visit Soroptimist International
                 </Button>
+                <Button
+                  href="/about"
+                  variant="outline"
+                  size="md"
+                  className="text-white border-white/80 hover:bg-white/10"
+                  rightIcon={<ArrowRightIcon size={16} />}
+                >
+                  Learn About SIGBI & NASI India
+                </Button>
               </div>
             </div>
 
-            <div className="lg:col-span-4 p-6 rounded-2xl bg-[#001E38] border border-[#003A6B] text-xs space-y-3 shadow-xl">
+            <div className="lg:col-span-4 p-6 rounded-2xl bg-[#001E38] border border-[#003A6B] text-xs space-y-3.5 shadow-xl">
               <div className="flex items-center gap-2 text-[#E8F3FC] font-semibold text-sm">
                 <SparklesIcon size={18} className="text-[#aed1ef]" />
-                <span>Federation Network</span>
+                <span>Federation Networks</span>
               </div>
               <p className="text-[#D7E8F5]">
-                Explore our sister federations and publications in the resources repository:
+                Soroptimist International is composed of five worldwide federations:
               </p>
-              <ul className="space-y-2 text-[#D7E8F5]">
+              <ul className="space-y-2.5 text-[#D7E8F5]">
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#aed1ef]" />
-                  <span>SI Africa & SI Americas</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#aed1ef] shrink-0" />
+                  <span>Soroptimist International Great Britain & Ireland (SIGBI)</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#aed1ef]" />
-                  <span>SI Europe & SI South East Asia Pacific</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#aed1ef] shrink-0" />
+                  <span>Soroptimist International of the Americas (SIA)</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#aed1ef]" />
-                  <span>Global Voice Newsletter & Charter Toolkits</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#aed1ef] shrink-0" />
+                  <span>Soroptimist International of Europe (SIE)</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#aed1ef] shrink-0" />
+                  <span>Soroptimist International of South East Asia Pacific (SISEAP)</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#aed1ef] shrink-0" />
+                  <span>Soroptimist International African Federation (SIAF)</span>
                 </li>
               </ul>
             </div>
