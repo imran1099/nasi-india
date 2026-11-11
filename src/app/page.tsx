@@ -8,18 +8,17 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { CommitteeCard } from "@/components/committee/CommitteeCard";
 import { HomeHeroBanner } from "@/components/home/HomeHeroBanner";
+import { InteractiveIndiaClubsMap } from "@/components/clubs/InteractiveIndiaClubsMap";
+import { LandingPageStrapline } from "@/components/home/LandingPageStrapline";
 import {
   ArrowRightIcon,
   CalendarIcon,
   MapPinIcon,
-  BookOpenIcon,
-  UsersIcon,
   HeartHandshakeIcon,
   ExternalLinkIcon,
   SparklesIcon,
 } from "@/components/icons";
 import { siteConfig } from "@/config/site";
-import { initialClubs } from "@/data/clubs";
 import { initialCommittee } from "@/data/committee";
 import { initialNews } from "@/data/news";
 import { initialEvents } from "@/data/events";
@@ -122,7 +121,6 @@ async function getHomePageData(): Promise<{
 
 export default async function HomePage() {
   await connection();
-  const featuredClubs = initialClubs.slice(0, 3);
   const committeePreview = initialCommittee; // NASI India Board: 2026-2028
   const [homeData, settings] = await Promise.all([
     getHomePageData(),
@@ -145,219 +143,296 @@ export default async function HomePage() {
         displayMode={settings?.["home.bannerDisplayMode"]}
       />
 
-      {/* 2. Who We Are & Our Impact Section */}
+      {/* 2. Who We Are Section */}
       <section className="py-16 sm:py-24 bg-white border-b border-[#D7E8F5]">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 space-y-6">
-              <SectionHeading
-                kicker="Who We Are"
-                title="A Global Movement Dedicated to Women and Girls"
-                description="We are part of a global movement working to improve the lives of women and girls. Through our clubs across India, we turn commitment into action and make a meaningful difference in our communities."
-              />
+          <div className="max-w-4xl mx-auto space-y-8">
+            <SectionHeading
+              kicker="Who We Are"
+              title="A Global Movement Dedicated to Women and Girls"
+              description="We are part of a global movement working to improve the lives of women and girls. Through our clubs across India, we turn commitment into action and make a meaningful difference in our communities."
+            />
 
-              <div className="space-y-4 text-[#17324D] leading-relaxed text-sm sm:text-base">
-                <p>
-                  Soroptimists are women who take action. Across our chartered chapters,
-                  members volunteer their professional expertise, resources, and time to
-                  deliver measurable improvements in the lives of women and children.
-                </p>
-                <p>
-                  From academic scholarships and vocational workshops to healthcare
-                  and environmental stewardship, our initiatives align with Soroptimist
-                  International&apos;s global Programme Action priorities and consultative status
-                  with the United Nations.
-                </p>
-              </div>
+            <div className="space-y-5 text-[#17324D] leading-relaxed text-base sm:text-lg">
+              <p>
+                Soroptimists are women who take action. Across our chartered chapters,
+                members volunteer their professional expertise, resources, and time to
+                deliver measurable improvements in the lives of women and children.
+              </p>
+              <p>
+                From academic scholarships and vocational workshops to healthcare
+                and environmental stewardship, our initiatives align with Soroptimist
+                International&apos;s global Programme Action priorities and consultative status
+                with the United Nations.
+              </p>
+              <p className="font-medium text-[#005596] pt-2 border-t border-[#D7E8F5]">
+                Soroptimist women are part of the largest service club movement in the world, which is more than 100 years old.
+              </p>
+              <p>
+                NASI India is the national body governing and coordinating with all SI clubs across India.
+              </p>
+              <p>
+                All our projects align with the 17 Sustainable Development Goals (SDGs) of the United Nations.
+              </p>
+              <p>
+                Soroptimist International (SI) holds General Consultative Status with the United Nations Economic and Social Council (ECOSOC), and SIGBI has been granted Special Consultative Status with ECOSOC.
+              </p>
+              <p>
+                All our programme action work is aligned with the UN Sustainable Development Goals (SDGs).
+              </p>
+            </div>
 
-              {/* Mission & Vision Statements */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="p-5 rounded-xl bg-[#F4FAFF] border border-[#D7E8F5] space-y-2">
-                  <div className="flex items-center gap-2">
-                    <SparklesIcon size={16} className="text-[#005596]" />
-                    <span className="text-xs uppercase font-bold tracking-wider text-[#17324D]">Our Mission</span>
-                  </div>
-                  <p className="text-xs text-[#61758A] leading-relaxed">
-                    To improve the lives and opportunities of women and girls through education, empowerment, advocacy and community service.
+            {/* Credibility highlights */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+              <div className="p-5 rounded-2xl bg-[#F4FAFF] border border-[#D7E8F5] flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-[#E8F3FC] text-[#005596] flex items-center justify-center shrink-0">
+                  <SparklesIcon size={20} />
+                </div>
+                <div>
+                  <h4 className="font-serif font-bold text-base text-[#17324D]">
+                    United Nations ECOSOC Status
+                  </h4>
+                  <p className="text-xs text-[#61758A] mt-1 leading-relaxed">
+                    General Consultative Status for SI and Special Consultative Status for SIGBI, advancing women&apos;s rights globally.
                   </p>
                 </div>
-
-                <div className="p-5 rounded-xl bg-[#F4FAFF] border border-[#D7E8F5] space-y-2">
-                  <div className="flex items-center gap-2">
-                    <SparklesIcon size={16} className="text-[#D4A737]" />
-                    <span className="text-xs uppercase font-bold tracking-wider text-[#17324D]">Our Vision</span>
-                  </div>
-                  <p className="text-xs text-[#61758A] leading-relaxed">
-                    Women and girls will achieve their individual and collective potential, realize aspirations, and have an equal voice in creating strong, peaceful communities.
-                  </p>
-                </div>
               </div>
 
-              <div className="pt-2 flex flex-wrap gap-4">
-                <Button
-                  href="/about"
-                  variant="primary"
-                  size="md"
-                  rightIcon={<ArrowRightIcon size={16} />}
-                >
-                  Learn More About NASI India
-                </Button>
-                <Button
-                  href="/join"
-                  variant="outline"
-                  size="md"
-                >
-                  Membership Pathway
-                </Button>
+              <div className="p-5 rounded-2xl bg-[#F4FAFF] border border-[#D7E8F5] flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-[#E8F3FC] text-[#005596] flex items-center justify-center shrink-0">
+                  <HeartHandshakeIcon size={20} />
+                </div>
+                <div>
+                  <h4 className="font-serif font-bold text-base text-[#17324D]">
+                    Aligned with the 17 UN SDGs
+                  </h4>
+                  <p className="text-xs text-[#61758A] mt-1 leading-relaxed">
+                    Every grassroots programme action project across our 19 clubs contributes directly to the UN Sustainable Development Goals.
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Our Impact 4 Pillars */}
-            <div className="lg:col-span-6 space-y-3.5">
-              <div className="mb-2">
-                <span className="text-xs uppercase tracking-widest font-semibold text-[#005596]">
-                  Our Impact
-                </span>
-                <h3 className="text-xl font-serif font-bold text-[#17324D] mt-1">
-                  How We Drive Lasting Change
-                </h3>
+            <div className="pt-2 flex flex-wrap gap-4">
+              <Button
+                href="/about"
+                variant="primary"
+                size="md"
+                rightIcon={<ArrowRightIcon size={16} />}
+              >
+                Learn More About NASI India
+              </Button>
+              <Button
+                href="/clubs"
+                variant="outline"
+                size="md"
+              >
+                Explore SI Clubs Across India
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 3. Vision and Mission (Two-Column Section) */}
+      <section id="vision-mission" className="py-16 sm:py-24 bg-[#F4FAFF] border-b border-[#D7E8F5] scroll-mt-20">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* LEFT COLUMN: Vision & Mission */}
+            <div className="lg:col-span-6 space-y-6">
+              <SectionHeading
+                kicker="Our Purpose"
+                title="Vision & Mission"
+                description="Guiding our nationwide movement of women leaders dedicated to transformative social change."
+              />
+
+              {/* Vision Card */}
+              <div className="p-6 sm:p-7 rounded-3xl bg-white border border-[#D7E8F5] shadow-xs hover:border-[#005596] transition-all duration-200 space-y-3">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-3 h-3 rounded-full bg-[#D4A737]" />
+                  <h3 className="font-serif font-bold text-xl sm:text-2xl text-[#17324D]">
+                    Our Vision
+                  </h3>
+                </div>
+                <p className="text-sm sm:text-base text-[#17324D] leading-relaxed font-serif italic pl-4 border-l-2 border-[#D4A737]">
+                  &ldquo;Women and girls will achieve their individual and collective potential, realize aspirations, and have an equal voice in creating strong, peaceful communities.&rdquo;
+                </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#F4FAFF] border border-[#D7E8F5] shadow-2xs flex items-start gap-4 hover:border-[#aed1ef] transition-all duration-200">
-                <div className="w-11 h-11 rounded-xl bg-[#E8F3FC] text-[#005596] flex items-center justify-center shrink-0 shadow-2xs">
-                  <HeartHandshakeIcon size={22} />
+              {/* Mission Card */}
+              <div className="p-6 sm:p-7 rounded-3xl bg-white border border-[#D7E8F5] shadow-xs hover:border-[#005596] transition-all duration-200 space-y-3">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-3 h-3 rounded-full bg-[#005596]" />
+                  <h3 className="font-serif font-bold text-xl sm:text-2xl text-[#17324D]">
+                    Our Mission
+                  </h3>
                 </div>
-                <div>
-                  <h4 className="text-base font-serif font-bold text-[#17324D]">
-                    Empowering Women and Girls
-                  </h4>
-                  <p className="text-sm text-[#61758A] mt-1 leading-relaxed">
-                    Facilitating skills, mentorship, and economic self-reliance so women and girls can lead with confidence and dignity.
-                  </p>
+                <p className="text-sm sm:text-base text-[#17324D] leading-relaxed font-serif italic pl-4 border-l-2 border-[#005596]">
+                  &ldquo;To improve the lives and opportunities of women and girls through education, empowerment, advocacy and community service.&rdquo;
+                </p>
+              </div>
+            </div>
+
+            {/* RIGHT COLUMN: Graphic Placeholders (Educate, Empower, Enable + UN SDGs) */}
+            <div className="lg:col-span-6 space-y-6">
+              {/* Placeholder 1: Educate, Empower, Enable */}
+              <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#005596] to-[#003A6B] text-white shadow-md border border-[#004780] relative overflow-hidden text-center sm:text-left">
+                <div className="flex flex-col sm:flex-row items-center gap-5">
+                  <div className="w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex flex-col items-center justify-center shrink-0">
+                    <span className="text-2xl font-serif font-bold text-[#D4A737]">3E</span>
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-white">Triad</span>
+                  </div>
+                  <div className="space-y-1.5">
+                    <span className="text-[11px] uppercase tracking-wider font-semibold text-[#D4A737] bg-white/10 px-2.5 py-0.5 rounded-full inline-block">
+                      Official Graphic Placeholder
+                    </span>
+                    <h4 className="font-serif font-bold text-xl sm:text-2xl text-white">
+                      Educate • Empower • Enable
+                    </h4>
+                    <p className="text-xs text-[#E8F3FC] leading-relaxed">
+                      Core pillar graphic representing the tripartite foundation of Soroptimist action across India.
+                    </p>
+                  </div>
                 </div>
+                <p className="mt-4 pt-3 border-t border-white/15 text-[11px] text-[#D7E8F5] italic text-center">
+                  [Educate, Empower, Enable graphic will be supplied by the NASI team]
+                </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#F4FAFF] border border-[#D7E8F5] shadow-2xs flex items-start gap-4 hover:border-[#aed1ef] transition-all duration-200">
-                <div className="w-11 h-11 rounded-xl bg-[#E8F3FC] text-[#005596] flex items-center justify-center shrink-0 shadow-2xs">
-                  <BookOpenIcon size={22} />
+              {/* Placeholder 2: Circular UN Sustainable Development Goals */}
+              <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#D7E8F5] shadow-xs text-center sm:text-left">
+                <div className="flex flex-col sm:flex-row items-center gap-5">
+                  {/* Stylized Circular 17 SDG Ring */}
+                  <div className="relative w-20 h-20 rounded-full border-4 border-dashed border-[#005596]/40 flex items-center justify-center shrink-0 bg-[#F4FAFF]">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#005596] via-[#D4A737] to-[#10B981] flex items-center justify-center text-white text-[10px] font-bold shadow-xs">
+                      17 SDGs
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <span className="text-[11px] uppercase tracking-wider font-semibold text-[#005596] bg-[#E8F3FC] px-2.5 py-0.5 rounded-full inline-block">
+                      UN Graphic Placeholder
+                    </span>
+                    <h4 className="font-serif font-bold text-lg sm:text-xl text-[#17324D]">
+                      Circular UN Sustainable Development Goals
+                    </h4>
+                    <p className="text-xs text-[#61758A] leading-relaxed">
+                      Official 17 UN SDGs circular color wheel illustrating comprehensive program action alignment.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-base font-serif font-bold text-[#17324D]">
-                    Supporting Education and Opportunities
-                  </h4>
-                  <p className="text-sm text-[#61758A] mt-1 leading-relaxed">
-                    Awarding scholarships, funding school retention programs, and creating vocational opportunities for underserved youth.
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-[#F4FAFF] border border-[#D7E8F5] shadow-2xs flex items-start gap-4 hover:border-[#aed1ef] transition-all duration-200">
-                <div className="w-11 h-11 rounded-xl bg-[#E8F3FC] text-[#005596] flex items-center justify-center shrink-0 shadow-2xs">
-                  <SparklesIcon size={22} />
-                </div>
-                <div>
-                  <h4 className="text-base font-serif font-bold text-[#17324D]">
-                    Strengthening Local Communities
-                  </h4>
-                  <p className="text-sm text-[#61758A] mt-1 leading-relaxed">
-                    Addressing maternal healthcare, clean water, environmental sustainability, and disaster response at the grassroots level.
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-[#F4FAFF] border border-[#D7E8F5] shadow-2xs flex items-start gap-4 hover:border-[#aed1ef] transition-all duration-200">
-                <div className="w-11 h-11 rounded-xl bg-[#E8F3FC] text-[#005596] flex items-center justify-center shrink-0 shadow-2xs">
-                  <UsersIcon size={22} />
-                </div>
-                <div>
-                  <h4 className="text-base font-serif font-bold text-[#17324D]">
-                    Building a Network of Women Leaders
-                  </h4>
-                  <p className="text-sm text-[#61758A] mt-1 leading-relaxed">
-                    Uniting professional women across India in fellowship, leadership development, and high-impact collective advocacy.
-                  </p>
-                </div>
+                <p className="mt-4 pt-3 border-t border-[#D7E8F5] text-[11px] text-[#61758A] italic text-center">
+                  [Circular UN Sustainable Development Goals graphic will be supplied by the NASI team]
+                </p>
               </div>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 3. Featured Clubs Section */}
-      <section className="py-16 sm:py-24 bg-[#F4FAFF] border-b border-[#D7E8F5]">
+      {/* 4. Meet the President Section */}
+      <section className="py-16 sm:py-24 bg-white border-b border-[#D7E8F5]">
         <Container>
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+          <div className="max-w-5xl mx-auto">
             <SectionHeading
-              kicker="Nationwide Network"
-              title="Chartered Club Chapters"
-              description="Explore 19 vibrant Soroptimist International clubs driving community action across India."
-              className="mb-0"
+              kicker="National Leadership"
+              title="Meet the President"
+              description="A message from the President of the National Association of Soroptimist International of India."
+              className="text-center sm:text-left mb-10"
             />
-            <Button
-              href="/clubs"
-              variant="outline"
-              size="md"
-              rightIcon={<ArrowRightIcon size={16} />}
-              className="shrink-0 font-medium"
-            >
-              All 19 Clubs Directory
-            </Button>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {featuredClubs.map((club) => (
-              <Card key={club.slug} variant="elevated" className="flex flex-col justify-between group hover:border-[#005596] transition-all duration-200">
-                <div>
-                  <div className="relative h-36 w-full bg-gradient-to-br from-[#005596] to-[#003A6B] p-5 text-white flex flex-col justify-between">
-                    <div className="flex items-center justify-between">
-                      <Badge variant="teal" size="sm" className="bg-[#002D54]/90 text-white border-white/20">
-                        {club.region}
-                      </Badge>
-                      <span className="text-[11px] font-mono text-[#D7E8F5]">Chartered</span>
-                    </div>
-                    <div>
-                      <span className="font-serif font-bold text-xl text-white group-hover:text-[#E8F3FC] transition-colors">
-                        {club.name}
+            <div className="rounded-3xl bg-gradient-to-br from-[#F4FAFF] to-[#E8F3FC] border border-[#D7E8F5] p-6 sm:p-10 lg:p-12 shadow-sm relative overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                {/* President Photograph Frame */}
+                <div className="lg:col-span-4 flex flex-col items-center text-center">
+                  <div className="relative w-48 h-56 sm:w-56 sm:h-64 rounded-3xl bg-[#005596] p-2 shadow-md border-2 border-[#D4A737] overflow-hidden flex flex-col items-center justify-center text-white">
+                    <div className="w-full h-full rounded-2xl bg-[#003A6B] flex flex-col items-center justify-center p-4 border border-white/20">
+                      <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center font-serif text-2xl font-bold text-[#D4A737] mb-3 border border-white/20">
+                        AR
+                      </div>
+                      <span className="text-xs uppercase font-bold tracking-wider text-white">
+                        Official Portrait
+                      </span>
+                      <span className="text-[11px] text-[#D7E8F5] mt-1">
+                        Photograph Awaited
                       </span>
                     </div>
                   </div>
 
-                  <CardHeader className="pt-4 pb-2">
-                    <div className="flex items-center gap-1.5 text-xs text-[#005596] font-medium">
-                      <MapPinIcon size={14} className="text-[#005596] shrink-0" />
-                      <span>{club.city}, {club.state}</span>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <p className="text-xs text-[#61758A] leading-relaxed line-clamp-2">
-                      {club.description}
-                    </p>
-                  </CardContent>
+                  <h3 className="font-serif font-bold text-xl text-[#17324D] mt-4">
+                    Anitha Rajarajan
+                  </h3>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-[#005596] mt-0.5">
+                    President, NASI-India
+                  </p>
+                  <span className="text-[11px] font-mono text-[#61758A] mt-1 bg-white px-2.5 py-0.5 rounded-full border border-[#D7E8F5]">
+                    Biennium 2026–2028
+                  </span>
                 </div>
-                <CardFooter className="pt-3 border-t border-[#D7E8F5] bg-[#F4FAFF] flex items-center justify-between">
-                  <span className="text-xs text-[#61758A] font-medium">Active Club</span>
-                  <Link
-                    href={`/clubs/${club.slug}`}
-                    className="text-xs font-semibold text-[#005596] group-hover:text-[#003A6B] inline-flex items-center gap-1 transition-colors"
-                  >
-                    <span>View Club Profile</span>
-                    <ArrowRightIcon size={13} />
-                  </Link>
-                </CardFooter>
-              </Card>
-            ))}
+
+                {/* President Message */}
+                <div className="lg:col-span-8 space-y-4 text-[#17324D] leading-relaxed">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#D7E8F5] text-xs font-medium text-[#005596]">
+                    <span className="w-2 h-2 rounded-full bg-[#005596]" />
+                    <span>Biennium 2026–2028 Message</span>
+                  </div>
+
+                  <h4 className="text-xl sm:text-2xl font-serif font-bold text-[#17324D]">
+                    &ldquo;Inspiring action, transforming lives for women and girls across India.&rdquo;
+                  </h4>
+
+                  <div className="space-y-3.5 text-sm sm:text-base text-[#17324D]/90">
+                    <p>
+                      Welcome to the National Association of Soroptimist International of India.
+                      As President for the 2026–2028 biennium, I am privileged to lead an extraordinary
+                      network of women professionals and grassroots leaders across 19 chartered clubs
+                      nationwide.
+                    </p>
+                    <p>
+                      Since 1974, our movement in India has stood up for women and girls through
+                      practical, life-changing action. By aligning our initiatives with the United Nations
+                      Sustainable Development Goals and drawing strength from our global Soroptimist
+                      sisterhood, we strive to build a future where every girl is educated, empowered,
+                      and enabled to reach her fullest potential.
+                    </p>
+                    <p>
+                      Together, with passion and commitment, we continue to create lasting change in
+                      our communities.
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-[#D7E8F5] flex items-center justify-between">
+                    <div>
+                      <p className="font-serif font-bold text-[#17324D]">
+                        Anitha Rajarajan
+                      </p>
+                      <p className="text-xs text-[#005596] font-medium">
+                        President, NASI-India (2026–2028)
+                      </p>
+                    </div>
+                    <Button
+                      href="/committee"
+                      variant="outline"
+                      size="sm"
+                      rightIcon={<ArrowRightIcon size={14} />}
+                    >
+                      View Board Profile
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </Container>
       </section>
 
-      {/* 4. National Board: 2026-2028 */}
-      <section className="py-16 sm:py-24 bg-white border-b border-[#D7E8F5]">
+      {/* 5. Board Members Section */}
+      <section className="py-16 sm:py-24 bg-[#F4FAFF] border-b border-[#D7E8F5]">
         <Container>
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <SectionHeading
-              kicker="National Association Soroptimist India (NASI-India)"
+              kicker="National Association of Soroptimist India (NASI-India)"
               title="NASI India Board: 2026–2028"
-              description="Dedicated volunteer leaders guiding NASI India's strategic vision, governance, and nationwide programme action."
+              description="Elected volunteer leaders guiding NASI India's strategic vision, governance, and nationwide programme action."
               className="mb-0"
             />
             <Button
@@ -376,6 +451,32 @@ export default async function HomePage() {
               <CommitteeCard key={member.role} member={member} showBio={false} />
             ))}
           </div>
+        </Container>
+      </section>
+
+      {/* 6. SI Clubs – India (Interactive Map & Sequential Chronological Roster) */}
+      <section className="py-16 sm:py-24 bg-white border-b border-[#D7E8F5]">
+        <Container>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+            <SectionHeading
+              kicker="Nationwide Network"
+              title="SI Clubs – India"
+              description="19 vibrant Soroptimist International clubs driving community action across India, presented in NASI-approved chronological order."
+              className="mb-0"
+            />
+            <Button
+              href="/clubs"
+              variant="outline"
+              size="md"
+              rightIcon={<ArrowRightIcon size={16} />}
+              className="shrink-0 font-medium"
+            >
+              All 19 Clubs Directory
+            </Button>
+          </div>
+
+          {/* Interactive Map and Numbered List */}
+          <InteractiveIndiaClubsMap />
         </Container>
       </section>
 
@@ -621,6 +722,9 @@ export default async function HomePage() {
           </div>
         </Container>
       </section>
+
+      {/* 9. Page-Wide Floating Strapline */}
+      <LandingPageStrapline />
     </>
   );
 }

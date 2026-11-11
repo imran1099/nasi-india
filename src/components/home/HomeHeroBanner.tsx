@@ -17,16 +17,33 @@ export interface HomeHeroBannerProps {
 }
 
 export function HomeHeroBanner({
-  title = "Standing up for women and girls",
-  subtitle = "Women Supporting Women, Creating Change Together. Purposeful, compassionate, and unshakeably committed to change.",
+  title = "National Association of Soroptimist India (NASI-India)",
+  subtitle = "Women Supporting Women, Creating Change Together. Purposeful, compassionate, and totally committed to change.",
   ctaText = "Our Impact",
-  ctaUrl = "/about",
-  secondaryCtaText = "Become a member",
-  secondaryCtaUrl = "/join",
+  ctaUrl = "#vision-mission",
+  secondaryCtaText = "Contact Us",
+  secondaryCtaUrl = "/contact",
   imageLeft = "/images/banner/hero-woman-facing-left.jpg",
   imageRight = "/images/banner/hero-woman-facing-right.jpg",
   displayMode = "slideshow",
 }: HomeHeroBannerProps) {
+  // Normalize title and subtitle per Stage 1 requirements
+  const displayTitle =
+    title && title !== "Standing up for women and girls"
+      ? title
+      : "National Association of Soroptimist India (NASI-India)";
+
+  const displaySubtitle = (
+    subtitle ||
+    "Women Supporting Women, Creating Change Together. Purposeful, compassionate, and totally committed to change."
+  )
+    .replace(/unshakeably/gi, "totally");
+
+  const displaySecondaryCtaText =
+    secondaryCtaText === "Become a member" ? "Contact Us" : secondaryCtaText;
+  const displaySecondaryCtaUrl =
+    secondaryCtaUrl === "/join" ? "/contact" : secondaryCtaUrl;
+  const displayCtaUrl = ctaUrl === "/about" ? "#vision-mission" : ctaUrl;
   // Collect available images
   const images = [
     {
@@ -83,19 +100,19 @@ export function HomeHeroBanner({
 
               {/* Main Headline (Replicating SIGBI reference design typography) */}
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]">
-                {title}
+                {displayTitle}
               </h1>
 
               {/* Supporting Description */}
               <p className="text-base sm:text-lg lg:text-xl text-white/95 leading-relaxed font-normal max-w-xl">
-                {subtitle}
+                {displaySubtitle}
               </p>
 
               {/* Call to Action Buttons */}
               <div className="pt-3 flex flex-wrap items-center gap-4">
                 {ctaText && (
                   <Link
-                    href={ctaUrl || "/about"}
+                    href={displayCtaUrl || "#vision-mission"}
                     className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#24a0d8] hover:bg-[#1a8fc5] text-white font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-200 cursor-pointer active:scale-98"
                   >
                     <span>{ctaText}</span>
@@ -103,12 +120,12 @@ export function HomeHeroBanner({
                   </Link>
                 )}
 
-                {secondaryCtaText && (
+                {displaySecondaryCtaText && (
                   <Link
-                    href={secondaryCtaUrl || "/join"}
+                    href={displaySecondaryCtaUrl || "/contact"}
                     className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/40 font-semibold text-sm sm:text-base backdrop-blur-xs transition-all duration-200 cursor-pointer active:scale-98"
                   >
-                    <span>{secondaryCtaText}</span>
+                    <span>{displaySecondaryCtaText}</span>
                   </Link>
                 )}
               </div>

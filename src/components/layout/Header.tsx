@@ -65,7 +65,7 @@ export function Header({ logoUrl }: HeaderProps) {
       {/* Main Header */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#D7E8F5] shadow-2xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 sm:h-24 py-1.5 sm:py-2">
+          <div className="flex items-center justify-between h-20 sm:h-24 lg:h-26 py-1.5 sm:py-2">
             {/* Logo Area (Configurable) */}
             <div className="shrink-0">
               <Logo imageUrl={logoUrl} />

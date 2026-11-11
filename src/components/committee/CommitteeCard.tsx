@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { MailIcon, MapPinIcon } from "@/components/icons";
+import { MailIcon } from "@/components/icons";
 import { CommitteeMember } from "@/data/committee";
 
 export interface CommitteeCardProps {
@@ -40,14 +40,9 @@ export function CommitteeCard({
           <CardTitle as="h3" className="text-lg sm:text-xl text-[#17324D] leading-snug">
             {member.name}
           </CardTitle>
-          <p className="text-xs font-semibold text-[#005596] uppercase tracking-wider mt-1">
+          <p className="text-xs font-semibold text-[#005596] uppercase tracking-wider mt-1.5">
             {member.designation}
           </p>
-
-          <div className="flex items-center gap-1.5 text-xs text-[#61758A] mt-2.5">
-            <MapPinIcon size={14} className="text-[#005596] shrink-0" />
-            <span>Member Chapter: {member.clubAffiliation}</span>
-          </div>
         </CardHeader>
 
         {showBio && member.bio && (

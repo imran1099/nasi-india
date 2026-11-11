@@ -90,15 +90,15 @@ export function getDefaultSiteSettings(): SiteSettingsMap {
     "social.linkedin": "https://linkedin.com/company/nasiindia",
     "social.youtube": "https://youtube.com/@nasiindia",
 
-    "home.heroTitle": "Standing up for women and girls",
+    "home.heroTitle": "National Association of Soroptimist India (NASI-India)",
     "home.heroSubtitle":
-      "Women Supporting Women, Creating Change Together. Purposeful, compassionate, and unshakeably committed to change.",
+      "Women Supporting Women, Creating Change Together. Purposeful, compassionate, and totally committed to change.",
     "home.announcement":
       "Official digital portal of the National Association of Soroptimist International of India.",
     "home.heroCtaText": "Our Impact",
-    "home.heroCtaUrl": "/about",
-    "home.heroSecondaryCtaText": "Become a member",
-    "home.heroSecondaryCtaUrl": "/join",
+    "home.heroCtaUrl": "#vision-mission",
+    "home.heroSecondaryCtaText": "Contact Us",
+    "home.heroSecondaryCtaUrl": "/contact",
     "home.heroImageLeft": "/images/banner/hero-woman-facing-left.jpg",
     "home.heroImageRight": "/images/banner/hero-woman-facing-right.jpg",
     "home.bannerDisplayMode": "slideshow",

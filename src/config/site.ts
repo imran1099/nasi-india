@@ -75,7 +75,6 @@ export const siteConfig: SiteConfig = {
     { label: "Our Clubs", href: "/clubs", description: "All Clubs, Club Profiles & Find a Club" },
     { label: "Our Team", href: "/committee", description: "NASI National Board & Committee Members" },
     { label: "News & Events", href: "/news", description: "National reports, club updates and gatherings" },
-    { label: "Resources", href: "/resources", description: "Charter guides, governance and federation links" },
     { label: "Join Us", href: "/join", description: "Membership pathways and enquiry" },
     { label: "Contact Us", href: "/contact", description: "Get in touch with the National Secretariat" },
   ],
