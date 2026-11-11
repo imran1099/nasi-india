@@ -80,6 +80,15 @@ export default function RootLayout({
       lang="en"
       className={`${fontSansVariable} ${fontMonoVariable} h-full antialiased`}
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-sand-50 text-forest-950 font-sans selection:bg-teal-200 selection:text-forest-950">
         <OrganizationJsonLd siteUrl={siteUrl} />
         <Header />
