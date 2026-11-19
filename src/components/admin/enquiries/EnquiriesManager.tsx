@@ -461,7 +461,7 @@ export function EnquiriesManager({
                     <>
                       <div>
                         <span className="text-forest-500 font-semibold block uppercase tracking-wider text-[10px]">
-                          Preferred Club Chapter
+                          Preferred Club
                         </span>
                         <span className="text-teal-900 font-semibold">
                           {selectedItem.preferredClub || "National Assignment"}

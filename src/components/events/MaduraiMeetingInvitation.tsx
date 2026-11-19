@@ -44,15 +44,15 @@ export function MaduraiMeetingInvitation({
                 ) : (
                   <div className="relative w-full aspect-[3/4] bg-gradient-to-b from-[#003A6B] to-[#001E38] rounded-2xl overflow-hidden border border-[#004780] flex flex-col justify-between p-6 text-white text-center">
                     {/* Decorative subtle border */}
-                    <div className="absolute inset-2 border border-dashed border-[#D4A737]/60 rounded-xl pointer-events-none" />
+                    <div className="absolute inset-2 border border-dashed border-[#FAEB57]/60 rounded-xl pointer-events-none" />
 
                     {/* Invitation Header Emblem */}
                     <div className="relative z-10 pt-2">
-                      <span className="text-[10px] uppercase font-bold tracking-widest text-[#D4A737] block">
-                        Soroptimist International of India
+                      <span className="text-[10px] uppercase font-bold tracking-widest text-[#FAEB57] block">
+                        NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)
                       </span>
                       <h4 className="font-serif font-bold text-lg text-white mt-1">
-                        NASI EC Meeting &amp; Installation
+                        NASI EC Meeting &amp; Installation Ceremony
                       </h4>
                       <p className="text-xs text-[#E8F3FC] mt-0.5">
                         Madurai, Tamil Nadu
@@ -61,7 +61,7 @@ export function MaduraiMeetingInvitation({
 
                     {/* Invitation Graphic Placeholder / Artwork Area */}
                     <div className="relative z-10 py-6 my-auto flex flex-col items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-white/10 border border-[#D4A737] flex items-center justify-center font-serif text-xl font-bold text-[#D4A737] mb-3 shadow-inner">
+                      <div className="w-16 h-16 rounded-full bg-white/10 border border-[#FAEB57] flex items-center justify-center font-serif text-xl font-bold text-[#FAEB57] mb-3 shadow-inner">
                         SI
                       </div>
                       <span className="text-xs font-semibold uppercase tracking-wider text-white">
@@ -77,7 +77,7 @@ export function MaduraiMeetingInvitation({
                       <span className="text-[11px] text-[#E8F3FC] block">
                         Host Club: <strong>SI Madurai</strong>
                       </span>
-                      <span className="text-[10px] text-[#D4A737] font-mono">
+                      <span className="text-[10px] text-[#FAEB57] font-mono">
                         Biennium 2026–2028 Leadership
                       </span>
                     </div>

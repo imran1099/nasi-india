@@ -68,14 +68,14 @@ async function getResourcesData(): Promise<ResourceCardItem[]> {
 export const metadata: Metadata = {
   title: "Soroptimist Resources",
   description:
-    "Official resource repository, federation directories, Global Voice publications, and membership portals for Soroptimist International of India.",
+    "Official resource repository, federation directories, Global Voice publications, and membership portals for NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India).",
   alternates: {
     canonical: "/resources",
   },
   openGraph: {
     title: "Soroptimist Resources | NASI India",
     description:
-      "Official resource repository, federation directories, Global Voice publications, and membership portals for Soroptimist International of India.",
+      "Official resource repository, federation directories, Global Voice publications, and membership portals for NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India).",
     url: "/resources",
   },
 };

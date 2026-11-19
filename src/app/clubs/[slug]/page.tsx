@@ -185,7 +185,7 @@ export default async function ClubDetailPage({ params }: ClubPageProps) {
       />
       <PageHeading
         title={club.name}
-        kicker={`${club.region} • Chartered Chapter`}
+        kicker={`${club.region} • Chartered Club`}
         description={club.description}
         breadcrumbs={[
           { label: "Our Clubs", href: "/clubs" },
@@ -436,7 +436,7 @@ export default async function ClubDetailPage({ params }: ClubPageProps) {
                         { label: `Join as a member in ${club.city}`, value: "join" },
                         { label: "Community project collaboration", value: "project" },
                         { label: "Student scholarship inquiry", value: "scholarship" },
-                        { label: "General chapter inquiry", value: "general" },
+                        { label: "General club inquiry", value: "general" },
                       ]}
                       required
                     />
@@ -465,7 +465,7 @@ export default async function ClubDetailPage({ params }: ClubPageProps) {
               <Card variant="accent">
                 <CardHeader>
                   <span className="text-xs font-semibold uppercase text-teal-800">
-                    Chapter Logistics
+                    Club Logistics
                   </span>
                   <CardTitle as="h3" className="text-lg">
                     Meeting Schedule
@@ -497,7 +497,7 @@ export default async function ClubDetailPage({ params }: ClubPageProps) {
                   <div className="flex items-start gap-2.5 pt-3 border-t border-sand-200">
                     <UsersIcon size={16} className="text-teal-700 shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-forest-950">Chapter Coordinator</p>
+                      <p className="font-semibold text-forest-950">Club Coordinator</p>
                       <p className="text-forest-700 mt-0.5">{club.coordinatorPlaceholder}</p>
                     </div>
                   </div>

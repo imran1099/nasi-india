@@ -117,11 +117,11 @@ export function getDefaultSiteSettings(): SiteSettingsMap {
     "social.linkedin": "https://linkedin.com/company/nasiindia",
     "social.youtube": "https://youtube.com/@nasiindia",
 
-    "home.heroTitle": "National Association of Soroptimist India (NASI-India)",
+    "home.heroTitle": "NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)",
     "home.heroSubtitle":
       "Women Supporting Women, Creating Change Together. Purposeful, compassionate, and totally committed to change.",
     "home.announcement":
-      "Official digital portal of the National Association of Soroptimist International of India.",
+      "Official digital portal of NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India).",
     "home.heroCtaText": "Our Impact",
     "home.heroCtaUrl": "#vision-mission",
     "home.heroSecondaryCtaText": "Contact Us",
@@ -135,7 +135,7 @@ export function getDefaultSiteSettings(): SiteSettingsMap {
     "president.tenure": "Biennium 2026–2028",
     "president.photoUrl": "",
     "president.message":
-      "Welcome to the National Association of Soroptimist International of India. As President for the 2026–2028 biennium, I am privileged to lead an extraordinary network of women professionals and grassroots leaders across 19 chartered clubs nationwide.\n\nSince 1974, our movement in India has stood up for women and girls through practical, life-changing action. By aligning our initiatives with the United Nations Sustainable Development Goals and drawing strength from our global Soroptimist sisterhood, we strive to build a future where every girl is educated, empowered, and enabled to reach her fullest potential.\n\nTogether, with passion and commitment, we continue to create lasting change in our communities.",
+      "Welcome to NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India). As President for the 2026–2028 biennium, I am privileged to lead an extraordinary network of women professionals and grassroots leaders across 19 chartered clubs nationwide.\n\nSince 1974, our movement in India has stood up for women and girls through practical, life-changing action. By aligning our initiatives with the United Nations Sustainable Development Goals and drawing strength from our global Soroptimist sisterhood, we strive to build a future where every girl is educated, empowered, and enabled to reach her fullest potential.\n\nTogether, with passion and commitment, we continue to create lasting change in our communities.",
 
     "vision.text":
       "Women and girls will achieve their individual and collective potential, realize aspirations, and have an equal voice in creating strong, peaceful communities.",
@@ -153,15 +153,15 @@ export function getDefaultSiteSettings(): SiteSettingsMap {
       "Grassroots Programme Action review showcasing milestone projects in girl education, women's healthcare, and alignment with the United Nations 17 SDGs.",
     "event.maduraiHighlight4":
       "Delegation fellowship banquet, cultural heritage reception, and photographic documentation celebrating 19 chartered clubs nationwide.",
-    "council.title": "Annual National Council Assembly",
+    "council.title": "NASI Annual General Meeting",
     "council.description":
-      "The Annual National Council brings together accredited voting delegates, club presidents, secretaries, and National Board officers from all 19 chartered clubs across India. It serves as the supreme governance forum for constitutional amendments, audited financial reporting, and strategic programme ratification.",
+      "The NASI Annual General Meeting is held in the first half of the year. It reviews the Annual Reports, Programme Action, Audited Statements and undertakes constitutional deliberations.",
 
     "federation.itemsText":
       "Soroptimist International Great Britain & Ireland (SIGBI)\nSoroptimist International of the Americas (SIA)\nSoroptimist International of Europe (SIE)\nSoroptimist International of South East Asia Pacific (SISEAP)\nSoroptimist International African Federation (SIAF)",
 
-    "footer.copyright": `© ${siteConfig.copyrightYear} National Association of Soroptimist International of India. All rights reserved.`,
-    "footer.registration": "Chartered National Association of Soroptimist International.",
+    "footer.copyright": `© ${siteConfig.copyrightYear} NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India). All rights reserved.`,
+    "footer.registration": "Chartered under Soroptimist International.",
   };
 }
 

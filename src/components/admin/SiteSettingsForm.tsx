@@ -272,7 +272,7 @@ export function SiteSettingsForm({ initialSettings }: SiteSettingsFormProps) {
               label="Hero Main Headline"
               id="home-title"
               name="home.heroTitle"
-              defaultValue={initialSettings["home.heroTitle"] || "National Association of Soroptimist India (NASI-India)"}
+              defaultValue={initialSettings["home.heroTitle"] || "NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)"}
               helperText="Main prominent heading displayed in the primary hero banner."
               required
             />
@@ -658,7 +658,7 @@ export function SiteSettingsForm({ initialSettings }: SiteSettingsFormProps) {
                 Events, Madurai Invitation &amp; Governance Assembly
               </h3>
               <p className="text-xs text-[#61758A] mt-1">
-                Manage the Madurai Meeting Invitation artwork, 4 event highlights, and Annual National Council Assembly content.
+                Manage the Madurai Meeting Invitation artwork, 4 event highlights, and NASI Annual General Meeting content.
               </p>
             </div>
             <Link
@@ -767,16 +767,16 @@ export function SiteSettingsForm({ initialSettings }: SiteSettingsFormProps) {
             />
           </div>
 
-          {/* Annual National Council */}
+          {/* NASI Annual General Meeting */}
           <div className="space-y-3 p-5 rounded-xl bg-[#F4FAFF] border border-[#D7E8F5]">
             <h4 className="text-xs font-semibold uppercase tracking-wider text-[#17324D]">
-              Annual National Council Assembly
+              NASI Annual General Meeting
             </h4>
             <FormField
               label="Section Heading"
               id="council-title"
               name="council.title"
-              defaultValue={initialSettings["council.title"] || "Annual National Council Assembly"}
+              defaultValue={initialSettings["council.title"] || "NASI Annual General Meeting"}
               required
             />
             <FormField

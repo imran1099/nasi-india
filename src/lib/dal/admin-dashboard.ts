@@ -104,7 +104,7 @@ export async function getDashboardMetrics(): Promise<DashboardMetrics> {
         id: "demo-contact-2",
         name: "Deepa Nair",
         email: "deepa.nair@example.com",
-        subject: "General chapter inquiry",
+        subject: "General club inquiry",
         createdAt: new Date("2024-10-24T14:00:00.000Z"),
         isRead: false,
       },

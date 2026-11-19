@@ -44,7 +44,7 @@ export default async function AdminLoginPage() {
 
         <div className="text-center">
           <span className="inline-block text-xs uppercase tracking-widest font-semibold text-teal-300 mb-2">
-            National Association of Soroptimist International of India
+            NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)
           </span>
           <h1 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
             Admin Portal Access

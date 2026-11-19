@@ -94,7 +94,7 @@ export const initialCommittee: CommitteeMember[] = [
     clubAffiliation: "SI Coimbatore",
     emailPlaceholder: "membership@nasi-india.org",
     initials: "KR",
-    bio: "Leads membership development, club revitalization, and nationwide chapter expansion, guiding prospective members and new clubs through induction and chartering.",
+    bio: "Leads membership development, club revitalization, and nationwide club expansion, guiding prospective members and new clubs through induction and chartering.",
   },
   {
     role: "Communications Officer",

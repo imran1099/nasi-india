@@ -11,7 +11,7 @@ export interface LogoProps {
 /**
  * Configurable Logo Component
  * 
- * Renders the official Soroptimist International of India emblem with
+ * Renders the official NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India) emblem with
  * support for dynamic logo URLs uploaded via the admin panel, with graceful
  * fallback to typographical brand styling.
  */
@@ -54,7 +54,7 @@ export function Logo({ className = "", isFooter = false, imageUrl }: LogoProps) 
             aria-hidden="true"
           >
             <span className="tracking-wider">SI</span>
-            <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#d4a737] border-2 border-white shadow-2xs" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#FAEB57] border-2 border-white shadow-2xs" />
           </div>
 
           {/* Typographical Brand Name */}

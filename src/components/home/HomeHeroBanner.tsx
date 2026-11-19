@@ -17,7 +17,7 @@ export interface HomeHeroBannerProps {
 }
 
 export function HomeHeroBanner({
-  title = "National Association of Soroptimist India (NASI-India)",
+  title = "NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)",
   subtitle = "Women Supporting Women, Creating Change Together. Purposeful, compassionate, and totally committed to change.",
   ctaText = "Our Impact",
   ctaUrl = "#vision-mission",
@@ -27,33 +27,35 @@ export function HomeHeroBanner({
   imageRight = "/images/banner/hero-woman-facing-right.jpg",
   displayMode = "slideshow",
 }: HomeHeroBannerProps) {
-  // Normalize title and subtitle per Stage 1 requirements
+  // Normalize title and subtitle per NASI instructions
   const displayTitle =
-    title && title !== "Standing up for women and girls"
+    title &&
+      title !== "Standing up for women and girls" &&
+      !title.includes("National Association of Soroptimist")
       ? title
-      : "National Association of Soroptimist India (NASI-India)";
+      : "NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)";
 
   const displaySubtitle = (
     subtitle ||
     "Women Supporting Women, Creating Change Together. Purposeful, compassionate, and totally committed to change."
-  )
-    .replace(/unshakeably/gi, "totally");
+  ).replace(/unshakeably/gi, "totally");
 
   const displaySecondaryCtaText =
     secondaryCtaText === "Become a member" ? "Contact Us" : secondaryCtaText;
   const displaySecondaryCtaUrl =
     secondaryCtaUrl === "/join" ? "/contact" : secondaryCtaUrl;
   const displayCtaUrl = ctaUrl === "/about" ? "#vision-mission" : ctaUrl;
-  // Collect available images
+
+  // Collect available images for central display
   const images = [
     {
       src: imageLeft || "/images/banner/hero-woman-facing-left.jpg",
-      label: "Left-Facing Portrait",
+      label: "Portrait 1",
       alt: "Soroptimist India Member in traditional golden attire with floral adornment",
     },
     {
       src: imageRight || "/images/banner/hero-woman-facing-right.jpg",
-      label: "Right-Facing Portrait",
+      label: "Portrait 2",
       alt: "Soroptimist India Member portrait profile",
     },
   ].filter((img) => Boolean(img.src));
@@ -80,107 +82,58 @@ export function HomeHeroBanner({
     return () => clearInterval(interval);
   }, [displayMode, isPaused, displayedImages.length]);
 
+
   return (
     <section
-      className="relative w-full overflow-hidden bg-[#005596]"
+      className="relative w-full overflow-hidden bg-[#005596] text-white py-12 sm:py-16 lg:py-20"
       aria-label="Homepage Main Banner"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="mx-auto max-w-[1600px]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[520px] md:min-h-[580px] lg:min-h-[640px] items-stretch">
-          {/* Left Content Area (7 cols on lg) - Solid Rich Primary Blue with Curved Divider */}
-          <div className="lg:col-span-7 relative z-10 flex flex-col justify-center px-6 sm:px-12 md:px-16 lg:px-20 py-12 sm:py-16 lg:py-24 text-white">
-            <div className="max-w-2xl space-y-6">
-              {/* Organization Tag / Kicker */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#E8F3FC] text-xs sm:text-sm font-medium w-fit backdrop-blur-xs">
-                <span className="w-2 h-2 rounded-full bg-[#24a0d8] animate-pulse" />
-                <span>National Association of Soroptimist International of India</span>
-              </div>
-
-              {/* Main Headline (Replicating SIGBI reference design typography) */}
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]">
-                {displayTitle}
-              </h1>
-
-              {/* Supporting Description */}
-              <p className="text-base sm:text-lg lg:text-xl text-white/95 leading-relaxed font-normal max-w-xl">
-                {displaySubtitle}
-              </p>
-
-              {/* Call to Action Buttons */}
-              <div className="pt-3 flex flex-wrap items-center gap-4">
-                {ctaText && (
-                  <Link
-                    href={displayCtaUrl || "#vision-mission"}
-                    className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#24a0d8] hover:bg-[#1a8fc5] text-white font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-200 cursor-pointer active:scale-98"
-                  >
-                    <span>{ctaText}</span>
-                    <ArrowRightIcon size={16} className="ml-2" />
-                  </Link>
-                )}
-
-                {displaySecondaryCtaText && (
-                  <Link
-                    href={displaySecondaryCtaUrl || "/contact"}
-                    className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/40 font-semibold text-sm sm:text-base backdrop-blur-xs transition-all duration-200 cursor-pointer active:scale-98"
-                  >
-                    <span>{displaySecondaryCtaText}</span>
-                  </Link>
-                )}
-              </div>
-
-              {/* Trust credibility indicators */}
-              <div className="pt-8 border-t border-white/15 flex flex-wrap items-center gap-6 text-xs text-[#E8F3FC]">
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#24a0d8]" />
-                  <span>19 Chartered Clubs across India</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#24a0d8]" />
-                  <span>Affiliated with SIGBI & SI Global</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#24a0d8]" />
-                  <span>UN ECOSOC Consultative Status</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Organic curve shape transition on desktop (matching SIGBI reference) */}
-            <div
-              className="hidden lg:block absolute -right-16 top-0 bottom-0 w-24 pointer-events-none z-10"
-              aria-hidden="true"
-            >
-              <svg
-                viewBox="0 0 100 640"
-                preserveAspectRatio="none"
-                className="w-full h-full fill-[#005596]"
-              >
-                <path d="M0,0 L10,0 C65,180 85,320 30,480 C10,540 5,600 0,640 Z" />
-              </svg>
-            </div>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center text-center">
+          {/* Organization Kicker / Tag */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#E8F3FC] text-xs sm:text-sm font-semibold mb-5 backdrop-blur-xs">
+            <span className="w-2 h-2 rounded-full bg-[#FAEB57] animate-pulse" />
+            <span>NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)</span>
           </div>
 
-          {/* Right Image Display Area (5 cols on lg) - Clean Photography without Color Overlays */}
-          <div className="lg:col-span-5 relative bg-[#003A6B] overflow-hidden min-h-[360px] sm:min-h-[440px] lg:min-h-[640px]">
-            {displayMode === "dual" ? (
-              /* Dual Side-by-Side Presentation */
-              <div className="grid grid-cols-2 h-full w-full">
-                {images.map((img, i) => (
-                  <div key={i} className="relative h-full w-full overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={img.src}
-                      alt={img.alt}
-                      className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              /* Single / Slideshow Display with Crossfade */
-              <div className="relative h-full w-full">
+          {/* Main Headline */}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.14] max-w-4xl mb-4 sm:mb-5">
+            {displayTitle}
+          </h1>
+
+          {/* Supporting Subtitle */}
+          <p className="text-base sm:text-lg lg:text-xl text-[#F4FAFF]/95 leading-relaxed font-normal max-w-2xl mb-8">
+            {displaySubtitle}
+          </p>
+
+          {/* Action Buttons following NASI Lemon Yellow & Blue theme */}
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
+            {ctaText && (
+              <Link
+                href={displayCtaUrl || "#vision-mission"}
+                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#FAEB57] hover:bg-[#FDD835] text-[#003A6B] font-bold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-200 cursor-pointer active:scale-98 border border-[#F0DC36]"
+              >
+                <span>{ctaText}</span>
+                <ArrowRightIcon size={16} className="ml-2 text-[#003A6B]" />
+              </Link>
+            )}
+
+            {displaySecondaryCtaText && (
+              <Link
+                href={displaySecondaryCtaUrl || "/contact"}
+                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/40 font-semibold text-sm sm:text-base backdrop-blur-xs transition-all duration-200 cursor-pointer active:scale-98"
+              >
+                <span>{displaySecondaryCtaText}</span>
+              </Link>
+            )}
+          </div>
+
+          {/* Centrally Positioned Woman Photograph */}
+          <div className="w-full max-w-md sm:max-w-lg lg:max-w-xl mx-auto mb-8">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/25 bg-[#003A6B] p-2 sm:p-2.5">
+              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden bg-[#002D54]">
                 {displayedImages.map((img, index) => {
                   const isCurrent = index === activeIndex || displayedImages.length === 1;
                   return (
@@ -193,34 +146,57 @@ export function HomeHeroBanner({
                       <img
                         src={img.src}
                         alt={img.alt}
-                        className="w-full h-full object-cover object-top"
+                        className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-103"
                       />
                     </div>
                   );
                 })}
-              </div>
-            )}
 
-            {/* Image Switch Controls (Interactive indicator when multiple images exist in slideshow mode) */}
-            {displayedImages.length > 1 && displayMode === "slideshow" && (
-              <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
-                {/* <span className="text-[11px] font-medium text-white/90 mr-1">
-                  Photos:
-                </span> */}
-                {displayedImages.map((img, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => setActiveIndex(idx)}
-                    aria-label={`Show ${img.label}`}
-                    className={`h-2.5 rounded-full transition-all cursor-pointer ${idx === activeIndex
-                        ? "w-6 bg-[#24a0d8]"
-                        : "w-2.5 bg-white/60 hover:bg-white"
-                      }`}
-                  />
-                ))}
+                {/* Placeholder Overlay Pill */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-3.5 py-1.5 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white text-[11px] sm:text-xs font-medium flex items-center gap-2 whitespace-nowrap shadow-md z-10">
+                  <span className="w-2 h-2 rounded-full bg-[#FAEB57]" />
+                  <span>Official Photograph Placeholder</span>
+                </div>
               </div>
-            )}
+
+              {/* Multiple photo selector controls */}
+              {displayedImages.length > 1 && displayMode === "slideshow" && (
+                <div className="flex items-center justify-center gap-2 pt-2.5 pb-1">
+                  {displayedImages.map((img, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setActiveIndex(idx)}
+                      aria-label={`View ${img.label}`}
+                      className={`h-2 rounded-full transition-all cursor-pointer ${idx === activeIndex
+                        ? "w-6 bg-[#FAEB57]"
+                        : "w-2 bg-white/40 hover:bg-white"
+                        }`}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <p className="text-xs text-[#E8F3FC]/80 mt-2.5 italic text-center">
+              [Official woman photograph will be updated once supplied by NASI]
+            </p>
+          </div>
+
+          {/* Credibility Indicators */}
+          <div className="pt-6 border-t border-white/15 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs sm:text-sm text-[#E8F3FC]">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#FAEB57]" />
+              <span>19 Chartered Clubs across India</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#FAEB57]" />
+              <span>Affiliated with SIGBI &amp; SI Global</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#FAEB57]" />
+              <span>UN ECOSOC Consultative Status</span>
+            </div>
           </div>
         </div>
       </div>

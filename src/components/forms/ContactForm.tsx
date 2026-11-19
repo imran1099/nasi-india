@@ -132,7 +132,7 @@ export function ContactForm() {
           placeholder="Select an enquiry type"
           options={[
             { label: "Join a Local Soroptimist Club", value: "Join a Local Soroptimist Club" },
-            { label: "Charter a New Club Chapter", value: "Charter a New Club Chapter" },
+            { label: "Charter a New Club", value: "Charter a New Club" },
             { label: "National Programme Action Inquiry", value: "National Programme Action Inquiry" },
             { label: "Media & Communications", value: "Media & Communications" },
             { label: "General Secretariat Inquiry", value: "General Secretariat Inquiry" },

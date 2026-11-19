@@ -18,8 +18,8 @@ export function JsonLd({ data }: BaseJsonLdProps) {
  */
 export function OrganizationJsonLd({
   siteUrl = "https://nasiindia.org",
-  name = "National Association of Soroptimist International of India",
-  alternateName = "NASI India",
+  name = "NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)",
+  alternateName = "NASI-India",
   logoUrl = "https://nasiindia.org/images/logo.png",
   description = "A voluntary service organization of women in management and professions dedicated to inspiring action and transforming the lives of women and girls across India.",
 }: {

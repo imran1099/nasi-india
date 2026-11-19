@@ -126,7 +126,7 @@ export default async function HomePage() {
     getHomePageData(),
     getSiteSettings().catch(() => null),
   ]);
-  const { latestNews, upcomingEvents } = homeData;
+  const { latestNews } = homeData;
 
   // Dynamic Content from Admin Settings
   const visionText =
@@ -144,7 +144,7 @@ export default async function HomePage() {
   const presidentPhotoUrl = settings?.["president.photoUrl"];
   const presidentMessage =
     settings?.["president.message"] ||
-    "Welcome to the National Association of Soroptimist International of India. As President for the 2026–2028 biennium, I am privileged to lead an extraordinary network of women professionals and grassroots leaders across 19 chartered clubs nationwide.\n\nSince 1974, our movement in India has stood up for women and girls through practical, life-changing action. By aligning our initiatives with the United Nations Sustainable Development Goals and drawing strength from our global Soroptimist sisterhood, we strive to build a future where every girl is educated, empowered, and enabled to reach her fullest potential.\n\nTogether, with passion and commitment, we continue to create lasting change in our communities.";
+    "Welcome to NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India). As President for the 2026–2028 biennium, I am privileged to lead an extraordinary network of women professionals and grassroots leaders across 19 chartered clubs nationwide.\n\nSince 1974, our movement in India has stood up for women and girls through practical, life-changing action. By aligning our initiatives with the United Nations Sustainable Development Goals and drawing strength from our global Soroptimist sisterhood, we strive to build a future where every girl is educated, empowered, and enabled to reach her fullest potential.\n\nTogether, with passion and commitment, we continue to create lasting change in our communities.";
 
   const presidentParagraphs = presidentMessage.split("\n\n").filter(Boolean);
 
@@ -156,12 +156,12 @@ export default async function HomePage() {
     federationList.length > 0
       ? federationList
       : [
-          "Soroptimist International Great Britain & Ireland (SIGBI)",
-          "Soroptimist International of the Americas (SIA)",
-          "Soroptimist International of Europe (SIE)",
-          "Soroptimist International of South East Asia Pacific (SISEAP)",
-          "Soroptimist International African Federation (SIAF)",
-        ];
+        "Soroptimist International Great Britain & Ireland (SIGBI)",
+        "Soroptimist International of the Americas (SIA)",
+        "Soroptimist International of Europe (SIE)",
+        "Soroptimist International of South East Asia Pacific (SISEAP)",
+        "Soroptimist International African Federation (SIAF)",
+      ];
 
   return (
     <>
@@ -190,7 +190,7 @@ export default async function HomePage() {
 
             <div className="space-y-5 text-[#17324D] leading-relaxed text-base sm:text-lg">
               <p>
-                Soroptimists are women who take action. Across our chartered chapters,
+                Soroptimists are women who take action. Across our chartered clubs,
                 members volunteer their professional expertise, resources, and time to
                 deliver measurable improvements in the lives of women and children.
               </p>
@@ -399,7 +399,7 @@ export default async function HomePage() {
             <SectionHeading
               kicker="National Leadership"
               title="Meet the President"
-              description="A message from the President of the National Association of Soroptimist International of India."
+              description="A message from the President of NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)."
               className="text-center sm:text-left mb-10"
             />
 
@@ -407,7 +407,7 @@ export default async function HomePage() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 {/* President Photograph Frame */}
                 <div className="lg:col-span-4 flex flex-col items-center text-center">
-                  <div className="relative w-48 h-56 sm:w-56 sm:h-64 rounded-3xl bg-[#005596] p-2 shadow-md border-2 border-[#D4A737] overflow-hidden flex flex-col items-center justify-center text-white">
+                  <div className="relative w-48 h-56 sm:w-56 sm:h-64 rounded-3xl bg-[#005596] p-2 shadow-md border-2 border-[#FAEB57] overflow-hidden flex flex-col items-center justify-center text-white">
                     {presidentPhotoUrl ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
@@ -417,7 +417,7 @@ export default async function HomePage() {
                       />
                     ) : (
                       <div className="w-full h-full rounded-2xl bg-[#003A6B] flex flex-col items-center justify-center p-4 border border-white/20">
-                        <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center font-serif text-2xl font-bold text-[#D4A737] mb-3 border border-white/20">
+                        <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center font-serif text-2xl font-bold text-[#FAEB57] mb-3 border border-white/20">
                           {presidentName.split(" ").map((n) => n[0]).filter(Boolean).slice(0, 2).join("") || "AR"}
                         </div>
                         <span className="text-xs uppercase font-bold tracking-wider text-white">
@@ -488,7 +488,7 @@ export default async function HomePage() {
         <Container>
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <SectionHeading
-              kicker="National Association of Soroptimist India (NASI-India)"
+              kicker="NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)"
               title="NASI India Board: 2026–2028"
               description="Elected volunteer leaders guiding NASI India's strategic vision, governance, and nationwide programme action."
               className="mb-0"
@@ -600,70 +600,195 @@ export default async function HomePage() {
         </Container>
       </section>
 
-      {/* 6. Upcoming Events Section */}
+      {/* 6. Calendar Section (Two-Column Layout) */}
       <section className="py-16 sm:py-24 bg-white border-b border-[#D7E8F5]">
         <Container>
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <SectionHeading
               kicker="Events & Calendar"
-              title="Upcoming Gatherings"
-              description="Join conferences, national meetings, and collaborative workshops across India."
+              title="Calendar"
+              description="National gatherings, leadership meetings, and constitutional forums across India."
               className="mb-0"
             />
             <Button
               href="/events"
-              variant="outline"
               size="md"
               rightIcon={<ArrowRightIcon size={16} />}
-              className="shrink-0 font-medium"
+              className="shrink-0 font-bold bg-[#FAEB57] text-[#003A6B] hover:bg-[#FDD835] hover:text-[#002D54] border border-[#F0DC36] shadow-2xs"
             >
               Full Calendar
             </Button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {upcomingEvents.map((event) => (
-              <Card key={event.slug} variant="elevated" className="group hover:border-[#005596] transition-all duration-200">
-                <CardHeader>
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <Badge variant="teal" size="sm">
-                      {event.category}
-                    </Badge>
-                    <span className="text-[11px] font-mono text-[#61758A]">
-                      {event.format}
-                    </span>
-                  </div>
-                  <CardTitle as="h3" className="text-lg group-hover:text-[#005596] transition-colors">
-                    {event.title}
-                  </CardTitle>
-                  <div className="flex flex-wrap items-center gap-4 text-xs text-[#61758A] mt-2">
-                    <div className="flex items-center gap-1.5">
-                      <CalendarIcon size={14} className="text-[#005596] shrink-0" />
-                      <span>{event.date}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <MapPinIcon size={14} className="text-[#005596] shrink-0" />
-                      <span>{event.location}</span>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <p className="text-sm text-[#61758A] leading-relaxed">
-                    {event.shortDescription}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+            {/* LEFT COLUMN – NASI EVENT */}
+            <div className="rounded-3xl bg-gradient-to-br from-[#F4FAFF] to-[#E8F3FC] border-2 border-[#D7E8F5] hover:border-[#005596] p-6 sm:p-8 flex flex-col justify-between shadow-xs transition-all duration-200">
+              <div className="space-y-5">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="px-3 py-1 rounded-full bg-[#FAEB57] text-[#002D54] border border-[#F0DC36] text-xs font-bold tracking-wide shadow-2xs">
+                    NASI National Event
+                  </span>
+                  <span className="text-xs font-mono font-semibold text-[#005596] flex items-center gap-1.5">
+                    <CalendarIcon size={13} className="text-[#005596]" />
+                    <span>Current Biennium Gathering</span>
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="font-serif font-bold text-2xl sm:text-3xl text-[#17324D] leading-tight">
+                    NASI EC Meeting &amp; Installation Ceremony
+                  </h3>
+                  <p className="text-xs sm:text-sm font-semibold text-[#005596] flex items-center gap-1.5">
+                    <MapPinIcon size={14} className="text-[#005596]" />
+                    <span>Host Club: SI Madurai &bull; Tamil Nadu</span>
                   </p>
-                </CardContent>
-                <CardFooter className="pt-3 border-t border-[#D7E8F5] bg-[#F4FAFF] flex items-center justify-between">
-                  <span className="text-xs text-[#005596] font-medium">Open for Registration</span>
-                  <Link
-                    href={`/events/${event.slug}`}
-                    className="text-xs font-semibold text-[#005596] hover:text-[#003A6B] inline-flex items-center gap-1 transition-colors"
-                  >
-                    <span>View Agenda & Details</span>
-                    <ArrowRightIcon size={13} />
-                  </Link>
-                </CardFooter>
-              </Card>
-            ))}
+                </div>
+
+                {/* Meeting information */}
+                <div className="space-y-3 text-sm text-[#17324D]/90 leading-relaxed">
+                  <p>
+                    <strong>Meeting Information:</strong> National Executive Committee (EC) meeting convening national office bearers, regional coordinators, and club leadership to review constitutional governance, formulate biennial strategic directives, and align national project priorities with the United Nations 17 SDGs.
+                  </p>
+                  <p>
+                    <strong>Installation Ceremony Details:</strong> Formal Installation Ceremony commemorating the induction and oath-taking of National President Anitha Rajarajan and the 2026–2028 National Board, establishing the leadership team guiding 19 chartered clubs nationwide.
+                  </p>
+                </div>
+
+                {/* Invitation / Poster Image Placeholder */}
+                <div className="rounded-2xl border-2 border-dashed border-[#005596]/40 bg-white p-4 sm:p-5 text-center flex flex-col items-center justify-center space-y-2">
+                  <div className="w-12 h-12 rounded-xl bg-[#FAEB57] text-[#003A6B] flex items-center justify-center font-serif text-lg font-bold border border-[#F0DC36] shadow-2xs">
+                    SI
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#005596]">
+                    Invitation &amp; Poster Placeholder
+                  </span>
+                  <p className="text-xs text-[#61758A] max-w-sm italic">
+                    [Official Invitation card, poster artwork, and event photographs will be displayed once supplied by NASI]
+                  </p>
+                </div>
+
+                {/* Event Highlights */}
+                <div className="space-y-2 pt-1">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#005596] block">
+                    Event Highlights:
+                  </span>
+                  <ul className="space-y-1.5 text-xs text-[#17324D]">
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#005596] shrink-0 mt-1.5" />
+                      <span>Formal Installation of President Anitha Rajarajan &amp; 2026–2028 National Board</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#005596] shrink-0 mt-1.5" />
+                      <span>National Executive Committee biennial directives &amp; club coordination</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#005596] shrink-0 mt-1.5" />
+                      <span>Programme Action showcase and United Nations SDG alignment</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#005596] shrink-0 mt-1.5" />
+                      <span>Fellowship banquet &amp; commemorative photographic documentation</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="pt-6 mt-6 border-t border-[#D7E8F5] flex items-center justify-between">
+                <span className="text-xs font-semibold text-[#005596]">
+                  Biennium 2026–2028
+                </span>
+                <Link
+                  href="/events/nasi-ec-meeting-installation-ceremony"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#005596] hover:bg-[#003A6B] text-[#FAEB57] text-xs font-bold transition-colors shadow-xs"
+                >
+                  <span>View Event Details</span>
+                  <ArrowRightIcon size={13} />
+                </Link>
+              </div>
+            </div>
+
+            {/* RIGHT COLUMN – NASI ANNUAL GENERAL MEETING */}
+            <div className="rounded-3xl bg-gradient-to-br from-[#F4FAFF] to-[#E8F3FC] border-2 border-[#D7E8F5] hover:border-[#005596] p-6 sm:p-8 flex flex-col justify-between shadow-xs transition-all duration-200">
+              <div className="space-y-5">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="px-3 py-1 rounded-full bg-[#FAEB57] text-[#002D54] border border-[#F0DC36] text-xs font-bold tracking-wide shadow-2xs">
+                    Annual Governance Forum
+                  </span>
+                  <span className="text-xs font-mono font-semibold text-[#005596] flex items-center gap-1.5">
+                    <CalendarIcon size={13} className="text-[#005596]" />
+                    <span>Held in First Half of the Year</span>
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="font-serif font-bold text-2xl sm:text-3xl text-[#17324D] leading-tight">
+                    NASI Annual General Meeting
+                  </h3>
+                  <p className="text-xs sm:text-sm font-semibold text-[#005596] flex items-center gap-1.5">
+                    <MapPinIcon size={14} className="text-[#005596]" />
+                    <span>National Secretariat &bull; Hybrid Convention</span>
+                  </p>
+                </div>
+
+                {/* Exact Required Description */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[#D7E8F5] shadow-2xs">
+                  <p className="text-sm sm:text-base text-[#17324D] leading-relaxed font-serif italic border-l-3 border-[#FAEB57] pl-3.5">
+                    &ldquo;The NASI Annual General Meeting is held in the first half of the year. It reviews the Annual Reports, Programme Action, Audited Statements and undertakes constitutional deliberations.&rdquo;
+                  </p>
+                </div>
+
+                {/* Governance Overview / Placeholder Area */}
+                <div className="rounded-2xl border-2 border-dashed border-[#005596]/40 bg-white p-4 sm:p-5 text-center flex flex-col items-center justify-center space-y-2">
+                  <div className="w-12 h-12 rounded-xl bg-[#FAEB57] text-[#003A6B] flex items-center justify-center font-serif text-lg font-bold border border-[#F0DC36] shadow-2xs">
+                    AGM
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#005596]">
+                    Meeting Notice &amp; Agenda
+                  </span>
+                  <p className="text-xs text-[#61758A] max-w-sm italic">
+                    [Official Notice, Agenda Timetable, and Delegate Accreditation documents will be circulated by the National Secretariat]
+                  </p>
+                </div>
+
+                {/* Key Dimensions */}
+                <div className="space-y-2 pt-1">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#005596] block">
+                    Core Business &amp; Deliberations:
+                  </span>
+                  <ul className="space-y-1.5 text-xs text-[#17324D]">
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#005596] shrink-0 mt-1.5" />
+                      <span>Presentation and review of Annual Programme Action reports from all 19 clubs</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#005596] shrink-0 mt-1.5" />
+                      <span>Statutory review and formal approval of National Audited Financial Statements</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#005596] shrink-0 mt-1.5" />
+                      <span>Constitutional deliberations and national governance policy resolutions</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#005596] shrink-0 mt-1.5" />
+                      <span>Strategic alignment with Soroptimist International and SIGBI federations</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="pt-6 mt-6 border-t border-[#D7E8F5] flex items-center justify-between">
+                <span className="text-xs font-semibold text-[#005596]">
+                  Annual Governance Assembly
+                </span>
+                <Link
+                  href="/events/nasi-annual-national-council-meeting"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#FAEB57] hover:bg-[#FDD835] text-[#002D54] text-xs font-bold transition-colors shadow-2xs border border-[#F0DC36]"
+                >
+                  <span>Meeting Agenda &amp; Info</span>
+                  <ArrowRightIcon size={13} />
+                </Link>
+              </div>
+            </div>
           </div>
         </Container>
       </section>
@@ -757,7 +882,7 @@ export default async function HomePage() {
               <Button
                 href="/join"
                 size="lg"
-                className="justify-center bg-white hover:bg-[#E8F3FC] text-[#005596] font-semibold shadow-md transition-colors"
+                className="justify-center bg-[#FAEB57] hover:bg-[#FDD835] text-[#002D54] font-bold shadow-md transition-colors border border-[#F0DC36]"
                 rightIcon={<ArrowRightIcon size={16} />}
               >
                 Become a Member
@@ -768,7 +893,7 @@ export default async function HomePage() {
                 size="lg"
                 className="text-white border-white/80 hover:bg-white/10 justify-center font-medium transition-colors"
               >
-                Contact NASI India
+                Contact NASI-India
               </Button>
             </div>
           </div>

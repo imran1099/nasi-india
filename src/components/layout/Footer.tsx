@@ -131,8 +131,8 @@ export function Footer({
             <h3 className="text-sm font-semibold uppercase tracking-wider text-[#E8F3FC] font-sans">
               Secretariat Contact
             </h3>
-            <p className="text-xs text-[#aed1ef]">
-              Soroptimist International of India
+            <p className="text-xs text-[#FAEB57] font-semibold">
+              NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)
             </p>
 
             <div className="space-y-3 text-xs text-[#D7E8F5]">
@@ -193,8 +193,8 @@ export function Footer({
             </Link>
           </div>
 
-          <p className="text-[11px] text-[#aed1ef]">
-            National Association of Soroptimist International of India
+          <p className="text-[11px] text-[#FAEB57] font-semibold">
+            NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)
           </p>
         </div>
       </div>

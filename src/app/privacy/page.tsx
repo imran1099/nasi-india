@@ -26,7 +26,7 @@ export default function PrivacyPage() {
       <PageHeading
         title="Privacy Policy"
         kicker="Governance & Compliance"
-        description="Learn how the National Association of Soroptimist International of India respects and protects the personal information of members, visitors, and partners."
+        description="Learn how NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India) respects and protects the personal information of members, visitors, and partners."
         breadcrumbs={[{ label: "Privacy Policy" }]}
         badge={<Badge variant="forest">Policy Document</Badge>}
       />
@@ -50,7 +50,7 @@ export default function PrivacyPage() {
               </p>
               <ul className="list-disc pl-5 text-sm text-forest-800 space-y-1.5">
                 <li>Contact details: Name, email address, telephone number, city, and state.</li>
-                <li>Inquiry context: Professional background, preferred club chapter, and specific message details.</li>
+                <li>Inquiry context: Professional background, preferred club, and specific message details.</li>
                 <li>Technical data: Standard browser metadata, IP address, and anonymized aggregate usage logs.</li>
               </ul>
             </div>

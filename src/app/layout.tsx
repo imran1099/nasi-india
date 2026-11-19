@@ -13,22 +13,23 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nasiindia.org";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "NASI India | National Association of Soroptimist International of India",
-    template: "%s | NASI India",
+    default: "NASI-India | NATIONAL ASSOCIATION SOROPTIMIST INDIA",
+    template: "%s | NASI-India",
   },
   description: siteConfig.description,
   keywords: [
-    "NASI India",
-    "Soroptimist International India",
+    "NASI-India",
+    "NATIONAL ASSOCIATION SOROPTIMIST INDIA",
+    "Soroptimist India",
     "women service organization India",
     "women empowerment",
     "women education",
     "community service",
     "Soroptimist clubs India",
   ],
-  authors: [{ name: "NASI India Secretariat" }],
-  creator: "National Association of Soroptimist International of India",
-  publisher: "NASI India",
+  authors: [{ name: "NASI-India Secretariat" }],
+  creator: "NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)",
+  publisher: "NASI-India",
   formatDetection: {
     email: false,
     address: false,
@@ -41,21 +42,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: siteUrl,
-    siteName: "NASI India",
-    title: "NASI India | National Association of Soroptimist International of India",
+    siteName: "NASI-India",
+    title: "NASI-India | NATIONAL ASSOCIATION SOROPTIMIST INDIA",
     description: siteConfig.description,
     images: [
       {
         url: "/images/og-default.jpg",
         width: 1200,
         height: 630,
-        alt: "National Association of Soroptimist International of India",
+        alt: "NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NASI India | National Association of Soroptimist International of India",
+    title: "NASI-India | NATIONAL ASSOCIATION SOROPTIMIST INDIA",
     description: siteConfig.description,
     images: ["/images/og-default.jpg"],
   },
@@ -67,7 +68,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#15362c",
+  themeColor: "#005596",
 };
 
 export default function RootLayout({

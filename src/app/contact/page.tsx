@@ -46,7 +46,7 @@ export default function ContactPage() {
                   National Secretariat
                 </h2>
                 <p className="text-sm text-[#61758A] mt-2 leading-relaxed">
-                  The National Association of Soroptimist International of India coordinates all regional clubs, national initiatives, and international correspondence.
+                  NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India) coordinates all regional clubs, national initiatives, and international correspondence.
                 </p>
               </div>
 

@@ -52,7 +52,7 @@ export default async function AdminDashboardPage() {
             Welcome back, {session?.name ?? "Administrator"}
           </h1>
           <p className="text-xs sm:text-sm text-forest-700 mt-1">
-            System overview and operational status for the National Association of Soroptimist International of India.
+            System overview and operational status for NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India).
           </p>
         </div>
 
@@ -81,7 +81,7 @@ export default async function AdminDashboardPage() {
               {metrics.clubs.active}
             </div>
             <p className="text-[11px] text-forest-600 mt-1">
-              Active chapters of {metrics.clubs.total} nationwide
+              Active clubs of {metrics.clubs.total} nationwide
             </p>
           </div>
           <Link
@@ -210,10 +210,10 @@ export default async function AdminDashboardPage() {
               <Badge variant="teal" size="sm">19 Clubs</Badge>
             </div>
             <CardTitle as="h3" className="text-base text-forest-950">
-              Clubs Directory & Chapters
+              Clubs Directory
             </CardTitle>
             <p className="text-xs text-forest-700 mt-1.5 leading-relaxed">
-              Maintain chapter locations, contact coordinators, meeting timings, and signature grassroots projects across all 5 regional zones.
+              Maintain club locations, contact coordinators, meeting timings, and signature grassroots projects across all 5 regional zones.
             </p>
             <div className="mt-4 pt-3 border-t border-sand-200">
               <Button href="/admin/clubs" variant="outline" size="sm" className="w-full justify-center">
@@ -276,7 +276,7 @@ export default async function AdminDashboardPage() {
               Events & National Conferences
             </CardTitle>
             <p className="text-xs text-forest-700 mt-1.5 leading-relaxed">
-              Manage hybrid conferences, National Council gatherings, virtual webinars, and regional leadership workshops.
+              Manage hybrid conferences, Annual General Meetings, virtual webinars, and regional leadership workshops.
             </p>
             <div className="mt-4 pt-3 border-t border-sand-200">
               <Button href="/admin/events" variant="outline" size="sm" className="w-full justify-center">
@@ -299,7 +299,7 @@ export default async function AdminDashboardPage() {
               Enquiries & Membership Applications
             </CardTitle>
             <p className="text-xs text-forest-700 mt-1.5 leading-relaxed">
-              Direct inbox routing for public contact forms and prospective member applications with preferred chapter tracking.
+              Direct inbox routing for public contact forms and prospective member applications with preferred club tracking.
             </p>
             <div className="mt-4 pt-3 border-t border-sand-200">
               <Button href="/admin/enquiries" variant="outline" size="sm" className="w-full justify-center">

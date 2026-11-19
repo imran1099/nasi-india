@@ -274,7 +274,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                   </div>
                   <div className="relative z-10">
                     <span className="text-xs uppercase tracking-wider text-teal-300 font-semibold block mb-1">
-                      Soroptimist International of India
+                      NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)
                     </span>
                     <h1 className="font-serif font-bold text-2xl sm:text-3xl text-white">
                       {eventData.title}

@@ -82,7 +82,7 @@ export function ClubCard({ club }: ClubCardProps) {
       <CardFooter className="px-5 py-3.5 border-t border-[#D7E8F5] bg-[#F4FAFF] flex items-center justify-between">
         <span className="text-xs text-[#61758A] flex items-center gap-1.5 font-medium">
           <UsersIcon size={14} className="text-[#005596]" />
-          <span>Active Chapter</span>
+          <span>Active Club</span>
         </span>
 
         <Link

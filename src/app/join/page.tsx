@@ -16,14 +16,14 @@ import { MembershipForm } from "@/components/forms/MembershipForm";
 export const metadata: Metadata = {
   title: "Join SI Today",
   description:
-    "Become a member of Soroptimist International of India. Connect with women leaders, empower girls, and serve communities across the nation.",
+    "Become a member of NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India). Connect with women leaders, empower girls, and serve communities across the nation.",
   alternates: {
     canonical: "/join",
   },
   openGraph: {
     title: "Join SI Today | NASI India Membership",
     description:
-      "Become a member of Soroptimist International of India. Connect with women leaders, empower girls, and serve communities across the nation.",
+      "Become a member of NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India). Connect with women leaders, empower girls, and serve communities across the nation.",
     url: "/join",
   },
 };

@@ -30,6 +30,13 @@
   --color-brand-text: #17324d;
   --color-brand-muted: #61758a;
 
+  /* NASI Approved Lemon Yellow Tokens */
+  --color-lemon-yellow: #faeb57;
+  --color-lemon-yellow-hover: #fce83a;
+  --color-lemon-yellow-border: #f0dc36;
+  --color-lemon-yellow-light: #fffbd4;
+  --color-lemon-yellow-dark: #d4c422;
+
   /* Theme mappings aligned strictly to the NASI Blue palette */
   --color-forest-50: #f4faff;
   --color-forest-100: #e8f3fc;
@@ -66,10 +73,10 @@
   --color-sand-800: #253c51;
   --color-sand-900: #17324d;
 
-  --color-gold-400: #d4a737;
-  --color-gold-500: #b88d22;
-  --color-gold-600: #9c7314;
-  --color-gold-700: #7b580b;
+  --color-gold-400: #faeb57;
+  --color-gold-500: #fce83a;
+  --color-gold-600: #e6d025;
+  --color-gold-700: #c4b01d;
 }
 
 :root {
@@ -78,6 +85,9 @@
   --primary-blue: #005596;
   --primary-blue-hover: #004780;
   --primary-blue-dark: #003a6b;
+  --lemon-yellow: #faeb57;
+  --lemon-yellow-hover: #fce83a;
+  --lemon-yellow-border: #f0dc36;
   --very-light-blue: #f4faff;
   --light-blue: #e8f3fc;
   --border-blue: #d7e8f5;

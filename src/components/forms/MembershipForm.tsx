@@ -152,11 +152,11 @@ export function MembershipForm({ clubOptions }: { clubOptions: ClubOption[] }) {
           disabled={isPending}
         />
         <FormField
-          label="Select Preferred Club Chapter"
+          label="Select Preferred Club"
           id="join-club"
           name="preferredClub"
           type="select"
-          placeholder="Choose an initial club or new chapter"
+          placeholder="Choose an initial club or nearest city"
           options={clubOptions}
           required
           errorMessage={fieldErrors?.preferredClub?.[0]}
@@ -189,8 +189,8 @@ export function MembershipForm({ clubOptions }: { clubOptions: ClubOption[] }) {
             className="mt-1 h-4 w-4 rounded border-sand-400 text-teal-800 focus:ring-teal-700"
           />
           <span className="text-xs text-forest-800 leading-relaxed">
-            I consent to the processing of my contact and professional details by the National Association
-            of Soroptimist International of India in accordance with the{" "}
+            I consent to the processing of my contact and professional details by NATIONAL ASSOCIATION
+            SOROPTIMIST INDIA (NASI-India) in accordance with the{" "}
             <Link
               href="/privacy"
               target="_blank"

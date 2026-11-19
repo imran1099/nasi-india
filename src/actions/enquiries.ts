@@ -121,8 +121,8 @@ export async function submitContactEnquiry(
 
     // Explicit response message: never report successful email delivery if sending failed
     const userMessage = emailResult.delivered
-      ? "Thank you for contacting NASI India. Your message has been received and our secretariat has been notified via email."
-      : "Thank you for contacting NASI India. Your message has been safely logged in our database and will be reviewed by the secretariat in the portal.";
+      ? "Thank you for contacting NASI-India. Your message has been received and our secretariat has been notified via email."
+      : "Thank you for contacting NASI-India. Your message has been safely logged in our database and will be reviewed by the secretariat in the portal.";
 
     return ok({
       id: enquiry.id,
@@ -228,8 +228,8 @@ export async function submitMembershipEnquiry(
 
     // Explicit response message: never report successful email delivery if sending failed
     const userMessage = emailResult.delivered
-      ? "Thank you for applying to join Soroptimist International of India. Your application has been received and our membership committee has been notified via email."
-      : "Thank you for applying to join Soroptimist International of India. Your application has been safely logged in our database and will be reviewed by the membership committee in the portal.";
+      ? "Thank you for applying to join NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India). Your application has been received and our membership committee has been notified via email."
+      : "Thank you for applying to join NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India). Your application has been safely logged in our database and will be reviewed by the membership committee in the portal.";
 
     return ok({
       id: enquiry.id,

@@ -20,7 +20,7 @@ const slides: HeroSlide[] = [
     title: "Educating and Mentoring the Next Generation",
     subtitle: "Vidya Jyothi & grassroots literacy scholarships across Indian communities",
     category: "Education & Literacy",
-    location: "Bangalore & Pune Chapters",
+    location: "Bangalore & Pune Clubs",
     fallbackSvg: (
       <svg
         viewBox="0 0 600 420"

@@ -61,16 +61,16 @@ async function getCommitteeData(): Promise<CommitteeMember[]> {
 }
 
 export const metadata: Metadata = {
-  title: "NASI India Board: 2026-2028 | National Association Soroptimist India",
+  title: "NASI India Board: 2026-2028 | NATIONAL ASSOCIATION SOROPTIMIST INDIA",
   description:
-    "National Executive Board of the National Association Soroptimist India (NASI-India) for Biennium 2026–2028.",
+    "National Executive Board of the NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India) for Biennium 2026–2028.",
   alternates: {
     canonical: "/committee",
   },
   openGraph: {
-    title: "NASI India Board: 2026-2028 | NASI India",
+    title: "NASI India Board: 2026-2028 | NASI-India",
     description:
-      "National Executive Board of the National Association Soroptimist India (NASI-India) for Biennium 2026–2028.",
+      "National Executive Board of the NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India) for Biennium 2026–2028.",
     url: "/committee",
   },
 };
@@ -82,8 +82,8 @@ export default async function CommitteePage() {
     <>
       <PageHeading
         title="NASI India Board: 2026–2028"
-        kicker="National Association Soroptimist India (NASI-India)"
-        description="The National Executive Board coordinates NASI India's countrywide programmes, oversees constitutional governance, supports regional club chapters, and maintains international federation ties with SIGBI."
+        kicker="NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)"
+        description="The National Executive Board coordinates NASI India's countrywide programmes, oversees constitutional governance, supports regional clubs, and maintains international federation ties with SIGBI."
         breadcrumbs={[{ label: "Board 2026–2028" }]}
         badge={<Badge variant="forest">Biennium 2026–2028</Badge>}
       />
@@ -96,7 +96,7 @@ export default async function CommitteePage() {
                 Executive Governance
               </span>
               <p className="text-sm text-forest-800 mt-0.5">
-                Official leadership roster of the National Association Soroptimist India Board for the 2026–2028 Biennium.
+                Official leadership roster of the NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India) Board for the 2026–2028 Biennium.
               </p>
             </div>
             <span className="shrink-0 text-xs font-mono text-forest-600 bg-sand-200/80 px-2.5 py-1 rounded-md">

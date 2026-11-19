@@ -62,17 +62,17 @@ try {
 }
 
 export const siteConfig: SiteConfig = {
-  name: "NASI India",
+  name: "NASI-India",
   tagline: "Inspiring action, transforming lives for women and girls across India.",
   description:
-    "National Association of Soroptimist International of India (NASI India) is a voluntary service organization committed to educating, empowering, and enabling women and girls through grassroots community action.",
+    "NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India) is a voluntary service organization committed to educating, empowering, and enabling women and girls through grassroots community action.",
   logo: {
     type: "image",
-    text: "NASI India",
-    subtext: "Soroptimist International",
+    text: "NASI-India",
+    subtext: "NATIONAL ASSOCIATION SOROPTIMIST INDIA",
     imageUrl: savedLogoUrl || "/images/soroptimist-india-logo.svg",
     footerImageUrl: savedLogoUrl || "/images/soroptimist-india-logo-white.svg",
-    altText: "NASI India - National Association of Soroptimist International of India",
+    altText: "NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)",
   },
   navItems: [
     { label: "Home", href: "/" },
@@ -84,7 +84,7 @@ export const siteConfig: SiteConfig = {
     { label: "Contact Us", href: "/contact", description: "Get in touch with the National Secretariat" },
   ],
   contact: {
-    organizationName: "National Association of Soroptimist International of India",
+    organizationName: "NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)",
     parentBody: "Chartered under Soroptimist International",
     email: "contact@nasi-india.org",
     secretaryEmail: savedSecretaryEmail || "secretary@nasi-india.org",

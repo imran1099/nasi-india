@@ -37,7 +37,7 @@ export default function AboutPage() {
       <PageHeading
         title="About NASI India"
         kicker="Who We Are, Our Mission & History"
-        description="The National Association of Soroptimist International of India unites women committed to service, leadership, and community development to improve the lives and opportunities of women and girls."
+        description="NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India) unites women committed to service, leadership, and community development to improve the lives and opportunities of women and girls."
         breadcrumbs={[{ label: "About NASI India" }]}
         badge={<Badge variant="forest">SIGBI Affiliated National Association</Badge>}
       />
@@ -64,7 +64,7 @@ export default function AboutPage() {
                   Soroptimist International is a global volunteer organisation working to transform the lives and opportunities of women and girls around the world.
                 </p>
                 <p>
-                  There are five Soroptimist International Federations. <strong>Soroptimist International Great Britain and Ireland (SIGBI)</strong> is one of them, and the <strong>National Association of Soroptimist International India (NASI India)</strong> is part of SIGBI.
+                  There are five Soroptimist International Federations. <strong>Soroptimist International Great Britain and Ireland (SIGBI)</strong> is one of them, and <strong>NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)</strong> is part of SIGBI.
                 </p>
               </div>
 

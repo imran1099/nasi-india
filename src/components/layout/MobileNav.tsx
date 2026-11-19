@@ -90,9 +90,9 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
           </button>
         </div>
 
-        {/* Navigation Links */}
+        {/* Navigation Links - Lemon Yellow Tabs with Blue Lettering */}
         <nav aria-label="Mobile Navigation" className="p-4 flex-1">
-          <ul className="space-y-1.5">
+          <ul className="space-y-2">
             {siteConfig.navItems.map((item) => {
               const isActive =
                 item.href === "/"
@@ -103,17 +103,17 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={`flex items-center justify-between px-3.5 py-3 rounded-lg text-sm font-medium transition-colors ${
+                    className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-bold transition-colors border ${
                       isActive
-                        ? "bg-[#005596] text-white shadow-xs font-semibold"
-                        : "text-[#17324D] hover:bg-[#E8F3FC]"
+                        ? "bg-[#FDD835] text-[#002D54] border-2 border-[#005596] shadow-xs"
+                        : "bg-[#FAEB57] text-[#003A6B] border-[#F0DC36] hover:bg-[#FDD835] hover:text-[#002D54]"
                     }`}
                     aria-current={isActive ? "page" : undefined}
                   >
                     <span>{item.label}</span>
                     <ChevronRightIcon
                       size={16}
-                      className={isActive ? "text-[#E8F3FC]" : "text-[#61758A]"}
+                      className="text-[#003A6B]"
                     />
                   </Link>
                 </li>
@@ -124,17 +124,15 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
           <div className="mt-6 pt-6 border-t border-[#D7E8F5] flex flex-col gap-2.5">
             <Button
               href="/clubs"
-              variant="outline"
               size="md"
-              className="w-full justify-center"
+              className="w-full justify-center bg-[#FAEB57] text-[#003A6B] hover:bg-[#FDD835] hover:text-[#002D54] border border-[#F0DC36] font-bold shadow-2xs"
             >
               Explore Our Clubs
             </Button>
             <Button
               href="/join"
-              variant="primary"
               size="md"
-              className="w-full justify-center bg-[#005596] text-white hover:bg-[#004780]"
+              className="w-full justify-center bg-[#005596] text-[#FAEB57] hover:bg-[#003A6B] border border-[#FAEB57] font-bold shadow-xs"
             >
               Join SI Today
             </Button>
@@ -143,7 +141,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
 
         {/* Drawer Footer with Quick Contact */}
         <div className="p-5 border-t border-[#D7E8F5] bg-white text-xs text-[#17324D] space-y-2">
-          <p className="font-semibold text-[#17324D]">NASI India Secretariat</p>
+          <p className="font-semibold text-[#17324D]">NASI-India Secretariat</p>
           <div className="flex items-center gap-2 text-[#61758A]">
             <MailIcon size={14} />
             <a
@@ -157,8 +155,8 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
             <PhoneIcon size={14} />
             <span>{siteConfig.contact.phone}</span>
           </div>
-          <p className="text-[11px] text-[#61758A] pt-2 border-t border-[#D7E8F5]">
-            Soroptimist International of India • National Association
+          <p className="text-[11px] text-[#005596] font-semibold pt-2 border-t border-[#D7E8F5]">
+            NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)
           </p>
         </div>
       </div>

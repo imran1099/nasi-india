@@ -76,7 +76,7 @@ export default async function AdminClubsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-sand-300">
         <div>
           <span className="text-xs uppercase tracking-wider font-semibold text-teal-800">
-            Regional Chapters
+            Regional Clubs
           </span>
           <h1 className="text-2xl font-serif font-bold text-forest-950">
             Clubs Directory &amp; Historical Archival
@@ -101,7 +101,7 @@ export default async function AdminClubsPage() {
         <CardHeader className="bg-sand-50/70 border-b border-sand-200 py-4 px-6 flex flex-row items-center justify-between">
           <div>
             <CardTitle as="h2" className="text-base text-forest-950">
-              Chartered Chapters Roster
+              Chartered Clubs Roster
             </CardTitle>
             <p className="text-xs text-forest-600">Showing {clubs.length} total club profiles</p>
           </div>

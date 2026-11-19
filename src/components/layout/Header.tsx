@@ -40,9 +40,9 @@ export function Header({ logoUrl }: HeaderProps) {
       <div className="bg-[#002D54] text-white text-xs py-2 px-4 border-b border-[#001E38] shadow-2xs">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 text-center sm:text-left">
           <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D4A737] animate-pulse" />
-            <p className="text-[#F4FAFF] font-medium tracking-wide">
-              Soroptimist International of India • National Association
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FAEB57] animate-pulse" />
+            <p className="text-[#F4FAFF] font-semibold tracking-wide">
+              NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)
             </p>
           </div>
           <div className="hidden md:flex items-center gap-4 text-[#D7E8F5]">
@@ -54,7 +54,7 @@ export function Header({ logoUrl }: HeaderProps) {
               href={siteConfig.internationalAffiliation.globalUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#F4FAFF] hover:text-[#D4A737] transition-colors inline-flex items-center gap-1 font-medium"
+              className="text-[#FAEB57] hover:underline transition-colors inline-flex items-center gap-1 font-semibold"
             >
               Soroptimist International Global &rarr;
             </a>
@@ -71,10 +71,10 @@ export function Header({ logoUrl }: HeaderProps) {
               <Logo imageUrl={logoUrl} />
             </div>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - Lemon-Yellow Tabs with Blue Lettering */}
             <nav
               aria-label="Primary Navigation"
-              className="hidden lg:flex items-center gap-1 xl:gap-1.5"
+              className="hidden lg:flex items-center gap-1.5 xl:gap-2"
             >
               {siteConfig.navItems.map((item) => {
                 const isActive =
@@ -86,11 +86,10 @@ export function Header({ logoUrl }: HeaderProps) {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`relative px-3.5 py-2 text-sm rounded-lg transition-all duration-150 ${
-                      isActive
-                        ? "text-[#005596] font-semibold bg-[#E8F3FC] border border-[#D7E8F5] shadow-2xs"
-                        : "text-[#17324D] font-medium hover:text-[#005596] hover:bg-[#F4FAFF]"
-                    }`}
+                    className={`relative px-3.5 py-2 text-sm rounded-lg font-bold transition-all duration-150 border ${isActive
+                      ? "bg-[#FDD835] text-[#002D54] border-2 border-[#005596] shadow-xs ring-1 ring-[#005596]"
+                      : "bg-[#FAEB57] text-[#003A6B] border-[#F0DC36] shadow-2xs hover:bg-[#FDD835] hover:text-[#002D54] hover:border-[#005596]"
+                      }`}
                     aria-current={isActive ? "page" : undefined}
                   >
                     {item.label}
@@ -105,22 +104,20 @@ export function Header({ logoUrl }: HeaderProps) {
               })}
             </nav>
 
-            {/* Right CTAs & Mobile Menu Button */}
+            {/* Right CTAs & Mobile Menu Button - Blue and Lemon-Yellow theme */}
             <div className="flex items-center gap-2.5">
               <div className="hidden sm:flex items-center gap-2">
                 <Button
                   href="/clubs"
-                  variant="ghost"
                   size="sm"
-                  className="hidden xl:inline-flex text-[#17324D] hover:text-[#005596] hover:bg-[#E8F3FC]"
+                  className="hidden xl:inline-flex bg-[#FAEB57] text-[#003A6B] hover:bg-[#FDD835] hover:text-[#002D54] border border-[#F0DC36] font-bold shadow-2xs"
                 >
                   Find a Club
                 </Button>
                 <Button
                   href="/join"
-                  variant="primary"
                   size="sm"
-                  className="hidden md:inline-flex bg-[#005596] hover:bg-[#004780] text-white shadow-xs"
+                  className="hidden md:inline-flex bg-[#005596] hover:bg-[#004780] text-[#FAEB57] border border-[#FAEB57] font-bold shadow-xs"
                 >
                   Join SI Today
                 </Button>
@@ -134,7 +131,7 @@ export function Header({ logoUrl }: HeaderProps) {
                 aria-label="Open navigation menu"
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-navigation"
-                className="lg:hidden p-2.5 rounded-lg text-[#005596] hover:bg-[#E8F3FC] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[#005596] transition-colors cursor-pointer border border-transparent hover:border-[#D7E8F5]"
+                className="lg:hidden p-2.5 rounded-lg bg-[#FAEB57] text-[#003A6B] border border-[#F0DC36] hover:bg-[#FDD835] hover:text-[#002D54] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[#005596] transition-colors cursor-pointer shadow-2xs"
               >
                 <MenuIcon size={24} />
               </button>

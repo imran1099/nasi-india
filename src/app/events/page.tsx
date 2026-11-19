@@ -104,32 +104,32 @@ export default async function EventsPage() {
     settings?.["event.maduraiHighlight4"],
   ].filter(Boolean) as string[];
 
-  const councilTitle = settings?.["council.title"] || "Annual National Council Assembly";
+  const councilTitle = settings?.["council.title"] || "NASI Annual General Meeting";
   const councilDescription =
     settings?.["council.description"] ||
-    "The Annual National Council brings together accredited voting delegates, club presidents, secretaries, and National Board officers from all 19 chartered clubs across India. It serves as the supreme governance forum for constitutional amendments, audited financial reporting, and strategic programme ratification.";
+    "The NASI Annual General Meeting is held in the first half of the year. It reviews the Annual Reports, Programme Action, Audited Statements and undertakes constitutional deliberations.";
 
   return (
     <>
       <PageHeading
         title="Events & Calendar"
         kicker="Calendar of Action"
-        description="Key national gatherings, training sessions, and collaborative events organized by NASI India and regional chapters."
+        description="Key national gatherings, training sessions, and collaborative events organized by NASI-India and regional clubs."
         breadcrumbs={[{ label: "Events & Calendar" }]}
-        badge={<Badge variant="forest">Action Calendar</Badge>}
+        badge={<Badge variant="gold">Action Calendar</Badge>}
       />
 
       {/* Task 3: Madurai Meeting Invitation (Two-Column Layout) */}
       <MaduraiMeetingInvitation invitationUrl={invitationUrl} highlights={highlights} />
 
-      {/* Task 4: Annual National Council Section */}
+      {/* Task 4: NASI Annual General Meeting Section */}
       <section className="py-12 md:py-16 bg-white border-b border-[#D7E8F5]">
         <Container>
           <div className="max-w-4xl mx-auto space-y-6">
             <SectionHeading
               kicker="National Governance Forum"
               title={councilTitle}
-              description="The supreme decision-making and constitutional body of the National Association of Soroptimist International of India."
+              description="The supreme decision-making and constitutional body of NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)."
             />
 
             <div className="p-6 sm:p-8 rounded-3xl bg-[#F4FAFF] border border-[#D7E8F5] space-y-4 text-[#17324D] leading-relaxed text-sm sm:text-base">

@@ -247,7 +247,7 @@ export default async function NewsDetailPage({ params }: NewsPageProps) {
               />
               <div className="relative z-10 max-w-2xl">
                 <span className="text-xs uppercase tracking-wider text-teal-300 font-semibold block mb-2">
-                  Soroptimist International of India • {articleData.categoryName}
+                  NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India) • {articleData.categoryName}
                 </span>
                 <p className="font-serif font-bold text-xl sm:text-2xl text-white">
                   {articleData.title}

@@ -15,6 +15,31 @@ export interface NewsArticle {
 
 export const initialNews: NewsArticle[] = [
   {
+    slug: "nasi-ec-meeting-installation-ceremony",
+    title: "NASI EC Meeting & Installation Ceremony",
+    date: "Current Biennium Gathering",
+    isoDate: "2026-03-15",
+    category: "National Event",
+    clubAttribution: "National Secretariat & Host Club SI Madurai",
+    readTime: "3 min read",
+    isFeatured: true,
+    excerpt:
+      "Official convening of the National Executive Committee (EC) meeting and formal Installation Ceremony of the 2026–2028 National Board led by President Anitha Rajarajan.",
+    content: [
+      "The National Executive Committee (EC) meeting and formal Installation Ceremony marks the official commencement of the 2026–2028 Biennium under President Anitha Rajarajan and the elected National Board.",
+      "Meeting Details: The National EC meeting brought together national office bearers, regional coordinators, and delegates from across India to review constitutional governance, deliberate on strategic directives, and evaluate nationwide Programme Action initiatives aligned with the UN 17 Sustainable Development Goals.",
+      "Installation Ceremony Details: The formal Installation Ceremony celebrated the official induction and oath of office for President Anitha Rajarajan and the incoming National Executive Board, reaffirming the organization's collective commitment to educating, empowering, and enabling women and girls across India.",
+      "Photographs & Invitation: Official event photographs, installation portraits, and invitation materials will be published and updated here upon supply by NASI.",
+      "Reports & Links: Complete event proceedings, resolutions, and reports will be accessible through the National Secretariat and the dedicated event calendar page.",
+    ],
+    keyHighlights: [
+      "Formal induction of President Anitha Rajarajan and the 2026–2028 National Board.",
+      "National Executive Committee (EC) strategic deliberations and SDG alignment.",
+      "Official photographs and invitations will be published upon supply by NASI.",
+    ],
+    tags: ["National Event", "EC Meeting", "Installation Ceremony", "Leadership", "NASI-India"],
+  },
+  {
     slug: "national-programme-action-stem-scholarships",
     title: "National Programme Action: Expanding STEM Support and Mentoring for Girls",
     date: "October 15, 2024",
@@ -22,7 +47,7 @@ export const initialNews: NewsArticle[] = [
     category: "Programme Action",
     clubAttribution: "SI Bangalore & National PAC",
     readTime: "4 min read (Sample)",
-    isFeatured: true,
+    isFeatured: false,
     excerpt:
       "A coordinated multi-club initiative focusing on secondary school mentoring, laboratory access, and STEM scholarship grants for girls in semi-urban communities.",
     content: [
@@ -34,32 +59,32 @@ export const initialNews: NewsArticle[] = [
     keyHighlights: [
       "Over 120 students supported with academic mentoring and guidance.",
       "Bilingual STEM reference kits distributed to community schools.",
-      "Ongoing collaboration between Southern and Western region member chapters.",
+      "Ongoing collaboration between Southern and Western region member clubs.",
     ],
     tags: ["STEM Education", "Scholarships", "Mentorship", "Programme Action"],
   },
   {
-    slug: "nasi-annual-national-council-preparations",
-    title: "NASI India Annual National Council Preparations Announced",
-    date: "September 28, 2024",
-    isoDate: "2024-09-28",
+    slug: "nasi-annual-general-meeting-announcement",
+    title: "NASI Annual General Meeting Announced",
+    date: "Scheduled Annual Forum",
+    isoDate: "2026-05-20",
     category: "National Event",
     clubAttribution: "National Secretariat",
     readTime: "3 min read (Sample)",
     isFeatured: false,
     excerpt:
-      "Delegates and club leaders from across all four regions prepare to convene for the annual review of community impact, leadership transitions, and strategic goals.",
+      "The NASI Annual General Meeting is held in the first half of the year. It reviews the Annual Reports, Programme Action, Audited Statements and undertakes constitutional deliberations.",
     content: [
-      "The National Secretariat has announced preliminary details for the upcoming NASI India National Council Meeting. The hybrid convention will bring together club presidents, secretaries, and voting delegates from chartered chapters across India.",
-      "Key agenda items include the presentation of the biennial Programme Action review, statutory audited accounts by the National Treasurer, and constitutional governance deliberations.",
-      "The convention will also host specialized masterclasses on grant writing, youth engagement, and fostering international friendship links with Soroptimist federations globally.",
+      "The NASI Annual General Meeting is held in the first half of the year. It reviews the Annual Reports, Programme Action, Audited Statements and undertakes constitutional deliberations.",
+      "Delegates and club leaders from across all regions prepare to convene for the annual review of community impact, leadership transitions, and strategic goals.",
+      "Official notices, voting accreditation procedures, and statutory reports will be circulated to all 19 chartered clubs by the National Secretariat.",
     ],
     keyHighlights: [
-      "Hybrid format to ensure full representation from northern, southern, western, and eastern clubs.",
-      "Official release of the Biennial Programme Action Best Practices Compendium.",
-      "Formal induction ceremony for newly chartered project teams.",
+      "Reviews Annual Reports, Programme Action, and Audited Statements.",
+      "Constitutional deliberations and statutory compliance.",
+      "Full representation from all 19 chartered clubs across India.",
     ],
-    tags: ["Governance", "National Council", "Leadership", "Annual Review"],
+    tags: ["Annual General Meeting", "Governance", "Annual Review", "NASI-India"],
   },
   {
     slug: "soroptimist-international-16-days-of-activism",
@@ -73,7 +98,7 @@ export const initialNews: NewsArticle[] = [
     excerpt:
       "Member clubs align local community awareness campaigns with the international coalition to end violence against women and promote legal empowerment.",
     content: [
-      "In solidarity with the annual United Nations campaign, NASI India chapters are mobilizing grassroots advocacy across regional urban and rural centres for the '16 Days of Activism Against Gender-Based Violence'.",
+      "In solidarity with the annual United Nations campaign, NASI India clubs are mobilizing grassroots advocacy across regional urban and rural centres for the '16 Days of Activism Against Gender-Based Violence'.",
       "Clubs including SI Delhi, SI Chennai, and SI Bombay North are conducting localized legal aid clinics, self-defense workshops for adolescent girls, and street plays highlighting domestic rights.",
       "The campaign highlights the crucial link between economic independence and personal safety, encouraging community workshops on banking, digital safety, and legal helplines.",
     ],
@@ -140,7 +165,7 @@ export const initialNews: NewsArticle[] = [
     readTime: "3 min read (Sample)",
     isFeatured: false,
     excerpt:
-      "Cultural exchange and joint webinars fostered between Indian clubs and sister chapters across the Asia Pacific federation.",
+      "Cultural exchange and joint webinars fostered between Indian clubs and sister clubs across the Asia Pacific federation.",
     content: [
       "Soroptimist International's Friendship Link programme connects sister clubs across national borders to share best practices, promote international understanding, and support reciprocal community causes.",
       "The National Friendship Link Officer confirmed the formalization of twin-club links between SI Kochi, SI Bangalore, and clubs in Australia and New Zealand.",

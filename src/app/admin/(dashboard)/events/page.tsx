@@ -28,7 +28,7 @@ export default async function AdminEventsPage() {
             Events Management
           </h1>
           <p className="text-xs sm:text-sm text-forest-700 mt-0.5">
-            Coordinate national council meetings, webinars, and regional club gatherings.
+            Coordinate national meetings, webinars, and regional club gatherings.
           </p>
         </div>
 
