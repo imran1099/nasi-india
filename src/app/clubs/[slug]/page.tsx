@@ -162,7 +162,7 @@ export default async function ClubDetailPage({ params }: ClubPageProps) {
 
   if (!club) notFound();
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nasiindia.org";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nasiindia.com";
 
   const hasHistoricalData =
     club.charterDate ||

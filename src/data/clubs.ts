@@ -36,6 +36,8 @@ export interface HistoricalTimelineItem {
   state: string;
   region: string;
   foundingPresident?: string;
+  secretaryAtCharter?: string;
+  foundingMembersCount?: number;
   nasiPresidentAtCharter?: string;
   nasiMembershipOfficer?: string;
   sigbiOfficer?: string;
@@ -43,6 +45,25 @@ export interface HistoricalTimelineItem {
   historicalNotes?: string;
   charterStatusNote?: string;
   isFirstInIndia?: boolean;
+  imageUrl?: string;
+  imageCaption?: string;
+}
+
+export interface PastPresident {
+  order: number;
+  name: string;
+  tenure: string;
+  club: string;
+}
+
+export interface HistoricalPhotograph {
+  id: string;
+  title: string;
+  year: string;
+  caption: string;
+  imageUrl: string;
+  associatedClub?: string;
+  category: "charter" | "assembly" | "project" | "milestone";
 }
 
 export interface MissingInfoChecklistItem {
@@ -623,9 +644,10 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     state: "Maharashtra",
     region: "Western Region",
     foundingPresident: "Perin Bhiwandiwala",
-    sigbiOfficer: "Dorothy Mackenzie White (SIGBI Chartering Officer)",
+    foundingMembersCount: 17,
+    sigbiOfficer: "Dorothy Mackenzie White (SIGBI Chartering Representative)",
     isFirstInIndia: true,
-    historicalNotes: "First Soroptimist club in India, established before NASI India came into being.",
+    historicalNotes: "First Soroptimist club in India. Founder President Perin Bhiwandiwala, an architect educated in England, introduced Soroptimism to India, uniting 17 professional women in Mumbai.",
   },
   {
     id: "1979-calcutta",
@@ -637,7 +659,12 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     state: "West Bengal",
     region: "Eastern Region",
     foundingPresident: "Aroti Dutta",
-    sigbiOfficer: "Jean Wishart (SIGBI Chartering Officer)",
+    secretaryAtCharter: "Laxmi Parasuram",
+    foundingMembersCount: 23,
+    sigbiOfficer: "Jean Wishart (SIGBI Chartering Representative)",
+    imageUrl: "/images/history/charter-meeting-si-calcutta-1979.jpg",
+    imageCaption: "A historic moment from the early years of Soroptimism in India - members and guests at the charter meeting of SI Calcutta on 27 October 1979 under Founder President Aroti Dutta with Jean Wishart, SIGBI.",
+    historicalNotes: "Originated from an inspiring act of kindness in London. Founder President Aroti Dutta and Chitra Ghosh initiated Project 5-O in Bratachari village, Joka, supporting women through education and vocational training. Aroti Dutta became the first President of NASI–India in 1990.",
   },
   {
     id: "1987-burdwan",
@@ -649,7 +676,12 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     state: "West Bengal",
     region: "Eastern Region",
     foundingPresident: "Santanwana Sen",
-    sigbiOfficer: "Katherine Fussel (Chartering President)",
+    foundingMembersCount: 15,
+    motherClub: "SI Calcutta",
+    sigbiOfficer: "Katharine Fussel (President of SIGBI)",
+    imageUrl: "/images/history/charter-certificate-si-burdwan-1987.jpg",
+    imageCaption: "The Charter Certificate of Soroptimist International Burdwan, August 1987, under Founder President Santanwana Sen, mothered by SI Calcutta.",
+    historicalNotes: "Strengthened the connection between the growing Indian network and the SIGBI federation.",
   },
   {
     id: "1991-poona",
@@ -660,7 +692,12 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     city: "Pune",
     state: "Maharashtra",
     region: "Western Region",
-    historicalNotes: "Mother Club to SI Bangalore (2004) and SI Srinagar, Kashmir (2023).",
+    foundingPresident: "Gulshan Thukral",
+    nasiPresidentAtCharter: "Aroti Dutta",
+    sigbiOfficer: "Jane Barrie (President of SIGBI)",
+    imageUrl: "/images/history/charter-si-poona-1991.jpg",
+    imageCaption: "Charter of SI Poona, 8 April 1991 - Founder President Gulshan Thukral celebrating the charter with Aroti Dutta (NASI President) and Jane Barrie (SIGBI President).",
+    historicalNotes: "Mother Club to SI Bangalore (2004), SI Pune Metro East (2010), and SI Srinagar, Kashmir (2023).",
   },
   {
     id: "1992-bombay-west",
@@ -671,20 +708,28 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     city: "Mumbai",
     state: "Maharashtra",
     region: "Western Region",
+    foundingPresident: "Nalini Mudbkatkal",
+    motherClub: "SI Bombay North",
+    nasiMembershipOfficer: "Sara Chandy (Extension / Membership Officer)",
+    nasiPresidentAtCharter: "Aroti Dutta",
+    historicalNotes: "Extended the movement's presence across Mumbai, adding another chapter to the city's early Soroptimist history.",
   },
   {
     id: "1997-bombay-chembur",
     clubName: "SI Chembur",
     slug: "si-bombay-chembur",
-    charterDate: "1997",
+    charterDate: "2 March 1997",
     year: 1997,
     city: "Mumbai",
     state: "Maharashtra",
     region: "Western Region",
-    foundingPresident: "Daphne Pillai",
-    sigbiOfficer: "Olive R. Newton (SIGBI President)",
-    motherClub: "Soroptimist International of Colaba",
+    foundingPresident: "Dr. Daphne Pillai",
+    motherClub: "SI South Bombay / Colaba",
+    sigbiOfficer: "Elizabeth Hughes (SIGBI Representative)",
     charterStatusNote: "Charter Year verified and confirmed as 1997.",
+    imageUrl: "/images/history/charter-si-bombay-chembur-1997.jpg",
+    imageCaption: "Charter of SI Bombay Chembur, 2 March 1997 - Founder President Dr. Daphne Pillai addressing the gathering alongside Elizabeth Hughes representing SIGBI.",
+    historicalNotes: "Mothered by SI South Bombay / Colaba, illustrating the spirit of mentorship and neighbourhood expansion.",
   },
   {
     id: "1998-chennai",
@@ -695,6 +740,10 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     city: "Chennai",
     state: "Tamil Nadu",
     region: "Southern Region",
+    foundingPresident: "Kamala Prasad",
+    foundingMembersCount: 29,
+    motherClub: "SI Bombay North",
+    historicalNotes: "Originally chartered as SI Madras, marking a major milestone in extending Soroptimism southwards.",
   },
   {
     id: "2002-chennai-downtown",
@@ -705,7 +754,11 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     city: "Chennai",
     state: "Tamil Nadu",
     region: "Southern Region",
-    historicalNotes: "Mother Club to SI Madurai (2010).",
+    foundingPresident: "Gopi Narayanan",
+    foundingMembersCount: 25,
+    motherClub: "SI Chennai (Madras)",
+    nasiPresidentAtCharter: "Kamala Prasad",
+    historicalNotes: "Founding members comprised educators and businesswomen from the city's Chambers of Commerce. Mother Club to SI Madurai (2010) and SI Chennai Marina (2024).",
   },
   {
     id: "2004-bangalore",
@@ -716,10 +769,12 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     city: "Bengaluru",
     state: "Karnataka",
     region: "Southern Region",
-    foundingPresident: "Dr. Nalini Subbiah",
-    nasiPresidentAtCharter: "Sheela Rao",
-    sigbiOfficer: "Jacqueline Mosedale (SIGBI President)",
+    foundingPresident: "Dr. Nalini Subbaiah",
+    foundingMembersCount: 15,
     motherClub: "SI Poona",
+    nasiPresidentAtCharter: "Sheela Rao (NASI Representative)",
+    sigbiOfficer: "Jackie Mosedale (President of SIGBI)",
+    historicalNotes: "Mother Club to SI Delhi (2022) and SI Hyderabad (2018).",
   },
   {
     id: "2006-south-kolkata",
@@ -730,6 +785,13 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     city: "Kolkata",
     state: "West Bengal",
     region: "Eastern Region",
+    foundingPresident: "Bijli Mallik",
+    foundingMembersCount: 20,
+    motherClub: "SI Calcutta",
+    sigbiOfficer: "Ann Dawson (President of SIGBI)",
+    imageUrl: "/images/history/charter-si-south-kolkata-2006.jpg",
+    imageCaption: "Charter-of-SI-South-Kolkata 21 September 2006: Founder President Bijli Mallik and 20 founding members with SIGBI President Ann Dawson and Laxmi Parasuram.",
+    historicalNotes: "Mentored by Laxmi Parasuram of SI Calcutta, bringing together accomplished women across professional domains in southern Kolkata.",
   },
   {
     id: "2010-pune-metro-east",
@@ -740,6 +802,13 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     city: "Pune",
     state: "Maharashtra",
     region: "Western Region",
+    foundingPresident: "Nisha Ghosh",
+    foundingMembersCount: 30,
+    motherClub: "SI Poona",
+    sigbiOfficer: "Jackie Mosedale (President of SIGBI) in the presence of Hanne Jensbo (President of Soroptimist International) and 42 overseas Soroptimists",
+    imageUrl: "/images/history/charter-si-pune-metro-east-2010.jpg",
+    imageCaption: "Charter of SI Pune Metro East, 31 January 2010 - Founder President Nisha Ghosh receiving the charter from Jackie Mosedale (SIGBI President) in the presence of Hanne Jensbo (President of Soroptimist International).",
+    historicalNotes: "An unforgettable celebration of international fellowship attended by the SI Global President, SIGBI President, and 42 overseas Soroptimists.",
   },
   {
     id: "2010-madurai",
@@ -751,9 +820,12 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     state: "Tamil Nadu",
     region: "Southern Region",
     foundingPresident: "Anitha Rajarajan",
-    nasiMembershipOfficer: "Annette",
+    foundingMembersCount: 25,
     motherClub: "SI Chennai Downtown",
-    historicalNotes: "Mother Club to SI Coimbatore (2021) and SI Kochi (2021).",
+    nasiMembershipOfficer: "Annette Mascarenhas",
+    imageUrl: "/images/history/charter-si-madurai-2010.jpg",
+    imageCaption: "Charter of SI Madurai, 14 September 2010 - Founder President Anitha Rajarajan with founding members and the official charter scroll.",
+    historicalNotes: "A powerhouse mother club nurturing SI Coimbatore (2021), SI Kochi (2021), and SI Guwahati (2024).",
   },
   {
     id: "2015-whitefield",
@@ -764,6 +836,13 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     city: "Bengaluru",
     state: "Karnataka",
     region: "Southern Region",
+    foundingPresident: "Rachna Gupta",
+    foundingMembersCount: 35,
+    motherClub: "SI Chennai",
+    nasiPresidentAtCharter: "Shreelatha Narayanan",
+    sigbiOfficer: "Jenny Vince (President of SIGBI)",
+    imageUrl: "/images/history/charter-si-whitefield-2015.jpg",
+    imageCaption: "Charter of SI Whitefield, August 2015 - Founder President Rachna Gupta with 35 founding members and SIGBI President Jenny Vince.",
   },
   {
     id: "2021-coimbatore",
@@ -775,11 +854,11 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     state: "Tamil Nadu",
     region: "Southern Region",
     foundingPresident: "Surekha Shekhar",
+    motherClub: "SI Madurai",
     nasiPresidentAtCharter: "Achina Kundu",
     nasiMembershipOfficer: "Anitha Rajarajan",
-    sigbiOfficer: "Cathy Cottridge (SIGBI Chartering President)",
-    motherClub: "SI Madurai",
-    historicalNotes: "Revived in 2024 by Kavitha Ramesh, who took over as President.",
+    sigbiOfficer: "Cathy Cottridge (President of SIGBI)",
+    historicalNotes: "Revived in 2024 under President Kavitha Ramesh, demonstrating renewal, resilience and a fresh beginning.",
   },
   {
     id: "2021-kochi",
@@ -791,10 +870,11 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     state: "Kerala",
     region: "Southern Region",
     foundingPresident: "Dr. Beena Ravikumar",
+    motherClub: "SI Madurai",
     nasiPresidentAtCharter: "Achina Kundu",
     nasiMembershipOfficer: "Anitha Rajarajan",
-    sigbiOfficer: "Cathy Cottridge (SIGBI Chartering President)",
-    motherClub: "SI Madurai",
+    sigbiOfficer: "Cathy Cottridge (President of SIGBI)",
+    historicalNotes: "Extended Soroptimism from the Deccan Plateau to the scenic Malabar Coast of Kerala.",
   },
   {
     id: "2022-delhi",
@@ -805,11 +885,12 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     city: "New Delhi",
     state: "Delhi NCR",
     region: "Northern Region",
-    foundingPresident: "Jaya Ahuja and Veera Malawala",
+    foundingPresident: "Jaya Ahuja and Veera Malawala (Joint)",
+    motherClub: "SI Bangalore",
     nasiPresidentAtCharter: "Achina Kundu",
     nasiMembershipOfficer: "Anitha Rajarajan",
-    sigbiOfficer: "Cathy Cottridge (SIGBI Chartering President)",
-    motherClub: "SI Bangalore",
+    sigbiOfficer: "Cathy Cottridge (President of SIGBI)",
+    historicalNotes: "Established in India's national capital, uniting women leaders in civil administration, entrepreneurship, and social development.",
   },
   {
     id: "2022-leh",
@@ -821,9 +902,10 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     state: "Ladakh",
     region: "Northern Region",
     foundingPresident: "Sarla Chhewang",
-    nasiMembershipOfficer: "Anitha Rajarajan",
-    sigbiOfficer: "Cathy Cottridge (SIGBI Chartering President)",
     motherClub: "SI Calcutta",
+    nasiMembershipOfficer: "Anitha Rajarajan",
+    sigbiOfficer: "Cathy Cottridge (President of SIGBI)",
+    historicalNotes: "Situated in the dramatic high-altitude landscape of Ladakh, extending the movement into India's northernmost mountainous frontier.",
   },
   {
     id: "2023-srinagar",
@@ -835,9 +917,10 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     state: "Jammu & Kashmir",
     region: "Northern Region",
     foundingPresident: "Parveen",
-    nasiMembershipOfficer: "Anitha Rajarajan",
-    sigbiOfficer: "Cathy Cottridge (SIGBI Chartering President)",
     motherClub: "SI Poona",
+    nasiMembershipOfficer: "Anitha Rajarajan",
+    sigbiOfficer: "Cathy Cottridge (President of SIGBI)",
+    historicalNotes: "Brought Soroptimism into the Kashmir Valley, establishing a vital sisterhood presence in the northern reaches of the country.",
   },
   {
     id: "2024-guwahati",
@@ -848,6 +931,148 @@ export const clubHistoricalTimeline: HistoricalTimelineItem[] = [
     city: "Guwahati",
     state: "Assam",
     region: "North Eastern Region",
+    foundingPresident: "Dr. Mitali Goswami",
+    foundingMembersCount: 14,
+    motherClub: "SI Madurai",
+    nasiPresidentAtCharter: "Naina Shah (President-Elect)",
+    nasiMembershipOfficer: "Anitha Rajarajan",
+    sigbiOfficer: "Ruth Healey (President of SIGBI - joined online)",
+    imageUrl: "/images/history/charter-si-guwahati-2024.jpg",
+    imageCaption: "SI Guwahati Charter on 2nd October 2024: Founder President Dr. Mitali Goswami, 14 founding members, and national leaders celebrating the historic first SI club in Northeast India.",
+    historicalNotes: "Chartered on Gandhi Jayanti, marking the 50th year of Soroptimism in India. First SI Club in Northeast India at the threshold of the Eastern Himalayas.",
+  },
+];
+
+// Past Presidents Honor Roll of NASI-India (1990–2026)
+export const nasiPastPresidents: PastPresident[] = [
+  { order: 1, name: "Aroti Dutta", tenure: "1990–1992", club: "SI Calcutta" },
+  { order: 2, name: "Antoinette D’Costa", tenure: "1992–1994", club: "SI Bombay South" },
+  { order: 3, name: "Chitra Ghosh", tenure: "1994–1996", club: "SI Calcutta" },
+  { order: 4, name: "Shirin Warne", tenure: "1996–1998", club: "SI Jabalpur" },
+  { order: 5, name: "Kamala Suri", tenure: "1998–2000", club: "NASI–India" },
+  { order: 6, name: "Shibani Das", tenure: "2000–2002", club: "SI Calcutta" },
+  { order: 7, name: "Kamala Prasad", tenure: "2004–2006", club: "SI Chennai" },
+  { order: 8, name: "Promila Khandelwal", tenure: "2006–2008", club: "NASI–India" },
+  { order: 9, name: "Sheela Rao", tenure: "2008–2010", club: "SI Poona" },
+  { order: 10, name: "Deepanwita Chowdhury", tenure: "2010–2012", club: "SI Calcutta" },
+  { order: 11, name: "Annette Mascarenhas", tenure: "2012–2014", club: "SI Bombay North" },
+  { order: 12, name: "Shreelatha Narayanan", tenure: "2014–2016", club: "SI Chennai" },
+  { order: 13, name: "Latha Krishnan", tenure: "2016–2018", club: "SI Bombay Chembur" },
+  { order: 14, name: "Anu Wakhlu", tenure: "2018–2020", club: "SI Poona" },
+  { order: 15, name: "Achina Kundu", tenure: "2020–2022", club: "SI Calcutta" },
+  { order: 16, name: "Nisha Ghosh", tenure: "2022–2024", club: "SI Pune Metro East" },
+  { order: 17, name: "Naina Shah", tenure: "2024–2026", club: "SI Chennai Downtown" },
+];
+
+// Historic Archival Photographs
+export const nasiHistoricalPhotographs: HistoricalPhotograph[] = [
+  {
+    id: "calcutta-1979",
+    title: "Charter Meeting of SI Calcutta",
+    year: "1979",
+    caption: "A historic moment from the early years of Soroptimism in India - members and guests at the charter meeting of SI Calcutta on 27 October 1979 under Founder President Aroti Dutta with Jean Wishart, SIGBI.",
+    imageUrl: "/images/history/charter-meeting-si-calcutta-1979.jpg",
+    associatedClub: "SI Calcutta",
+    category: "charter",
+  },
+  {
+    id: "five-o-calcutta",
+    title: "The Five-O Project in Calcutta",
+    year: "1980s",
+    caption: "The Five-O Project in Calcutta: Initiated by Aroti Dutta and Chitra Ghosh in Bratachari village, Joka, West Bengal, supporting women through education and vocational training.",
+    imageUrl: "/images/history/project-five-o-calcutta.jpg",
+    associatedClub: "SI Calcutta",
+    category: "project",
+  },
+  {
+    id: "burdwan-1987",
+    title: "Charter Certificate of SI Burdwan",
+    year: "1987",
+    caption: "The Charter Certificate of Soroptimist International Burdwan, August 1987, under Founder President Santanwana Sen, mothered by SI Calcutta.",
+    imageUrl: "/images/history/charter-certificate-si-burdwan-1987.jpg",
+    associatedClub: "SI Burdwan",
+    category: "charter",
+  },
+  {
+    id: "poona-1991",
+    title: "Charter of SI Poona",
+    year: "1991",
+    caption: "Charter of SI Poona, 8 April 1991 - Founder President Gulshan Thukral celebrating the charter with Aroti Dutta (NASI President) and Jane Barrie (SIGBI President).",
+    imageUrl: "/images/history/charter-si-poona-1991.jpg",
+    associatedClub: "SI Poona",
+    category: "charter",
+  },
+  {
+    id: "chembur-1997",
+    title: "Charter of SI Bombay Chembur",
+    year: "1997",
+    caption: "Charter of SI Bombay Chembur, 2 March 1997 - Founder President Dr. Daphne Pillai addressing the gathering alongside Elizabeth Hughes representing SIGBI.",
+    imageUrl: "/images/history/charter-si-bombay-chembur-1997.jpg",
+    associatedClub: "SI Chembur",
+    category: "charter",
+  },
+  {
+    id: "south-kolkata-2006",
+    title: "Charter of SI South Kolkata",
+    year: "2006",
+    caption: "Charter-of-SI-South-Kolkata 21 September 2006: Founder President Bijli Mallik and 20 founding members with SIGBI President Ann Dawson and Laxmi Parasuram.",
+    imageUrl: "/images/history/charter-si-south-kolkata-2006.jpg",
+    associatedClub: "SI South Kolkata",
+    category: "charter",
+  },
+  {
+    id: "pune-metro-east-2010",
+    title: "Charter of SI Pune Metro East",
+    year: "2010",
+    caption: "Charter of SI Pune Metro East, 31 January 2010 - Founder President Nisha Ghosh receiving the charter from Jackie Mosedale (SIGBI President) in the presence of Hanne Jensbo (President of Soroptimist International).",
+    imageUrl: "/images/history/charter-si-pune-metro-east-2010.jpg",
+    associatedClub: "SI Pune Metro East",
+    category: "charter",
+  },
+  {
+    id: "madurai-2010",
+    title: "Charter of SI Madurai",
+    year: "2010",
+    caption: "Charter of SI Madurai, 14 September 2010 - Founder President Anitha Rajarajan with founding members and the official charter scroll.",
+    imageUrl: "/images/history/charter-si-madurai-2010.jpg",
+    associatedClub: "SI Madurai",
+    category: "charter",
+  },
+  {
+    id: "nasi-meeting-2010",
+    title: "NASI-India Meeting 2010 (General Meeting & Installation)",
+    year: "2010",
+    caption: "NASI-India Meeting 2010: National Executive delegates gathered at the General Meeting and Installation Ceremony in Pune.",
+    imageUrl: "/images/history/nasi-india-meeting-installation-2010.jpg",
+    associatedClub: "NASI–India",
+    category: "assembly",
+  },
+  {
+    id: "nasi-lamp-2010",
+    title: "NASI-India Meeting 2010 (Lamp Lighting)",
+    year: "2010",
+    caption: "NASI-India Meeting 2010: Auspicious traditional lamp lighting ceremony uniting club presidents and national officers across India.",
+    imageUrl: "/images/history/nasi-india-meeting-lamp-lighting-2010.jpg",
+    associatedClub: "NASI–India",
+    category: "assembly",
+  },
+  {
+    id: "whitefield-2015",
+    title: "Charter of SI Whitefield",
+    year: "2015",
+    caption: "Charter of SI Whitefield, August 2015 - Founder President Rachna Gupta with 35 founding members and SIGBI President Jenny Vince.",
+    imageUrl: "/images/history/charter-si-whitefield-2015.jpg",
+    associatedClub: "SI Whitefield",
+    category: "charter",
+  },
+  {
+    id: "guwahati-2024",
+    title: "SI Guwahati Charter on Gandhi Jayanti",
+    year: "2024",
+    caption: "SI Guwahati Charter on 2nd October 2024: Founder President Dr. Mitali Goswami, 14 founding members, and national leaders celebrating the historic first SI club in Northeast India.",
+    imageUrl: "/images/history/charter-si-guwahati-2024.jpg",
+    associatedClub: "SI Guwahati",
+    category: "charter",
   },
 ];
 

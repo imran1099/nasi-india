@@ -15,6 +15,9 @@ import {
   CalendarIcon,
 } from "@/components/icons";
 import { HistoricalTimeline } from "@/components/history/HistoricalTimeline";
+import { HistoricalNarrative } from "@/components/history/HistoricalNarrative";
+import { PastPresidentsRoll } from "@/components/history/PastPresidentsRoll";
+import { HistoricalPhotoGallery } from "@/components/history/HistoricalPhotoGallery";
 
 export const metadata: Metadata = {
   title: "About NASI India",
@@ -205,32 +208,28 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 3. Our Journey in India */}
-      <section className="py-12 md:py-16 bg-white border-b border-[#D7E8F5]">
+      {/* 3. Comprehensive Authoritative Historical Narrative */}
+      <section className="py-12 md:py-20 bg-white border-b border-[#D7E8F5]">
         <Container>
-          <div className="max-w-4xl space-y-6">
-            <SectionHeading
-              kicker="Historical Narrative"
-              title="Our Journey in India"
-              description="From the first club chartered in Bombay North in 1974 to the formal institution of NASI India in 1990 and nationwide expansion today."
-            />
-
-            <div className="prose max-w-none text-[#17324D] space-y-4 text-base sm:text-lg leading-relaxed">
-              <p>
-                Soroptimist clubs in India began their journey in <strong>1974</strong> with the establishment of <strong>SI Bombay North</strong>, the first Soroptimist club in India.
-              </p>
-              <p>
-                <strong>NASI India</strong> subsequently took office in <strong>1990</strong>, providing a national structure for the growing Soroptimist movement in India under the auspices of SIGBI.
-              </p>
-              <p>
-                Since then, the movement has expanded across the country, bringing together women committed to service, leadership and community development across 19 chartered clubs from Leh and Srinagar in the north to Kochi, Chennai, and Madurai in the south, and from Mumbai and Pune in the west to Kolkata, Burdwan, and Guwahati in the east and northeast.
-              </p>
-            </div>
-          </div>
+          <HistoricalNarrative />
         </Container>
       </section>
 
-      {/* 4. Our History – Interactive Chronological Timeline */}
+      {/* 4. Past Presidents Roll of Honor */}
+      <section className="py-12 md:py-16 bg-[#F4FAFF] border-b border-[#D7E8F5]">
+        <Container>
+          <PastPresidentsRoll />
+        </Container>
+      </section>
+
+      {/* 5. Historical Photographic Archives */}
+      <section className="py-12 md:py-20 bg-white border-b border-[#D7E8F5]">
+        <Container>
+          <HistoricalPhotoGallery />
+        </Container>
+      </section>
+
+      {/* 6. Our History – Interactive Chronological Timeline */}
       <section id="timeline" className="py-12 md:py-20 bg-[#F4FAFF]">
         <Container>
           <div className="mb-10 text-center max-w-3xl mx-auto">

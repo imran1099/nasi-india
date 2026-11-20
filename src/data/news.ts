@@ -88,7 +88,7 @@ export const initialNews: NewsArticle[] = [
   },
   {
     slug: "soroptimist-international-16-days-of-activism",
-    title: "Soroptimist International Global Campaign: 16 Days of Activism Against Gender Violence",
+    title: " NATIONAL ASSOCIATION SOROPTIMIST INDIA( India) Campaign: 16 Days of Activism Against Gender Violence",
     date: "August 12, 2024",
     isoDate: "2024-08-12",
     category: "Advocacy",

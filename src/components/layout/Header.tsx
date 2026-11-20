@@ -56,7 +56,7 @@ export function Header({ logoUrl }: HeaderProps) {
               rel="noopener noreferrer"
               className="text-[#FAEB57] hover:underline transition-colors inline-flex items-center gap-1 font-semibold"
             >
-              Soroptimist International Global &rarr;
+              NATIONAL ASSOCIATION SOROPTIMIST INDIA( India) &rarr;
             </a>
           </div>
         </div>

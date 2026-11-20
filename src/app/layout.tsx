@@ -8,7 +8,7 @@ import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 const fontSansVariable = "font-sans";
 const fontMonoVariable = "font-mono";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nasiindia.org";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nasiindia.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

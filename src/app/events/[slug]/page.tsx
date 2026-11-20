@@ -185,7 +185,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
     timeZone: eventData.timezone || "Asia/Kolkata",
   });
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nasiindia.org";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nasiindia.com";
 
   return (
     <>

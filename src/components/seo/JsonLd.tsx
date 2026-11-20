@@ -17,10 +17,10 @@ export function JsonLd({ data }: BaseJsonLdProps) {
  * Organization Schema for NASI India
  */
 export function OrganizationJsonLd({
-  siteUrl = "https://nasiindia.org",
+  siteUrl = "https://nasiindia.com",
   name = "NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)",
   alternateName = "NASI-India",
-  logoUrl = "https://nasiindia.org/images/logo.png",
+  logoUrl = "https://nasiindia.com/images/logo.png",
   description = "A voluntary service organization of women in management and professions dedicated to inspiring action and transforming the lives of women and girls across India.",
 }: {
   siteUrl?: string;
@@ -112,7 +112,7 @@ export function ArticleJsonLd({
       name: "NASI India",
       logo: {
         "@type": "ImageObject",
-        url: "https://nasiindia.org/images/logo.png",
+        url: "https://nasiindia.com/images/logo.png",
       },
     },
     ...(imageUrl ? { image: [imageUrl] } : {}),
@@ -178,7 +178,7 @@ export function EventJsonLd({
     organizer: {
       "@type": "NGO",
       name: "NASI India",
-      url: "https://nasiindia.org",
+      url: "https://nasiindia.com",
     },
     ...(imageUrl ? { image: [imageUrl] } : {}),
   };

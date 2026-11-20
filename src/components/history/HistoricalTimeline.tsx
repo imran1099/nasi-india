@@ -243,6 +243,26 @@ export function HistoricalTimeline() {
                 </CardHeader>
 
                 <CardContent className="px-5 py-2 space-y-3">
+                  {/* Archival Photograph if available */}
+                  {item.imageUrl && (
+                    <div className="overflow-hidden rounded-xl border border-[#D7E8F5] bg-[#F4FAFF] shadow-2xs">
+                      <div className="relative aspect-video sm:aspect-16/9 w-full overflow-hidden bg-slate-100">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={item.imageUrl}
+                          alt={item.imageCaption || `${item.clubName} historical photograph`}
+                          className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-300"
+                          loading="lazy"
+                        />
+                      </div>
+                      {item.imageCaption && (
+                        <p className="p-3 text-xs leading-relaxed text-[#17324D] bg-[#F4FAFF] border-t border-[#D7E8F5] font-serif italic">
+                          {item.imageCaption}
+                        </p>
+                      )}
+                    </div>
+                  )}
+
                   {/* Verified Historical Information */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs bg-[#F4FAFF] p-3.5 rounded-xl border border-[#D7E8F5]">
                     {item.foundingPresident && (
@@ -252,6 +272,28 @@ export function HistoricalTimeline() {
                         </span>
                         <p className="font-semibold text-[#17324D] mt-0.5">
                           {item.foundingPresident}
+                        </p>
+                      </div>
+                    )}
+
+                    {item.secretaryAtCharter && (
+                      <div>
+                        <span className="text-[10.5px] uppercase font-semibold text-[#61758A] block">
+                          Secretary at Charter
+                        </span>
+                        <p className="font-semibold text-[#17324D] mt-0.5">
+                          {item.secretaryAtCharter}
+                        </p>
+                      </div>
+                    )}
+
+                    {typeof item.foundingMembersCount === "number" && (
+                      <div>
+                        <span className="text-[10.5px] uppercase font-semibold text-[#61758A] block">
+                          Founding Members
+                        </span>
+                        <p className="font-semibold text-[#005596] mt-0.5">
+                          {item.foundingMembersCount} members
                         </p>
                       </div>
                     )}
@@ -281,7 +323,7 @@ export function HistoricalTimeline() {
                     {item.sigbiOfficer && (
                       <div>
                         <span className="text-[10.5px] uppercase font-semibold text-[#61758A] block">
-                          SIGBI Officer / Chartering Pres.
+                          SIGBI Officer / Rep
                         </span>
                         <p className="font-semibold text-[#17324D] mt-0.5">
                           {item.sigbiOfficer}

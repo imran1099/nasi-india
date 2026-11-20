@@ -147,7 +147,7 @@ export default async function NewsDetailPage({ params }: NewsPageProps) {
     };
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nasiindia.org";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nasiindia.com";
 
   return (
     <>
