@@ -37,11 +37,11 @@ export function Header({ logoUrl }: HeaderProps) {
       </a>
 
       {/* Top Banner / Organization Banner */}
-      <div className="bg-[#002D54] text-white text-xs py-2 px-4 border-b border-[#001E38] shadow-2xs">
+      <div className="bg-[#002D54] text-white text-xs py-1.5 sm:py-2 px-4 border-b border-[#001E38] shadow-2xs overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 text-center sm:text-left">
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FAEB57] animate-pulse" />
-            <p className="text-[#F4FAFF] font-semibold tracking-wide">
+          <div className="flex items-center gap-2 max-w-full">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FAEB57] animate-pulse shrink-0" />
+            <p className="text-[#F4FAFF] font-semibold tracking-wide text-[11px] sm:text-xs truncate sm:whitespace-normal">
               NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)
             </p>
           </div>
@@ -56,7 +56,7 @@ export function Header({ logoUrl }: HeaderProps) {
               rel="noopener noreferrer"
               className="text-[#FAEB57] hover:underline transition-colors inline-flex items-center gap-1 font-semibold"
             >
-              NATIONAL ASSOCIATION SOROPTIMIST INDIA( India) &rarr;
+              NASI-India &rarr;
             </a>
           </div>
         </div>
@@ -65,16 +65,16 @@ export function Header({ logoUrl }: HeaderProps) {
       {/* Main Header */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#D7E8F5] shadow-2xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 sm:h-24 lg:h-26 py-1.5 sm:py-2">
+          <div className="flex items-center justify-between h-[74px] sm:h-[84px] lg:h-[96px] py-0.5 sm:py-1">
             {/* Logo Area (Configurable) */}
-            <div className="shrink-0">
+            <div className="shrink-0 flex items-center">
               <Logo imageUrl={logoUrl} />
             </div>
 
             {/* Desktop Navigation - Lemon-Yellow Tabs with Blue Lettering */}
             <nav
               aria-label="Primary Navigation"
-              className="hidden lg:flex items-center gap-1.5 xl:gap-2"
+              className="hidden lg:flex items-center gap-1 xl:gap-2"
             >
               {siteConfig.navItems.map((item) => {
                 const isActive =
@@ -86,7 +86,7 @@ export function Header({ logoUrl }: HeaderProps) {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`relative px-3.5 py-2 text-sm rounded-lg font-bold transition-all duration-150 border ${isActive
+                    className={`relative px-2.5 xl:px-3.5 py-1.5 xl:py-2 text-xs xl:text-sm rounded-lg font-bold transition-all duration-150 border ${isActive
                       ? "bg-[#FDD835] text-[#002D54] border-2 border-[#005596] shadow-xs ring-1 ring-[#005596]"
                       : "bg-[#FAEB57] text-[#003A6B] border-[#F0DC36] shadow-2xs hover:bg-[#FDD835] hover:text-[#002D54] hover:border-[#005596]"
                       }`}
@@ -95,7 +95,7 @@ export function Header({ logoUrl }: HeaderProps) {
                     {item.label}
                     {isActive && (
                       <span
-                        className="absolute bottom-1 left-3.5 right-3.5 h-0.5 bg-[#005596] rounded-full"
+                        className="absolute bottom-1 left-2.5 xl:left-3.5 right-2.5 xl:right-3.5 h-0.5 bg-[#005596] rounded-full"
                         aria-hidden="true"
                       />
                     )}

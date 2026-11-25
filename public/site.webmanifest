@@ -1,0 +1,19 @@
+{
+  "name": "NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)",
+  "short_name": "NASI-India",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#005596",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

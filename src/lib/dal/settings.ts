@@ -126,16 +126,17 @@ export function getDefaultSiteSettings(): SiteSettingsMap {
     "home.heroCtaUrl": "#vision-mission",
     "home.heroSecondaryCtaText": "Contact Us",
     "home.heroSecondaryCtaUrl": "/contact",
-    "home.heroImageLeft": "/images/banner/hero-woman-facing-left.jpg",
+    "home.heroImageLeft": "/images/banner/hero-nasi-official.jpg",
     "home.heroImageRight": "/images/banner/hero-woman-facing-right.jpg",
     "home.bannerDisplayMode": "slideshow",
 
     "president.name": "Anitha Rajarajan",
-    "president.designation": "President, NASI-India",
-    "president.tenure": "Biennium 2026–2028",
-    "president.photoUrl": "",
+    "president.designation": "President",
+    "president.tenure": "2026–2028",
+    "president.photoUrl": "/uploads/general/anitha_rajaraj-6b7679a6a393fd01e58027de.jpg",
+    "president.theme": "UNITE – ACT – IMPACT",
     "president.message":
-      "Welcome to NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India). As President for the 2026–2028 biennium, I am privileged to lead an extraordinary network of women professionals and grassroots leaders across 19 chartered clubs nationwide.\n\nSince 1974, our movement in India has stood up for women and girls through practical, life-changing action. By aligning our initiatives with the United Nations Sustainable Development Goals and drawing strength from our global Soroptimist sisterhood, we strive to build a future where every girl is educated, empowered, and enabled to reach her fullest potential.\n\nTogether, with passion and commitment, we continue to create lasting change in our communities.",
+      "Dear Soroptimist Sisters and Friends,\n\nIt is with immense humility, gratitude, and a profound sense of purpose that I step into the role of National President of the National Association of Soroptimist International, India (NASI) for the biennium 2026-2028.\n\nSoroptimist International has always stood as a beacon of hope, resilience, and transformation. As women dedicated to uplifting women and girls, our mission is not just relevant—it is vital. In a rapidly evolving world, the challenges faced by women—economic, social, educational, and environmental—demand our collective strength, vision, and unwavering commitment.\n\nOver the next two years, our journey together will be guided by a clear focus: UNITE – ACT – IMPACT.\n\nWe will unite our diverse talents, clubs, and voices across India, strengthening the bonds of sisterhood and collaboration. We will act decisively through targeted programs that foster education, healthcare, economic empowerment, and sustainability. And in doing so, we will create measurable, lasting impact in the lives of the women and girls we serve.\n\nAs we embark on this new biennium, I invite each of you to bring your passion, ideas, and energy to the forefront. Let us celebrate our achievements, learn from our challenges, and strive towards greater milestones. Together, let us continue to inspire, innovate, and ignite change.\n\nWith warm wishes and Soroptimist greetings,\n\nAnitha Rajarajan\nPresident\nNational association of Soroptimist International, India",
 
     "vision.text":
       "Women and girls will achieve their individual and collective potential, realize aspirations, and have an equal voice in creating strong, peaceful communities.",

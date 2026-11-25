@@ -139,14 +139,39 @@ export default async function HomePage() {
   const sdgGraphicUrl = settings?.["media.sdgGraphicUrl"];
 
   const presidentName = settings?.["president.name"] || "Anitha Rajarajan";
-  const presidentDesignation = settings?.["president.designation"] || "President, NASI-India";
-  const presidentTenure = settings?.["president.tenure"] || "Biennium 2026–2028";
-  const presidentPhotoUrl = settings?.["president.photoUrl"];
-  const presidentMessage =
-    settings?.["president.message"] ||
-    "Welcome to NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India). As President for the 2026–2028 biennium, I am privileged to lead an extraordinary network of women professionals and grassroots leaders across 19 chartered clubs nationwide.\n\nSince 1974, our movement in India has stood up for women and girls through practical, life-changing action. By aligning our initiatives with the United Nations Sustainable Development Goals and drawing strength from our global Soroptimist sisterhood, we strive to build a future where every girl is educated, empowered, and enabled to reach her fullest potential.\n\nTogether, with passion and commitment, we continue to create lasting change in our communities.";
+  const presidentDesignation = settings?.["president.designation"] || "President";
+  const presidentTenure = settings?.["president.tenure"] || "2026–2028";
+  const presidentTheme = settings?.["president.theme"] || "UNITE – ACT – IMPACT";
+  const presidentPhotoUrl =
+    settings?.["president.photoUrl"] ||
+    "/uploads/general/anitha_rajaraj-6b7679a6a393fd01e58027de.jpg";
+  const defaultPresidentMessage = `Dear Soroptimist Sisters and Friends,
 
-  const presidentParagraphs = presidentMessage.split("\n\n").filter(Boolean);
+It is with immense humility, gratitude, and a profound sense of purpose that I step into the role of National President of the National Association of Soroptimist International, India (NASI) for the biennium 2026-2028.
+
+Soroptimist International has always stood as a beacon of hope, resilience, and transformation. As women dedicated to uplifting women and girls, our mission is not just relevant—it is vital. In a rapidly evolving world, the challenges faced by women—economic, social, educational, and environmental—demand our collective strength, vision, and unwavering commitment.
+
+Over the next two years, our journey together will be guided by a clear focus: UNITE – ACT – IMPACT.
+
+We will unite our diverse talents, clubs, and voices across India, strengthening the bonds of sisterhood and collaboration. We will act decisively through targeted programs that foster education, healthcare, economic empowerment, and sustainability. And in doing so, we will create measurable, lasting impact in the lives of the women and girls we serve.
+
+As we embark on this new biennium, I invite each of you to bring your passion, ideas, and energy to the forefront. Let us celebrate our achievements, learn from our challenges, and strive towards greater milestones. Together, let us continue to inspire, innovate, and ignite change.
+
+With warm wishes and Soroptimist greetings,
+
+Anitha Rajarajan
+President
+National association of Soroptimist International, India`;
+
+  const presidentMessage = settings?.["president.message"] || defaultPresidentMessage;
+  const presidentParagraphs = (
+    presidentMessage.includes("With warm wishes")
+      ? presidentMessage.split("With warm wishes")[0]
+      : presidentMessage
+  )
+    .split("\n\n")
+    .map((p) => p.trim())
+    .filter(Boolean);
 
   const federationList = (settings?.["federation.itemsText"] || "")
     .split("\n")
@@ -308,7 +333,7 @@ export default async function HomePage() {
               </div>
             </div>
 
-            {/* RIGHT COLUMN: Graphic Placeholders (Educate, Empower, Enable + UN SDGs) */}
+            {/* RIGHT COLUMN: Grassroots Action & Leadership (Educate, Empower, Enable + UN SDGs) */}
             <div className="lg:col-span-6 space-y-6">
               {/* Graphic 1: Educate, Empower, Enable */}
               {triadGraphicUrl ? (
@@ -324,27 +349,26 @@ export default async function HomePage() {
                   </span>
                 </div>
               ) : (
-                <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#005596] to-[#003A6B] text-white shadow-md border border-[#004780] relative overflow-hidden text-center sm:text-left">
-                  <div className="flex flex-col sm:flex-row items-center gap-5">
-                    <div className="w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex flex-col items-center justify-center shrink-0">
-                      <span className="text-2xl font-serif font-bold text-[#D4A737]">3E</span>
-                      <span className="text-[10px] uppercase font-bold tracking-wider text-white">Triad</span>
-                    </div>
-                    <div className="space-y-1.5">
-                      <span className="text-[11px] uppercase tracking-wider font-semibold text-[#D4A737] bg-white/10 px-2.5 py-0.5 rounded-full inline-block">
-                        Official Graphic Placeholder
-                      </span>
-                      <h4 className="font-serif font-bold text-xl sm:text-2xl text-white">
-                        Educate • Empower • Enable
-                      </h4>
-                      <p className="text-xs text-[#E8F3FC] leading-relaxed">
-                        Core pillar graphic representing the tripartite foundation of Soroptimist action across India.
-                      </p>
+                <div className="rounded-3xl bg-white border border-[#D7E8F5] shadow-xs overflow-hidden transition-all duration-200 hover:border-[#005596]">
+                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#003A6B]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/history/project-five-o-calcutta.jpg"
+                      alt="The Five-O Project in Calcutta - Women engaged in vocational education and literacy training"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#005596]/90 backdrop-blur-xs text-[#FAEB57] text-[11px] font-bold tracking-wide border border-white/20">
+                      Educate • Empower • Enable
                     </div>
                   </div>
-                  <p className="mt-4 pt-3 border-t border-white/15 text-[11px] text-[#D7E8F5] italic text-center">
-                    [Educate, Empower, Enable graphic will be supplied by the NASI team]
-                  </p>
+                  <div className="p-5 sm:p-6 space-y-2">
+                    <h4 className="font-serif font-bold text-lg sm:text-xl text-[#17324D]">
+                      Grassroots Vocational &amp; Literacy Action
+                    </h4>
+                    <p className="text-xs sm:text-sm text-[#61758A] leading-relaxed">
+                      Soroptimist India members advancing women&apos;s economic independence, education, and vocational enablement through dedicated community-based projects across India.
+                    </p>
+                  </div>
                 </div>
               )}
 
@@ -362,29 +386,26 @@ export default async function HomePage() {
                   </span>
                 </div>
               ) : (
-                <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#D7E8F5] shadow-xs text-center sm:text-left">
-                  <div className="flex flex-col sm:flex-row items-center gap-5">
-                    {/* Stylized Circular 17 SDG Ring */}
-                    <div className="relative w-20 h-20 rounded-full border-4 border-dashed border-[#005596]/40 flex items-center justify-center shrink-0 bg-[#F4FAFF]">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#005596] via-[#D4A737] to-[#10B981] flex items-center justify-center text-white text-[10px] font-bold shadow-xs">
-                        17 SDGs
-                      </div>
-                    </div>
-                    <div className="space-y-1.5">
-                      <span className="text-[11px] uppercase tracking-wider font-semibold text-[#005596] bg-[#E8F3FC] px-2.5 py-0.5 rounded-full inline-block">
-                        UN Graphic Placeholder
-                      </span>
-                      <h4 className="font-serif font-bold text-lg sm:text-xl text-[#17324D]">
-                        Circular UN Sustainable Development Goals
-                      </h4>
-                      <p className="text-xs text-[#61758A] leading-relaxed">
-                        Official 17 UN SDGs circular color wheel illustrating comprehensive program action alignment.
-                      </p>
+                <div className="rounded-3xl bg-white border border-[#D7E8F5] shadow-xs overflow-hidden transition-all duration-200 hover:border-[#005596]">
+                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#003A6B]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/history/nasi-india-meeting-lamp-lighting-2010.jpg"
+                      alt="National Assembly and Ceremonial Lamp Lighting by Soroptimist Leaders"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#005596]/90 backdrop-blur-xs text-[#FAEB57] text-[11px] font-bold tracking-wide border border-white/20">
+                      United Nations 17 SDGs
                     </div>
                   </div>
-                  <p className="mt-4 pt-3 border-t border-[#D7E8F5] text-[11px] text-[#61758A] italic text-center">
-                    [Circular UN Sustainable Development Goals graphic will be supplied by the NASI team]
-                  </p>
+                  <div className="p-5 sm:p-6 space-y-2">
+                    <h4 className="font-serif font-bold text-lg sm:text-xl text-[#17324D]">
+                      National Leadership &amp; SDG Alignment
+                    </h4>
+                    <p className="text-xs sm:text-sm text-[#61758A] leading-relaxed">
+                      Uniting volunteer leaders and 19 chartered clubs across India to implement grassroots social initiatives aligned with the United Nations Sustainable Development Goals.
+                    </p>
+                  </div>
                 </div>
               )}
             </div>
@@ -392,81 +413,44 @@ export default async function HomePage() {
         </Container>
       </section>
 
-      {/* 4. Meet the President Section */}
+      {/* 4. A Message from the National President */}
       <section className="py-16 sm:py-24 bg-white border-b border-[#D7E8F5]">
         <Container>
           <div className="max-w-5xl mx-auto">
             <SectionHeading
               kicker="National Leadership"
-              title="Meet the President"
-              description="A message from the President of NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)."
+              title="A Message from the National President"
+              description="Anitha Rajarajan | 2026–2028"
               className="text-center sm:text-left mb-10"
             />
 
             <div className="rounded-3xl bg-gradient-to-br from-[#F4FAFF] to-[#E8F3FC] border border-[#D7E8F5] p-6 sm:p-10 lg:p-12 shadow-sm relative overflow-hidden">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                {/* President Photograph Frame */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                {/* President Photograph Frame (Left Column) */}
                 <div className="lg:col-span-4 flex flex-col items-center text-center">
-                  <div className="relative w-48 h-56 sm:w-56 sm:h-64 rounded-3xl bg-[#005596] p-2 shadow-md border-2 border-[#FAEB57] overflow-hidden flex flex-col items-center justify-center text-white">
-                    {presidentPhotoUrl ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={presidentPhotoUrl}
-                        alt={`${presidentName} - ${presidentDesignation}`}
-                        className="w-full h-full object-cover rounded-2xl"
-                      />
-                    ) : (
-                      <div className="w-full h-full rounded-2xl bg-[#003A6B] flex flex-col items-center justify-center p-4 border border-white/20">
-                        <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center font-serif text-2xl font-bold text-[#FAEB57] mb-3 border border-white/20">
-                          {presidentName.split(" ").map((n) => n[0]).filter(Boolean).slice(0, 2).join("") || "AR"}
-                        </div>
-                        <span className="text-xs uppercase font-bold tracking-wider text-white">
-                          Official Portrait
-                        </span>
-                        <span className="text-[11px] text-[#D7E8F5] mt-1">
-                          Photograph Awaited
-                        </span>
-                      </div>
-                    )}
+                  <div className="relative w-52 sm:w-60 aspect-[4/5] rounded-3xl bg-[#005596] p-2 shadow-lg border-2 border-[#FAEB57] overflow-hidden flex flex-col items-center justify-center text-white">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={presidentPhotoUrl}
+                      alt={`${presidentName} - ${presidentDesignation}`}
+                      className="w-full h-full object-cover object-top rounded-2xl"
+                    />
                   </div>
 
-                  <h3 className="font-serif font-bold text-xl text-[#17324D] mt-4">
+                  <h3 className="font-serif font-bold text-xl sm:text-2xl text-[#17324D] mt-4">
                     {presidentName}
                   </h3>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-[#005596] mt-0.5">
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#005596] mt-0.5">
                     {presidentDesignation}
                   </p>
-                  <span className="text-[11px] font-mono text-[#61758A] mt-1 bg-white px-2.5 py-0.5 rounded-full border border-[#D7E8F5]">
+                  <span className="text-xs font-mono font-semibold text-[#17324D] mt-1 bg-white px-3 py-0.5 rounded-full border border-[#D7E8F5] shadow-2xs">
                     {presidentTenure}
                   </span>
-                </div>
+                  <p className="text-[11px] text-[#61758A] mt-1 text-center font-medium max-w-xs">
+                    NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)
+                  </p>
 
-                {/* President Message */}
-                <div className="lg:col-span-8 space-y-4 text-[#17324D] leading-relaxed">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#D7E8F5] text-xs font-medium text-[#005596]">
-                    <span className="w-2 h-2 rounded-full bg-[#005596]" />
-                    <span>{presidentTenure} Message</span>
-                  </div>
-
-                  <h4 className="text-xl sm:text-2xl font-serif font-bold text-[#17324D]">
-                    &ldquo;Inspiring action, transforming lives for women and girls across India.&rdquo;
-                  </h4>
-
-                  <div className="space-y-3.5 text-sm sm:text-base text-[#17324D]/90">
-                    {presidentParagraphs.map((paragraph, idx) => (
-                      <p key={idx}>{paragraph}</p>
-                    ))}
-                  </div>
-
-                  <div className="pt-3 border-t border-[#D7E8F5] flex items-center justify-between">
-                    <div>
-                      <p className="font-serif font-bold text-[#17324D]">
-                        {presidentName}
-                      </p>
-                      <p className="text-xs text-[#005596] font-medium">
-                        {presidentDesignation} ({presidentTenure})
-                      </p>
-                    </div>
+                  <div className="mt-5">
                     <Button
                       href="/committee"
                       variant="outline"
@@ -475,6 +459,69 @@ export default async function HomePage() {
                     >
                       View Board Profile
                     </Button>
+                  </div>
+                </div>
+
+                {/* President Message (Right Column) */}
+                <div className="lg:col-span-8 space-y-5 text-[#17324D] leading-relaxed">
+                  {/* Presidential Theme Highlight Banner */}
+                  <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#005596] to-[#003A6B] text-white shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border border-[#004780]">
+                    <div>
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-[#FAEB57] block">
+                        Biennium Theme 2026–2028
+                      </span>
+                      <h4 className="text-xl sm:text-2xl font-serif font-extrabold tracking-wide text-white mt-0.5">
+                        {presidentTheme}
+                      </h4>
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-xs font-semibold text-[#FAEB57] border border-white/20 shrink-0">
+                      <span className="w-2 h-2 rounded-full bg-[#FAEB57] animate-pulse" />
+                      National Action
+                    </span>
+                  </div>
+
+                  {/* Verbatim 5 Paragraphs with Styling */}
+                  <div className="space-y-4 text-sm sm:text-base text-[#17324D]/90 leading-relaxed font-sans">
+                    {presidentParagraphs.map((paragraph, idx) => {
+                      if (idx === 0) {
+                        return (
+                          <p key={idx} className="font-serif font-bold text-base sm:text-lg text-[#005596]">
+                            {paragraph}
+                          </p>
+                        );
+                      }
+                      if (paragraph.includes("UNITE – ACT – IMPACT") || paragraph.includes("clear focus")) {
+                        return (
+                          <p key={idx} className="bg-[#E8F3FC]/60 p-4 rounded-xl border-l-4 border-[#005596] text-[#003A6B]">
+                            Over the next two years, our journey together will be guided by a clear focus: <strong className="font-bold text-[#005596]">UNITE – ACT – IMPACT</strong>.
+                          </p>
+                        );
+                      }
+                      if (paragraph.includes("unite our diverse talents") || paragraph.includes("We will unite")) {
+                        return (
+                          <p key={idx}>
+                            We will <strong className="font-semibold text-[#005596]">unite</strong> our diverse talents, clubs, and voices across India, strengthening the bonds of sisterhood and collaboration. We will <strong className="font-semibold text-[#005596]">act</strong> decisively through targeted programs that foster education, healthcare, economic empowerment, and sustainability. And in doing so, we will create measurable, lasting <strong className="font-semibold text-[#005596]">impact</strong> in the lives of the women and girls we serve.
+                          </p>
+                        );
+                      }
+                      return <p key={idx}>{paragraph}</p>;
+                    })}
+                  </div>
+
+                  {/* Formal Sign-off and Designation */}
+                  <div className="pt-4 border-t border-[#D7E8F5] space-y-1">
+                    <p className="text-sm font-serif italic text-[#17324D]/90">
+                      With warm wishes and Soroptimist greetings,
+                    </p>
+                    <p className="font-serif font-bold text-lg text-[#17324D]">
+                      {presidentName}
+                    </p>
+                    <p className="text-xs font-semibold text-[#005596]">
+                      {presidentDesignation}
+                    </p>
+                    <p className="text-xs text-[#61758A]">
+                      National association of Soroptimist International, India
+                    </p>
                   </div>
                 </div>
               </div>
@@ -654,17 +701,22 @@ export default async function HomePage() {
                   </p>
                 </div>
 
-                {/* Invitation / Poster Image Placeholder */}
-                <div className="rounded-2xl border-2 border-dashed border-[#005596]/40 bg-white p-4 sm:p-5 text-center flex flex-col items-center justify-center space-y-2">
-                  <div className="w-12 h-12 rounded-xl bg-[#FAEB57] text-[#003A6B] flex items-center justify-center font-serif text-lg font-bold border border-[#F0DC36] shadow-2xs">
-                    SI
+                {/* Event Assembly Photograph */}
+                <div className="rounded-2xl overflow-hidden border border-[#D7E8F5] bg-white shadow-2xs">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/history/nasi-india-meeting-installation-2010.jpg"
+                    alt="NASI India General Meeting and Installation Ceremony"
+                    className="w-full h-44 sm:h-48 object-cover object-center"
+                  />
+                  <div className="p-3 bg-[#F4FAFF] border-t border-[#D7E8F5]">
+                    <span className="text-[11px] font-bold text-[#005596] block">
+                      National Installation &amp; General Meeting Assembly
+                    </span>
+                    <span className="text-[10px] text-[#61758A]">
+                      National leadership convening for biennial installation proceedings and directives
+                    </span>
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#005596]">
-                    Invitation &amp; Poster Placeholder
-                  </span>
-                  <p className="text-xs text-[#61758A] max-w-sm italic">
-                    [Official Invitation card, poster artwork, and event photographs will be displayed once supplied by NASI]
-                  </p>
                 </div>
 
                 {/* Event Highlights */}
@@ -737,17 +789,22 @@ export default async function HomePage() {
                   </p>
                 </div>
 
-                {/* Governance Overview / Placeholder Area */}
-                <div className="rounded-2xl border-2 border-dashed border-[#005596]/40 bg-white p-4 sm:p-5 text-center flex flex-col items-center justify-center space-y-2">
-                  <div className="w-12 h-12 rounded-xl bg-[#FAEB57] text-[#003A6B] flex items-center justify-center font-serif text-lg font-bold border border-[#F0DC36] shadow-2xs">
-                    AGM
+                {/* Governance Assembly Photograph */}
+                <div className="rounded-2xl overflow-hidden border border-[#D7E8F5] bg-white shadow-2xs">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/history/charter-si-whitefield-2015.jpg"
+                    alt="National Annual Governance Assembly of Chartered Clubs"
+                    className="w-full h-44 sm:h-48 object-cover object-center"
+                  />
+                  <div className="p-3 bg-[#F4FAFF] border-t border-[#D7E8F5]">
+                    <span className="text-[11px] font-bold text-[#005596] block">
+                      Chartered Clubs Governance Assembly
+                    </span>
+                    <span className="text-[10px] text-[#61758A]">
+                      Delegates from clubs nationwide reviewing programme action and constitutional directives
+                    </span>
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#005596]">
-                    Meeting Notice &amp; Agenda
-                  </span>
-                  <p className="text-xs text-[#61758A] max-w-sm italic">
-                    [Official Notice, Agenda Timetable, and Delegate Accreditation documents will be circulated by the National Secretariat]
-                  </p>
                 </div>
 
                 {/* Key Dimensions */}

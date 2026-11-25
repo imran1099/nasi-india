@@ -26,10 +26,10 @@ export function Logo({ className = "", isFooter = false, imageUrl }: LogoProps) 
     <Link
       href="/"
       aria-label={`${siteConfig.name} - Return to homepage`}
-      className={`inline-flex items-center gap-3 group focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[#005596] rounded-lg p-1 -m-1 transition-opacity hover:opacity-95 ${className}`}
+      className={`inline-flex items-center gap-3 group focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[#005596] rounded-lg p-0.5 transition-opacity hover:opacity-95 ${className}`}
     >
       {activeImage ? (
-        <div className="relative h-15 sm:h-18 lg:h-20 w-auto min-w-[150px] max-w-[360px] flex items-center">
+        <div className="relative flex items-center shrink-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={activeImage}
@@ -39,7 +39,7 @@ export function Logo({ className = "", isFooter = false, imageUrl }: LogoProps) 
                 ? "bg-white/95 rounded-xl p-2 shadow-xs h-12 sm:h-14 lg:h-16 w-auto object-contain transition-transform duration-200 group-hover:scale-102"
                 : isFooter
                   ? "h-12 sm:h-14 lg:h-16 w-auto object-contain"
-                  : "h-14 sm:h-18 lg:h-20 w-auto object-contain transition-transform duration-200 group-hover:scale-102"
+                  : "h-[68px] sm:h-[80px] lg:h-[92px] w-auto max-w-[280px] object-contain shrink-0 transition-transform duration-200 group-hover:scale-102 drop-shadow-xs"
             }
           />
         </div>

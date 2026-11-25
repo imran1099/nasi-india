@@ -23,7 +23,7 @@ export function HomeHeroBanner({
   ctaUrl = "#vision-mission",
   secondaryCtaText = "Contact Us",
   secondaryCtaUrl = "/contact",
-  imageLeft = "/images/banner/hero-woman-facing-left.jpg",
+  imageLeft = "/images/banner/hero-nasi-official.jpg",
   imageRight = "/images/banner/hero-woman-facing-right.jpg",
   displayMode = "slideshow",
 }: HomeHeroBannerProps) {
@@ -46,19 +46,51 @@ export function HomeHeroBanner({
     secondaryCtaUrl === "/join" ? "/contact" : secondaryCtaUrl;
   const displayCtaUrl = ctaUrl === "/about" ? "#vision-mission" : ctaUrl;
 
-  // Collect available images for central display
+  // Collect authentic photographs of women in leadership, service and community action
   const images = [
     {
-      src: imageLeft || "/images/banner/hero-woman-facing-left.jpg",
-      label: "Portrait 1",
-      alt: "Soroptimist India Member in traditional golden attire with floral adornment",
-    },
-    {
-      src: imageRight || "/images/banner/hero-woman-facing-right.jpg",
-      label: "Portrait 2",
-      alt: "Soroptimist India Member portrait profile",
-    },
-  ].filter((img) => Boolean(img.src));
+      src: imageLeft || "/images/banner/hero-nasi-official.jpg",
+      // label: "Official NASI Woman Portrait",
+      // caption: "Standing Up for Women & Girls — Purposeful, Compassionate, and Committed to Change",
+      // alt: "National Association Soroptimist India - Official Woman Portrait celebrating sisterhood, unity, and empowerment",
+    }
+    // {
+    //   src: imageLeft || "/images/banner/hero-nasi-official.jpg",
+    //   label: "Official NASI Woman Portrait",
+    //   caption: "Standing Up for Women & Girls — Purposeful, Compassionate, and Committed to Change",
+    //   alt: "National Association Soroptimist India - Official Woman Portrait celebrating sisterhood, unity, and empowerment",
+    // },
+    // {
+    //   src: "/images/history/charter-si-whitefield-2015.jpg",
+    //   label: "Women in Leadership",
+    //   caption: "Women in Leadership: 35 Chartered Members in Soroptimist Blue & Gold",
+    //   alt: "35 Soroptimist women leaders at the charter celebration of SI Whitefield",
+    // },
+    // {
+    //   src: "/images/history/nasi-india-meeting-installation-2010.jpg",
+    //   label: "National Assembly",
+    //   caption: "National Executive Assembly: Club Presidents and Delegates Across India",
+    //   alt: "NASI-India National Gathering and Installation Ceremony uniting club leaders",
+    // },
+    // {
+    //   src: "/images/history/nasi-india-meeting-lamp-lighting-2010.jpg",
+    //   label: "Lamp Lighting Ceremony",
+    //   caption: "Auspicious Lamp Lighting Ceremony • Uniting National Leadership",
+    //   alt: "Auspicious lamp lighting ceremony by Soroptimist India club leaders",
+    // },
+    // {
+    //   src: "/images/history/charter-si-madurai-2010.jpg",
+    //   label: "Charter Presentation",
+    //   caption: "Charter Presentation • Women Leaders in Community Action",
+    //   alt: "Charter presentation with founding women leaders of SI Madurai",
+    // },
+    // {
+    //   src: imageRight || "/images/banner/hero-woman-facing-right.jpg",
+    //   label: "Community Action",
+    //   caption: "Grassroots Community Impact • Uplifting Women & Girls",
+    //   alt: "Soroptimist India Member dedicated to community service",
+    // },
+  ];
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -93,13 +125,13 @@ export function HomeHeroBanner({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center">
           {/* Organization Kicker / Tag */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#E8F3FC] text-xs sm:text-sm font-semibold mb-5 backdrop-blur-xs">
-            <span className="w-2 h-2 rounded-full bg-[#FAEB57] animate-pulse" />
-            <span>NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)</span>
+          <div className="inline-flex max-w-full items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#E8F3FC] text-[11px] sm:text-sm font-semibold mb-5 backdrop-blur-xs">
+            <span className="w-2 h-2 rounded-full bg-[#FAEB57] animate-pulse shrink-0" />
+            <span className="truncate sm:whitespace-normal">NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India)</span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.14] max-w-4xl mb-4 sm:mb-5">
+          <h1 className="text-2xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.18] max-w-4xl mb-4 sm:mb-5">
             {displayTitle}
           </h1>
 
@@ -130,10 +162,10 @@ export function HomeHeroBanner({
             )}
           </div>
 
-          {/* Centrally Positioned Woman Photograph */}
+          {/* Centrally Positioned Complete Photograph of Women in Action & Leadership */}
           <div className="w-full max-w-md sm:max-w-lg lg:max-w-xl mx-auto mb-8">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/25 bg-[#003A6B] p-2 sm:p-2.5">
-              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden bg-[#002D54]">
+              <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#002D54]">
                 {displayedImages.map((img, index) => {
                   const isCurrent = index === activeIndex || displayedImages.length === 1;
                   return (
@@ -146,21 +178,23 @@ export function HomeHeroBanner({
                       <img
                         src={img.src}
                         alt={img.alt}
-                        className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-103"
+                        className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-102"
                       />
                     </div>
                   );
                 })}
 
-                {/* Placeholder Overlay Pill */}
-                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-3.5 py-1.5 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white text-[11px] sm:text-xs font-medium flex items-center gap-2 whitespace-nowrap shadow-md z-10">
-                  <span className="w-2 h-2 rounded-full bg-[#FAEB57]" />
-                  <span>Official Photograph Placeholder</span>
-                </div>
+                {/* Elegant Photographic Caption Overlay */}
+                {displayedImages[activeIndex]?.caption && (
+                  <div className="absolute bottom-3 left-3 right-3 sm:left-4 sm:right-auto px-3.5 py-1.5 rounded-xl bg-black/70 backdrop-blur-md border border-white/20 text-white text-[11px] sm:text-xs font-medium flex items-center gap-2 shadow-md z-10 max-w-lg">
+                    <span className="w-2 h-2 rounded-full bg-[#FAEB57] shrink-0" />
+                    <span className="truncate">{displayedImages[activeIndex]?.caption}</span>
+                  </div>
+                )}
               </div>
 
               {/* Multiple photo selector controls */}
-              {displayedImages.length > 1 && displayMode === "slideshow" && (
+              {displayedImages.length > 1 && (
                 <div className="flex items-center justify-center gap-2 pt-2.5 pb-1">
                   {displayedImages.map((img, idx) => (
                     <button
@@ -177,10 +211,6 @@ export function HomeHeroBanner({
                 </div>
               )}
             </div>
-
-            <p className="text-xs text-[#E8F3FC]/80 mt-2.5 italic text-center">
-              [Official woman photograph will be updated once supplied by NASI]
-            </p>
           </div>
 
           {/* Credibility Indicators */}
