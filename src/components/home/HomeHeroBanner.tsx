@@ -24,7 +24,6 @@ export function HomeHeroBanner({
   secondaryCtaText = "Contact Us",
   secondaryCtaUrl = "/contact",
   imageLeft = "/images/banner/hero-nasi-official.jpg",
-  imageRight = "/images/banner/hero-woman-facing-right.jpg",
   displayMode = "slideshow",
 }: HomeHeroBannerProps) {
   // Normalize title and subtitle per NASI instructions
@@ -50,46 +49,10 @@ export function HomeHeroBanner({
   const images = [
     {
       src: imageLeft || "/images/banner/hero-nasi-official.jpg",
-      // label: "Official NASI Woman Portrait",
-      // caption: "Standing Up for Women & Girls — Purposeful, Compassionate, and Committed to Change",
-      // alt: "National Association Soroptimist India - Official Woman Portrait celebrating sisterhood, unity, and empowerment",
+      label: "Official NASI Woman Portrait",
+      caption: "Standing Up for Women & Girls — Purposeful, Compassionate, and Committed to Change",
+      alt: "National Association Soroptimist India - Official Woman Portrait celebrating sisterhood, unity, and empowerment",
     }
-    // {
-    //   src: imageLeft || "/images/banner/hero-nasi-official.jpg",
-    //   label: "Official NASI Woman Portrait",
-    //   caption: "Standing Up for Women & Girls — Purposeful, Compassionate, and Committed to Change",
-    //   alt: "National Association Soroptimist India - Official Woman Portrait celebrating sisterhood, unity, and empowerment",
-    // },
-    // {
-    //   src: "/images/history/charter-si-whitefield-2015.jpg",
-    //   label: "Women in Leadership",
-    //   caption: "Women in Leadership: 35 Chartered Members in Soroptimist Blue & Gold",
-    //   alt: "35 Soroptimist women leaders at the charter celebration of SI Whitefield",
-    // },
-    // {
-    //   src: "/images/history/nasi-india-meeting-installation-2010.jpg",
-    //   label: "National Assembly",
-    //   caption: "National Executive Assembly: Club Presidents and Delegates Across India",
-    //   alt: "NASI-India National Gathering and Installation Ceremony uniting club leaders",
-    // },
-    // {
-    //   src: "/images/history/nasi-india-meeting-lamp-lighting-2010.jpg",
-    //   label: "Lamp Lighting Ceremony",
-    //   caption: "Auspicious Lamp Lighting Ceremony • Uniting National Leadership",
-    //   alt: "Auspicious lamp lighting ceremony by Soroptimist India club leaders",
-    // },
-    // {
-    //   src: "/images/history/charter-si-madurai-2010.jpg",
-    //   label: "Charter Presentation",
-    //   caption: "Charter Presentation • Women Leaders in Community Action",
-    //   alt: "Charter presentation with founding women leaders of SI Madurai",
-    // },
-    // {
-    //   src: imageRight || "/images/banner/hero-woman-facing-right.jpg",
-    //   label: "Community Action",
-    //   caption: "Grassroots Community Impact • Uplifting Women & Girls",
-    //   alt: "Soroptimist India Member dedicated to community service",
-    // },
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);

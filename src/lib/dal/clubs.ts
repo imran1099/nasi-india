@@ -39,6 +39,7 @@ const officerPublicSelect = {
   id: true,
   title: true,
   name: true,
+  image: true,
   bio: true,
   displayOrder: true,
 } as const;

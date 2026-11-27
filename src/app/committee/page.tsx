@@ -6,56 +6,24 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { CommitteeCard } from "@/components/committee/CommitteeCard";
 import { initialCommittee, type CommitteeMember } from "@/data/committee";
+import { getCommitteeMembersList } from "@/lib/dal/committee";
 
 // Allow this route to block at prerender when dynamic DB data is fetched
 export const instant = false;
 
 // ---------------------------------------------------------------------------
-// Normalize DB record to CommitteeMember static shape
-// ---------------------------------------------------------------------------
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function dbMemberToStatic(m: any): CommitteeMember {
-  const initials =
-    m.name
-      .split(" ")
-      .map((part: string) => part[0])
-      .filter(Boolean)
-      .slice(0, 2)
-      .join("")
-      .toUpperCase() || "SI";
-
-  return {
-    role: m.title,
-    roleShort: m.title,
-    name: m.name,
-    designation: m.title,
-    department: m.organization ?? "National Committee",
-    tenure: "Biennium 2026–2028",
-    clubAffiliation: m.city ? `${m.city}${m.state ? `, ${m.state}` : ""}` : "NASI India",
-    emailPlaceholder: "secretariat@nasi-india.org",
-    initials,
-    bio: m.bio ?? undefined,
-  };
-}
-
-// ---------------------------------------------------------------------------
-// Data helper — try DB first, fall back to static data
+// Data helper — DAL with database and local persistent JSON fallback
 // ---------------------------------------------------------------------------
 
 async function getCommitteeData(): Promise<CommitteeMember[]> {
   await connection();
-  if (!process.env.DATABASE_URL) {
-    return initialCommittee;
-  }
   try {
-    const { getCommitteeMembers } = await import("@/lib/dal/committee");
-    const members = await getCommitteeMembers();
-    if (members.length > 0 && !members[0].name.startsWith("[Sample]")) {
-      return members.map(dbMemberToStatic);
+    const members = await getCommitteeMembersList();
+    if (members && members.length > 0) {
+      return members;
     }
   } catch (err) {
-    console.warn("[committee/page] DB unavailable, falling back to static data:", err);
+    console.warn("[committee/page] Failed to fetch committee list:", err);
   }
   return initialCommittee;
 }

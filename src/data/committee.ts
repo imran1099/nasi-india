@@ -1,4 +1,5 @@
 export interface CommitteeMember {
+  id?: string;
   role: string;
   roleShort: string;
   name: string;
@@ -9,10 +10,14 @@ export interface CommitteeMember {
   clubAffiliation: string;
   emailPlaceholder: string;
   initials: string;
+  image?: string | null;
+  isActive?: boolean;
+  displayOrder?: number;
 }
 
 export const initialCommittee: CommitteeMember[] = [
   {
+    id: "member-anitha-rajarajan",
     role: "President",
     roleShort: "President",
     name: "Anitha Rajarajan",
@@ -22,7 +27,10 @@ export const initialCommittee: CommitteeMember[] = [
     clubAffiliation: "SI Madurai",
     emailPlaceholder: "president@nasi-india.org",
     initials: "AR",
+    image: "/uploads/general/anitha_rajaraj-6b7679a6a393fd01e58027de.jpg",
     bio: "Founding President of SI Madurai and experienced Soroptimist leader who has spearheaded club chartering and membership expansion across India. Leads the National Board in coordinating nationwide programmes, federation relations with SIGBI, and advancing opportunities for women and girls.",
+    displayOrder: 1,
+    isActive: true,
   },
   {
     role: "Secretary",

@@ -23,6 +23,7 @@ import { initialCommittee } from "@/data/committee";
 import { initialNews } from "@/data/news";
 import { initialEvents } from "@/data/events";
 import { getSiteSettings } from "@/lib/dal/settings";
+import { getCommitteeMembersList } from "@/lib/dal/committee";
 
 // Allow this route to block at prerender when dynamic DB data is fetched
 export const instant = false;
@@ -121,11 +122,13 @@ async function getHomePageData(): Promise<{
 
 export default async function HomePage() {
   await connection();
-  const committeePreview = initialCommittee; // NASI India Board: 2026-2028
-  const [homeData, settings] = await Promise.all([
+  const [homeData, settings, committeeMembers] = await Promise.all([
     getHomePageData(),
     getSiteSettings().catch(() => null),
+    getCommitteeMembersList().catch(() => initialCommittee),
   ]);
+  const committeePreview =
+    committeeMembers && committeeMembers.length > 0 ? committeeMembers : initialCommittee;
   const { latestNews } = homeData;
 
   // Dynamic Content from Admin Settings

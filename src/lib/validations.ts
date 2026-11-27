@@ -325,3 +325,26 @@ export const externalResourceFormSchema = z.object({
 });
 
 export type ExternalResourceFormInput = z.infer<typeof externalResourceFormSchema>;
+
+// ---------------------------------------------------------------------------
+// Committee Member Form Schema (Admin Panel Member Management)
+// ---------------------------------------------------------------------------
+
+export const committeeMemberFormSchema = z.object({
+  id: z.string().optional(),
+  name: z.string().min(2, "Name must be at least 2 characters").max(150).trim(),
+  role: z.string().min(2, "Role / Portfolio is required").max(150).trim(),
+  designation: z.string().max(150).trim().optional(),
+  department: z.string().max(150).trim().optional(),
+  tenure: z.string().max(100).trim().default("Biennium 2026–2028"),
+  clubAffiliation: z.string().max(150).trim().optional(),
+  email: z.string().email("Invalid email address").max(150).trim().optional().or(z.literal("")),
+  phone: z.string().max(30).trim().optional().or(z.literal("")),
+  bio: z.string().max(3000).trim().optional(),
+  image: z.string().max(1000).trim().optional().or(z.literal("")),
+  displayOrder: z.coerce.number().int().default(0),
+  isActive: z.boolean().default(true),
+});
+
+export type CommitteeMemberFormInput = z.infer<typeof committeeMemberFormSchema>;
+

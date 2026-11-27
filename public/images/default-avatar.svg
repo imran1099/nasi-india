@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="nasiBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8F3FC" />
+      <stop offset="100%" stop-color="#CFE6F8" />
+    </linearGradient>
+    <linearGradient id="nasiBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#005596" />
+      <stop offset="100%" stop-color="#003A6B" />
+    </linearGradient>
+    <linearGradient id="nasiGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAEB57" />
+      <stop offset="100%" stop-color="#D4A737" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="200" height="200" fill="url(#nasiBg)" rx="32" />
+
+  <!-- Subtle Inner Border -->
+  <rect x="4" y="4" width="192" height="192" fill="none" stroke="#B8D7F0" stroke-width="2" rx="28" />
+
+  <!-- Woman Leader Silhouette -->
+  <!-- Head & Hair Silhouette -->
+  <path d="M100 42 C82 42 70 56 70 76 C70 94 82 108 97 110 C96 114 93 118 88 122 C70 128 46 142 42 166 C40 176 48 184 58 184 L142 184 C152 184 160 176 158 166 C154 142 130 128 112 122 C107 118 104 114 103 110 C118 108 130 94 130 76 C130 56 118 42 100 42 Z" fill="url(#nasiBlue)" />
+
+  <!-- Traditional Hair Bun / Accent -->
+  <ellipse cx="100" cy="40" rx="18" ry="12" fill="url(#nasiBlue)" />
+
+  <!-- Bindi / Leadership Gold Accent -->
+  <circle cx="100" cy="72" r="3.5" fill="url(#nasiGold)" />
+
+  <!-- Elegant Gold Collar / Saree Border Accent -->
+  <path d="M82 146 Q100 162 118 146 Q115 152 100 168 Q85 152 82 146 Z" fill="url(#nasiGold)" opacity="0.9" />
+
+  <!-- Small Soroptimist Gold Star / Emblem Accent -->
+  <circle cx="156" cy="156" r="14" fill="#003A6B" stroke="white" stroke-width="2" />
+  <circle cx="156" cy="156" r="10" fill="url(#nasiGold)" />
+  <path d="M156 149 L158 153 L162 154 L159 157 L160 161 L156 159 L152 161 L153 157 L150 154 L154 153 Z" fill="#003A6B" />
+</svg>

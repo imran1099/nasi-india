@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { MailIcon } from "@/components/icons";
@@ -10,26 +11,60 @@ export interface CommitteeCardProps {
   showBio?: boolean;
 }
 
+const DEFAULT_AVATAR = "/images/default-avatar.svg";
+
 export function CommitteeCard({
   member,
   variant = "elevated",
   showBio = true,
 }: CommitteeCardProps) {
+  const hasPhoto = Boolean(member.image);
+
   return (
-    <Card variant={variant} className="flex flex-col justify-between h-full bg-white rounded-2xl overflow-hidden border border-[#D7E8F5] hover:border-[#005596] hover:shadow-md transition-all duration-200">
+    <Card
+      variant={variant}
+      className="flex flex-col justify-between h-full bg-white rounded-2xl overflow-hidden border border-[#D7E8F5] hover:border-[#005596] hover:shadow-md transition-all duration-200"
+    >
       <div>
         <CardHeader className="p-6 pb-3">
           <div className="flex items-start justify-between gap-3 mb-4">
-            {/* Photograph Placeholder with Monogram / Refined Frame */}
-            <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-[#005596] text-white flex items-center justify-center font-serif text-xl sm:text-2xl font-bold shadow-sm border border-[#004780] shrink-0">
-              <span className="text-white tracking-wider">{member.initials}</span>
-              <span className="absolute -bottom-1 -right-1 w-3 h-3 rounded-full bg-[#D4A737] border-2 border-white" />
-              <span className="sr-only">Photograph placeholder for {member.name}</span>
+            {/* Photograph Display with Dignified Profile Frame */}
+            <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden shadow-sm border border-[#D7E8F5] shrink-0 bg-[#E8F3FC]">
+              {hasPhoto ? (
+                <Image
+                  src={member.image!}
+                  alt={member.name}
+                  fill
+                  sizes="(max-width: 640px) 64px, 80px"
+                  className="object-cover object-top"
+                />
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center p-2 bg-gradient-to-b from-[#E8F3FC] to-[#D7E8F5]">
+                  <Image
+                    src={DEFAULT_AVATAR}
+                    alt={`Default avatar for ${member.name}`}
+                    width={44}
+                    height={44}
+                    className="opacity-85"
+                  />
+                </div>
+              )}
+              {/* Corner Brand Accent Badge */}
+              <span
+                className={`absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full border-2 border-white ${
+                  hasPhoto ? "bg-[#D4A737]" : "bg-[#005596]"
+                }`}
+                title={hasPhoto ? "Official Photograph" : "NASI Officer Silhouette"}
+              />
             </div>
 
             <div className="flex flex-col items-end gap-1.5 text-right">
-              <Badge variant="teal" size="sm" className="bg-[#E8F3FC] text-[#005596] border-[#D7E8F5]">
-                {member.roleShort}
+              <Badge
+                variant="teal"
+                size="sm"
+                className="bg-[#E8F3FC] text-[#005596] border-[#D7E8F5]"
+              >
+                {member.roleShort || member.role}
               </Badge>
               <span className="text-[11px] font-mono text-[#61758A] bg-[#F4FAFF] px-2 py-0.5 rounded-md border border-[#D7E8F5]">
                 {member.tenure}

@@ -6,6 +6,7 @@ import { MediaCategory } from "@prisma/client";
 
 // Maximum allowed file sizes
 export const MAX_IMAGE_SIZE = 10 * 1024 * 1024; // 10MB
+export const MAX_MEMBER_IMAGE_SIZE = 5 * 1024 * 1024; // 5MB limit for member photographs
 export const MAX_PDF_SIZE = 25 * 1024 * 1024; // 25MB
 
 const ALLOWED_IMAGE_MIMES = new Set([
@@ -13,6 +14,12 @@ const ALLOWED_IMAGE_MIMES = new Set([
   "image/png",
   "image/webp",
   "image/svg+xml",
+]);
+
+const ALLOWED_MEMBER_IMAGE_MIMES = new Set([
+  "image/jpeg",
+  "image/png",
+  "image/webp",
 ]);
 
 const ALLOWED_PDF_MIMES = new Set(["application/pdf"]);
@@ -79,26 +86,39 @@ function validateMagicBytes(buffer: Buffer, mime: string): boolean {
  */
 export async function storeUploadedFile(
   file: File,
-  category: "news" | "events" | "newsletters" | "general",
+  category: "news" | "events" | "newsletters" | "general" | "members",
   uploadedById?: string
 ): Promise<UploadResult> {
   const mime = file.type.toLowerCase();
   const isPdf = ALLOWED_PDF_MIMES.has(mime);
   const isImage = ALLOWED_IMAGE_MIMES.has(mime);
 
-  if (!isPdf && !isImage) {
+  if (category === "members") {
+    if (!ALLOWED_MEMBER_IMAGE_MIMES.has(mime)) {
+      throw new Error(
+        `Unsupported image format: ${mime}. Allowed formats: JPG, JPEG, PNG, WebP.`
+      );
+    }
+  } else if (!isPdf && !isImage) {
     throw new Error(
       `Unsupported file type: ${mime}. Allowed formats: PDF, JPEG, PNG, WebP, SVG.`
     );
   }
 
   const arrayBuffer = await file.arrayBuffer();
-  const buffer = Buffer.from(arrayBuffer);
+  let buffer = Buffer.from(arrayBuffer);
 
-  const maxSize = isPdf ? MAX_PDF_SIZE : MAX_IMAGE_SIZE;
+  const maxSize = category === "members"
+    ? MAX_MEMBER_IMAGE_SIZE
+    : isPdf
+      ? MAX_PDF_SIZE
+      : MAX_IMAGE_SIZE;
+
   if (buffer.length > maxSize) {
     throw new Error(
-      `File exceeds maximum permitted size of ${maxSize / (1024 * 1024)}MB.`
+      category === "members"
+        ? `Member photograph exceeds maximum permitted size of 5 MB (current: ${(buffer.length / (1024 * 1024)).toFixed(2)} MB).`
+        : `File exceeds maximum permitted size of ${maxSize / (1024 * 1024)}MB.`
     );
   }
 
@@ -106,8 +126,42 @@ export async function storeUploadedFile(
     throw new Error("File content signature does not match declared MIME type.");
   }
 
+  // Optimize image if it is a member photograph
+  let ext = path.extname(file.name).toLowerCase();
+  if (category === "members") {
+    try {
+      const sharp = (await import("sharp")).default;
+      const img = sharp(buffer);
+      const meta = await img.metadata();
+
+      // Maintain aspect ratio, downscale if overly large (e.g. >1200px)
+      if (meta.width && meta.height && (meta.width > 1200 || meta.height > 1200)) {
+        img.resize(1200, 1200, { fit: "inside", withoutEnlargement: true });
+      }
+
+      // Auto-orient based on EXIF camera orientation
+      img.rotate();
+
+      if (mime === "image/png") {
+        buffer = await img.png({ quality: 90, compressionLevel: 8 }).toBuffer();
+        ext = ".png";
+      } else if (mime === "image/webp") {
+        buffer = await img.webp({ quality: 85 }).toBuffer();
+        ext = ".webp";
+      } else {
+        buffer = await img.jpeg({ quality: 88, mozjpeg: true }).toBuffer();
+        ext = ".jpg";
+      }
+    } catch (optErr) {
+      console.warn("[storeUploadedFile] Image optimization bypassed:", optErr);
+    }
+  }
+
+  if (!ext) {
+    ext = isPdf ? ".pdf" : ".jpg";
+  }
+
   // Generate safe non-guessable filename
-  const ext = path.extname(file.name).toLowerCase() || (isPdf ? ".pdf" : ".jpg");
   const randomHex = crypto.randomBytes(12).toString("hex");
   const safeBase = file.name
     .replace(ext, "")
@@ -124,9 +178,7 @@ export async function storeUploadedFile(
 
   if (s3Bucket && process.env.S3_ACCESS_KEY_ID && process.env.S3_SECRET_ACCESS_KEY) {
     // If external S3-compatible cloud storage is configured
-    // We construct the destination key and URL
     const key = `uploads/${category}/${safeFilename}`;
-    // Fallback URL or CDN URL
     const baseUrl = s3Endpoint
       ? `${s3Endpoint.replace(/\/$/, "")}/${s3Bucket}`
       : `https://${s3Bucket}.s3.amazonaws.com`;

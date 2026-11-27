@@ -19,8 +19,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const validCategory = ["news", "events", "newsletters", "general"].includes(category)
-      ? (category as "news" | "events" | "newsletters" | "general")
+    const validCategory = ["news", "events", "newsletters", "general", "members"].includes(category)
+      ? (category as "news" | "events" | "newsletters" | "general" | "members")
       : "general";
 
     const result = await storeUploadedFile(file, validCategory, user.id);
