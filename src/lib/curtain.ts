@@ -14,6 +14,7 @@ export interface CurtainSettings {
   launchHeading: string;
   subtitle: string;
   showLogo: boolean;
+  logoUrl?: string;
   duration: number; // Opening animation duration in seconds (3 to 5)
 }
 
@@ -28,6 +29,7 @@ export const DEFAULT_CURTAIN_SETTINGS: CurtainSettings = {
   launchHeading: "Website Launch",
   subtitle: "UNITE – ACT – IMPACT",
   showLogo: true,
+  logoUrl: "/uploads/general/img-20261110-wa0080-b3d7704c9b213c51be5bd5a0.jpg",
   duration: 4,
 };
 
@@ -58,6 +60,7 @@ export function extractCurtainSettings(
     subtitle:
       settings["curtain.subtitle"] || DEFAULT_CURTAIN_SETTINGS.subtitle,
     showLogo: settings["curtain.showLogo"] !== "false",
+    logoUrl: settings["site.logoUrl"] || DEFAULT_CURTAIN_SETTINGS.logoUrl,
     duration: clampedDuration,
   };
 }

@@ -237,12 +237,12 @@ export function LaunchCurtain({
         {/* Center Launch Screen Content */}
         <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 py-8 text-center">
           <div className="max-w-2xl mx-auto flex flex-col items-center animate-in fade-in zoom-in-95 duration-700">
-            {/* Official NASI Logo in Gilded Ceremonial Medallion */}
+            {/* Official NASI-India Logo in Gilded Ceremonial Medallion */}
             {settings.showLogo && (
               <div className="mb-6 sm:mb-8 relative">
                 {/* Golden Glow Aura */}
                 <div
-                  className="absolute -inset-4 rounded-full blur-xl opacity-40 animate-pulse pointer-events-none"
+                  className="absolute -inset-4 rounded-full blur-2xl opacity-50 animate-pulse pointer-events-none"
                   style={{
                     background: "radial-gradient(circle, #D4A737 0%, transparent 70%)",
                   }}
@@ -250,21 +250,21 @@ export function LaunchCurtain({
 
                 {/* Gilded Double-Ring Medallion Frame */}
                 <div
-                  className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full p-1.5 shadow-2xl flex items-center justify-center"
+                  className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-full p-1.5 shadow-2xl flex items-center justify-center"
                   style={{
                     background:
                       "linear-gradient(135deg, #FFF5B8 0%, #D4A737 40%, #785A18 70%, #F5DE7A 100%)",
-                    boxShadow: "0 10px 35px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.8)",
+                    boxShadow: "0 14px 40px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(255, 255, 255, 0.8)",
                   }}
                 >
-                  <div className="w-full h-full rounded-full bg-white p-3 sm:p-4 flex items-center justify-center border-2 border-[#D4A737] shadow-inner">
+                  <div className="w-full h-full rounded-full bg-white p-1.5 sm:p-2 flex items-center justify-center border-2 border-[#D4A737] shadow-inner overflow-hidden">
                     <Image
-                      src="/images/soroptimist-india-logo.svg"
-                      alt="National Association Soroptimist India Logo"
-                      width={100}
-                      height={100}
+                      src={settings.logoUrl || "/uploads/general/img-20261110-wa0080-b3d7704c9b213c51be5bd5a0.jpg"}
+                      alt="National Association Soroptimist India (NASI-India) Official Logo"
+                      width={208}
+                      height={208}
                       priority
-                      className="w-full h-full object-contain drop-shadow-sm"
+                      className="w-full h-full object-contain rounded-full drop-shadow-sm"
                     />
                   </div>
                 </div>
