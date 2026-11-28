@@ -9,10 +9,14 @@ export const metadata: Metadata = {
   title: "Site Settings | NASI India Admin",
 };
 
-export default async function AdminSettingsPage() {
+export default async function AdminSettingsPage(props: {
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
   // 1. Server-side role enforcement: strictly requires SUPER_ADMIN
   const currentUser = await requireAuth([Role.SUPER_ADMIN]);
   const settings = await getSiteSettings();
+  const searchParams = props.searchParams ? await props.searchParams : {};
+  const initialTab = typeof searchParams.tab === "string" ? searchParams.tab : "branding";
 
   return (
     <div className="space-y-6">
@@ -25,10 +29,10 @@ export default async function AdminSettingsPage() {
             <Badge variant="gold" size="sm">Super Admin Only</Badge>
           </div>
           <h1 className="text-2xl font-serif font-bold text-forest-950">
-            Site Settings & Brand Configuration
+            Site Settings &amp; Brand Configuration
           </h1>
           <p className="text-xs sm:text-sm text-forest-700 mt-0.5">
-            Configure organization identity, secretariat contacts, social media gateways, and homepage announcements.
+            Configure organization identity, website launch curtain, secretariat contacts, social media gateways, and homepage announcements.
           </p>
         </div>
 
@@ -39,7 +43,7 @@ export default async function AdminSettingsPage() {
         </div>
       </div>
 
-      <SiteSettingsForm initialSettings={settings} />
+      <SiteSettingsForm initialSettings={settings} initialTab={initialTab} />
     </div>
   );
 }

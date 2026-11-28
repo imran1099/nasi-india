@@ -96,6 +96,19 @@ export interface SiteSettingsMap {
   "footer.copyright": string;
   "footer.registration": string;
 
+  // Website Launch Curtain Settings
+  "curtain.enabled": string;
+  "curtain.launchDate": string;
+  "curtain.startTime": string;
+  "curtain.endTime": string;
+  "curtain.timeZone": string;
+  "curtain.title": string;
+  "curtain.organization": string;
+  "curtain.launchHeading": string;
+  "curtain.subtitle": string;
+  "curtain.showLogo": string;
+  "curtain.duration": string;
+
   [key: string]: string;
 }
 
@@ -163,6 +176,18 @@ export function getDefaultSiteSettings(): SiteSettingsMap {
 
     "footer.copyright": `© ${siteConfig.copyrightYear} NATIONAL ASSOCIATION SOROPTIMIST INDIA (NASI-India). All rights reserved.`,
     "footer.registration": "Chartered under Soroptimist International.",
+
+    "curtain.enabled": "false",
+    "curtain.launchDate": "2026-11-28",
+    "curtain.startTime": "00:00",
+    "curtain.endTime": "23:59",
+    "curtain.timeZone": "Asia/Kolkata",
+    "curtain.title": "NATIONAL ASSOCIATION SOROPTIMIST INDIA",
+    "curtain.organization": "NASI-India",
+    "curtain.launchHeading": "Website Launch",
+    "curtain.subtitle": "UNITE – ACT – IMPACT",
+    "curtain.showLogo": "true",
+    "curtain.duration": "4",
   };
 }
 

@@ -24,6 +24,8 @@ import { initialNews } from "@/data/news";
 import { initialEvents } from "@/data/events";
 import { getSiteSettings } from "@/lib/dal/settings";
 import { getCommitteeMembersList } from "@/lib/dal/committee";
+import { LaunchCurtain } from "@/components/common/LaunchCurtain";
+import { extractCurtainSettings, isCurtainActiveInKolkata } from "@/lib/curtain";
 
 // Allow this route to block at prerender when dynamic DB data is fetched
 export const instant = false;
@@ -120,13 +122,33 @@ async function getHomePageData(): Promise<{
   return { latestNews, upcomingEvents };
 }
 
-export default async function HomePage() {
+export default async function HomePage(props: {
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
   await connection();
+  const searchParams = props.searchParams ? await props.searchParams : {};
+  const isPreviewRequested = searchParams.preview_curtain === "true";
+
+  let previewMode = false;
+  if (isPreviewRequested) {
+    // Only authorized administrators can access preview mode
+    const { getSession } = await import("@/lib/auth/session");
+    const session = await getSession();
+    if (session && (session.role === "SUPER_ADMIN" || session.role === "NATIONAL_ADMIN")) {
+      previewMode = true;
+    }
+  }
+
   const [homeData, settings, committeeMembers] = await Promise.all([
     getHomePageData(),
     getSiteSettings().catch(() => null),
     getCommitteeMembersList().catch(() => initialCommittee),
   ]);
+
+  const curtainSettings = extractCurtainSettings(settings);
+  const isActiveNow = isCurtainActiveInKolkata(curtainSettings);
+  const shouldRenderCurtain = isActiveNow || previewMode;
+
   const committeePreview =
     committeeMembers && committeeMembers.length > 0 ? committeeMembers : initialCommittee;
   const { latestNews } = homeData;
@@ -193,6 +215,14 @@ National association of Soroptimist International, India`;
 
   return (
     <>
+      {/* 0. Website Launch Curtain-Raiser (Active on launch day or during Admin Preview) */}
+      {shouldRenderCurtain && (
+        <LaunchCurtain
+          settings={curtainSettings}
+          previewMode={previewMode}
+        />
+      )}
+
       {/* 1. Main Hero Banner - Reference Layout with Dynamic Admin Settings */}
       <HomeHeroBanner
         title={settings?.["home.heroTitle"]}

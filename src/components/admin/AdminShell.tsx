@@ -21,6 +21,7 @@ import {
   MenuIcon,
   XIcon,
   ExternalLinkIcon,
+  SparklesIcon,
 } from "@/components/icons";
 
 interface AdminShellProps {
@@ -55,6 +56,7 @@ export function AdminShell({ user, children }: AdminShellProps) {
   const systemNav: NavItem[] = [
     { label: "User Accounts", href: "/admin/users", icon: <ShieldIcon size={18} />, superAdminOnly: true },
     { label: "Site Settings", href: "/admin/settings", icon: <SettingsIcon size={18} />, superAdminOnly: true },
+    { label: "Launch Curtain", href: "/admin/settings?tab=curtain", icon: <SparklesIcon size={18} />, superAdminOnly: true },
   ];
 
   const getRoleBadge = (role: Role) => {

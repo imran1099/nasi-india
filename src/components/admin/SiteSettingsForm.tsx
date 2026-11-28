@@ -10,9 +10,11 @@ import { FileUploadWidget } from "@/components/admin/FileUploadWidget";
 import { saveSiteSettingsAction } from "@/actions/settings";
 import type { ApiResponse } from "@/lib/api-response";
 import type { SiteSettingsMap } from "@/lib/dal/settings";
+import { isCurtainActiveInKolkata } from "@/lib/curtain";
 
 interface SiteSettingsFormProps {
   initialSettings: SiteSettingsMap;
+  initialTab?: string;
 }
 
 type State = ApiResponse<{ updatedCount: number }> | null;
@@ -21,11 +23,11 @@ async function formAction(_prev: State, formData: FormData): Promise<State> {
   return saveSiteSettingsAction(_prev, formData);
 }
 
-export function SiteSettingsForm({ initialSettings }: SiteSettingsFormProps) {
+export function SiteSettingsForm({ initialSettings, initialTab = "branding" }: SiteSettingsFormProps) {
   const [state, action, isPending] = useActionState(formAction, null);
   const [activeTab, setActiveTab] = useState<
-    "branding" | "home" | "president" | "vision-mission" | "events" | "governance" | "contact" | "footer"
-  >("branding");
+    "branding" | "home" | "president" | "vision-mission" | "events" | "governance" | "contact" | "footer" | "curtain"
+  >((initialTab as "branding" | "home" | "president" | "vision-mission" | "events" | "governance" | "contact" | "footer" | "curtain") || "branding");
 
   // State for logo upload
   const [logoUrl, setLogoUrl] = useState(
@@ -63,6 +65,54 @@ export function SiteSettingsForm({ initialSettings }: SiteSettingsFormProps) {
     initialSettings["event.maduraiInvitationUrl"] || ""
   );
 
+  // State for Website Launch Curtain Settings
+  const [curtainEnabled, setCurtainEnabled] = useState(
+    initialSettings["curtain.enabled"] === "true"
+  );
+  const [curtainLaunchDate, setCurtainLaunchDate] = useState(
+    initialSettings["curtain.launchDate"] || "2026-11-28"
+  );
+  const [curtainStartTime, setCurtainStartTime] = useState(
+    initialSettings["curtain.startTime"] || "00:00"
+  );
+  const [curtainEndTime, setCurtainEndTime] = useState(
+    initialSettings["curtain.endTime"] || "23:59"
+  );
+  const curtainTimeZone = initialSettings["curtain.timeZone"] || "Asia/Kolkata";
+  const [curtainTitle, setCurtainTitle] = useState(
+    initialSettings["curtain.title"] || "NATIONAL ASSOCIATION SOROPTIMIST INDIA"
+  );
+  const [curtainOrganization, setCurtainOrganization] = useState(
+    initialSettings["curtain.organization"] || "NASI-India"
+  );
+  const [curtainLaunchHeading, setCurtainLaunchHeading] = useState(
+    initialSettings["curtain.launchHeading"] || "Website Launch"
+  );
+  const [curtainSubtitle, setCurtainSubtitle] = useState(
+    initialSettings["curtain.subtitle"] || "UNITE – ACT – IMPACT"
+  );
+  const [curtainShowLogo, setCurtainShowLogo] = useState(
+    initialSettings["curtain.showLogo"] !== "false"
+  );
+  const [curtainDuration, setCurtainDuration] = useState(
+    Number(initialSettings["curtain.duration"]) || 4
+  );
+
+  // Real-time schedule status check for admin feedback
+  const isCurtainScheduledNow = isCurtainActiveInKolkata({
+    enabled: curtainEnabled,
+    launchDate: curtainLaunchDate,
+    startTime: curtainStartTime,
+    endTime: curtainEndTime,
+    timeZone: curtainTimeZone,
+    title: curtainTitle,
+    organization: curtainOrganization,
+    launchHeading: curtainLaunchHeading,
+    subtitle: curtainSubtitle,
+    showLogo: curtainShowLogo,
+    duration: curtainDuration,
+  });
+
   const isSuccess = state?.success === true;
 
   const tabs = [
@@ -74,6 +124,7 @@ export function SiteSettingsForm({ initialSettings }: SiteSettingsFormProps) {
     { id: "governance", label: "Clubs & Governance" },
     { id: "contact", label: "Secretariat Contact" },
     { id: "footer", label: "Footer & Social" },
+    { id: "curtain", label: "Website Launch Curtain" },
   ] as const;
 
   return (
@@ -106,11 +157,10 @@ export function SiteSettingsForm({ initialSettings }: SiteSettingsFormProps) {
             key={tab.id}
             type="button"
             onClick={() => setActiveTab(tab.id)}
-            className={`px-3.5 py-2 text-xs font-semibold rounded-t-lg transition-colors border-b-2 -mb-[2px] cursor-pointer ${
-              activeTab === tab.id
-                ? "border-[#005596] text-[#005596] bg-white shadow-2xs font-bold"
-                : "border-transparent text-forest-700 hover:text-forest-950 hover:bg-sand-100"
-            }`}
+            className={`px-3.5 py-2 text-xs font-semibold rounded-t-lg transition-colors border-b-2 -mb-[2px] cursor-pointer ${activeTab === tab.id
+              ? "border-[#005596] text-[#005596] bg-white shadow-2xs font-bold"
+              : "border-transparent text-forest-700 hover:text-forest-950 hover:bg-sand-100"
+              }`}
           >
             {tab.label}
           </button>
@@ -989,6 +1039,312 @@ export function SiteSettingsForm({ initialSettings }: SiteSettingsFormProps) {
               defaultValue={initialSettings["footer.registration"]}
               required
             />
+          </div>
+        </div>
+
+        {/* ================================================================ */}
+        {/* TAB 9: Website Launch Curtain Settings */}
+        {/* ================================================================ */}
+        <div className={activeTab === "curtain" ? "space-y-6 block" : "hidden"}>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-sand-200">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#D4A737]" />
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-[#005596]">
+                  Website Launch Curtain Settings
+                </h3>
+              </div>
+              <p className="text-xs text-[#61758A] mt-1 max-w-2xl">
+                Configure the special one-day ceremonial curtain-raiser animation for the NASI India website launch. When active, visitors see a royal blue velvet curtain with gold detailing that smoothly opens upwards, revealing the homepage.
+              </p>
+            </div>
+
+            {/* Quick Preview Button */}
+            <button
+              type="button"
+              onClick={() => window.open("/?preview_curtain=true", "_blank")}
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-lg bg-gradient-to-r from-[#D4A737] to-[#F0DC36] text-[#00284D] hover:from-[#C59728] hover:to-[#E0CC26] shadow-sm hover:shadow transition-all shrink-0 cursor-pointer"
+            >
+              <SparklesIcon size={14} className="text-[#00284D]" />
+              <span>Preview Curtain Animation</span>
+              <ExternalLinkIcon size={12} className="text-[#00284D]/70" />
+            </button>
+          </div>
+
+          {/* Schedule Status Banner */}
+          <div
+            className={`p-4 rounded-xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 ${isCurtainScheduledNow
+              ? "bg-emerald-50 border-emerald-200 text-emerald-950"
+              : curtainEnabled
+                ? "bg-amber-50 border-amber-200 text-amber-950"
+                : "bg-sand-100/70 border-sand-300 text-forest-800"
+              }`}
+          >
+            <div className="flex items-center gap-3">
+              <span
+                className={`w-3.5 h-3.5 rounded-full shrink-0 ${isCurtainScheduledNow
+                  ? "bg-emerald-500 animate-ping"
+                  : curtainEnabled
+                    ? "bg-amber-500"
+                    : "bg-sand-400"
+                  }`}
+              />
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wider">
+                  {isCurtainScheduledNow
+                    ? "Curtain Animation Active Now (Asia/Kolkata)"
+                    : curtainEnabled
+                      ? "Curtain Animation Scheduled"
+                      : "Curtain Animation Currently Disabled"}
+                </p>
+                <p className="text-xs opacity-80 mt-0.5">
+                  {curtainEnabled
+                    ? `Configured Window: ${curtainLaunchDate} from ${curtainStartTime} to ${curtainEndTime} (${curtainTimeZone})`
+                    : "Enable the animation below to schedule it for launch day."}
+                </p>
+              </div>
+            </div>
+
+            <div className="text-[11px] font-mono px-2.5 py-1 rounded bg-white/70 border border-black/10 shrink-0">
+              Timezone: {curtainTimeZone}
+            </div>
+          </div>
+
+          {/* 1. Master Enable Toggle */}
+          <div className="p-4 rounded-xl bg-sand-50 border border-sand-200 flex items-center justify-between">
+            <div>
+              <label
+                htmlFor="curtain-enabled-toggle"
+                className="text-sm font-semibold text-forest-950 block cursor-pointer"
+              >
+                Enable Website Launch Curtain Animation
+              </label>
+              <p className="text-xs text-forest-600 mt-0.5">
+                When enabled, first-time visitors during the launch window will see the royal blue curtain open upwards.
+              </p>
+            </div>
+            <input
+              type="hidden"
+              name="curtain.enabled"
+              value={curtainEnabled ? "true" : "false"}
+            />
+            <button
+              type="button"
+              id="curtain-enabled-toggle"
+              role="switch"
+              aria-checked={curtainEnabled}
+              onClick={() => setCurtainEnabled(!curtainEnabled)}
+              className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${curtainEnabled ? "bg-[#005596]" : "bg-sand-300"
+                }`}
+            >
+              <span
+                className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out ${curtainEnabled ? "translate-x-5" : "translate-x-0"
+                  }`}
+              />
+            </button>
+          </div>
+
+          {/* 2. Launch Window & Schedule */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-forest-900">
+                Launch Window Schedule
+              </h4>
+              <button
+                type="button"
+                onClick={() => {
+                  const now = new Date();
+                  const y = now.getFullYear();
+                  const m = String(now.getMonth() + 1).padStart(2, "0");
+                  const d = String(now.getDate()).padStart(2, "0");
+                  setCurtainLaunchDate(`${y}-${m}-${d}`);
+                }}
+                className="text-[11px] font-semibold text-[#005596] hover:underline cursor-pointer"
+              >
+                Set Date to Today
+              </button>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+              <div>
+                <label className="block text-xs font-semibold text-forest-900 mb-1">
+                  Launch Date
+                </label>
+                <input
+                  type="date"
+                  name="curtain.launchDate"
+                  value={curtainLaunchDate}
+                  onChange={(e) => setCurtainLaunchDate(e.target.value)}
+                  className="w-full px-3 py-2 text-xs sm:text-sm border border-sand-300 rounded-lg bg-white focus:outline-none focus:border-[#005596]"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-forest-900 mb-1">
+                  Start Time
+                </label>
+                <input
+                  type="time"
+                  name="curtain.startTime"
+                  value={curtainStartTime}
+                  onChange={(e) => setCurtainStartTime(e.target.value)}
+                  className="w-full px-3 py-2 text-xs sm:text-sm border border-sand-300 rounded-lg bg-white focus:outline-none focus:border-[#005596]"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-forest-900 mb-1">
+                  End Time
+                </label>
+                <input
+                  type="time"
+                  name="curtain.endTime"
+                  value={curtainEndTime}
+                  onChange={(e) => setCurtainEndTime(e.target.value)}
+                  className="w-full px-3 py-2 text-xs sm:text-sm border border-sand-300 rounded-lg bg-white focus:outline-none focus:border-[#005596]"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-forest-900 mb-1">
+                  Time Zone
+                </label>
+                <input
+                  type="text"
+                  name="curtain.timeZone"
+                  value={curtainTimeZone}
+                  readOnly
+                  className="w-full px-3 py-2 text-xs sm:text-sm border border-sand-300 rounded-lg bg-sand-100 text-forest-700 cursor-not-allowed font-mono text-[11px]"
+                />
+              </div>
+            </div>
+            <p className="text-[11px] text-forest-600">
+              All schedule checks are strictly validated against Indian Standard Time (Asia/Kolkata • UTC+5:30) on the server.
+            </p>
+          </div>
+
+          {/* 3. Typography & Content */}
+          <div className="space-y-4 pt-2">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-forest-900">
+              Curtain Center Content &amp; Typography
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-semibold text-forest-900 mb-1">
+                  Launch Title
+                </label>
+                <input
+                  type="text"
+                  name="curtain.title"
+                  value={curtainTitle}
+                  onChange={(e) => setCurtainTitle(e.target.value)}
+                  placeholder="NATIONAL ASSOCIATION SOROPTIMIST INDIA"
+                  className="w-full px-3 py-2 text-xs sm:text-sm border border-sand-300 rounded-lg bg-white focus:outline-none focus:border-[#005596]"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-forest-900 mb-1">
+                  Organisation Name
+                </label>
+                <input
+                  type="text"
+                  name="curtain.organization"
+                  value={curtainOrganization}
+                  onChange={(e) => setCurtainOrganization(e.target.value)}
+                  placeholder="NASI-India"
+                  className="w-full px-3 py-2 text-xs sm:text-sm border border-sand-300 rounded-lg bg-white focus:outline-none focus:border-[#005596]"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-forest-900 mb-1">
+                  Ceremonial Heading
+                </label>
+                <input
+                  type="text"
+                  name="curtain.launchHeading"
+                  value={curtainLaunchHeading}
+                  onChange={(e) => setCurtainLaunchHeading(e.target.value)}
+                  placeholder="Website Launch"
+                  className="w-full px-3 py-2 text-xs sm:text-sm border border-sand-300 rounded-lg bg-white focus:outline-none focus:border-[#005596]"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-forest-900 mb-1">
+                  Subtitle Motto
+                </label>
+                <input
+                  type="text"
+                  name="curtain.subtitle"
+                  value={curtainSubtitle}
+                  onChange={(e) => setCurtainSubtitle(e.target.value)}
+                  placeholder="UNITE – ACT – IMPACT"
+                  className="w-full px-3 py-2 text-xs sm:text-sm border border-sand-300 rounded-lg bg-white focus:outline-none focus:border-[#005596]"
+                />
+              </div>
+            </div>
+
+            {/* Show NASI Logo Option */}
+            <div className="flex items-center gap-2 pt-1">
+              <input
+                type="hidden"
+                name="curtain.showLogo"
+                value={curtainShowLogo ? "true" : "false"}
+              />
+              <input
+                type="checkbox"
+                id="curtain-show-logo"
+                checked={curtainShowLogo}
+                onChange={(e) => setCurtainShowLogo(e.target.checked)}
+                className="w-4 h-4 text-[#005596] rounded border-sand-300 focus:ring-[#005596]"
+              />
+              <label
+                htmlFor="curtain-show-logo"
+                className="text-xs font-semibold text-forest-900 cursor-pointer"
+              >
+                Display Official NASI Logo prominently in Gilded Medallion
+              </label>
+            </div>
+          </div>
+
+          {/* 4. Animation Settings */}
+          <div className="space-y-3 pt-2">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-forest-900">
+              Curtain Opening Animation Settings
+            </h4>
+            <div className="p-4 rounded-xl bg-sand-50 border border-sand-200 space-y-3">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-semibold text-forest-900">
+                  Animation Opening Duration:{" "}
+                  <span className="font-bold text-[#005596]">
+                    {curtainDuration} seconds
+                  </span>
+                </label>
+                <span className="text-[11px] text-forest-600">3 to 5 seconds</span>
+              </div>
+              <input
+                type="range"
+                min="3"
+                max="5"
+                step="0.5"
+                name="curtain.duration"
+                value={curtainDuration}
+                onChange={(e) => setCurtainDuration(Number(e.target.value))}
+                className="w-full accent-[#005596] cursor-pointer"
+              />
+              <div className="flex justify-between text-[10px] text-forest-500 font-mono">
+                <span>3.0s (Brisk)</span>
+                <span>4.0s (Ceremonial Recommended)</span>
+                <span>5.0s (Majestic)</span>
+              </div>
+            </div>
           </div>
         </div>
 
